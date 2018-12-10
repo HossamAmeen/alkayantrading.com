@@ -1,0 +1,116 @@
+
+
+php artisan make:model Category -m
+php artisan make:model Service -m
+php artisan make:model Product -m
+php artisan make:model Day -m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateDaysTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('days', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('day');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('days');
+    }
+}
+
+
+
+
+
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreatePriceAtDaysTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('price_at__days', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('product_id');      
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedInteger('day_id');      
+            $table->foreign('day_id')->references('id')->on('days');
+            $table->integer('price');
+            
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('price_at__days');
+    }
+}
+
+
+
+
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+class Service extends Model
+{
+    protected $dates = ['deleted_at'];
+    protected $fillable = [
+        'ar_title', 'en_title', 'img'
+    ];
+}
+
+
+

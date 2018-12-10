@@ -1,0 +1,52 @@
+nav, section, h1, h2, h3, h4, h5, h6,
+p, span, ul, li, footer, a, div, table, tr, td {
+  font-family: 'Roboto', sans-serif; }
+
+.navbar-default .navbar-toggle {
+  float: right; }
+
+/* about section */
+.about .content p {
+  font-size: 18px; }
+.about .content ul {
+  margin-left: 30px;
+  font-size: 18px; }
+
+/* services section .products .product-item .content */
+.products .product-item .content {
+  position: absolute;
+  z-index: 222;
+  color: #fff;
+  bottom: 20px;
+  left: 7%;
+  right: 0; }
+.products .product-item .content h4 {
+  text-align: center; }
+
+.prices .content {
+  max-width: 600px; }
+  .prices .content p {
+    font-size: 25px; }
+
+.contacts ul li {
+  font-size: 20px; }
+  .contacts ul li .social {
+    font-size: 16px;
+    padding: 0px 15px; }
+
+.contacts-page .item .content {
+  margin-right: 0; }
+.contacts-page .pull-left {
+  margin: 20px 13px; }
+
+/*------------------------------ prices page ----------------------------------------*/
+.prices-page .table thead td {
+  font-size: 20px; }
+.prices-page .table tbody td {
+  font-size: 18px; }
+
+/* ---------------------------------- Join Us ---------------------------------------*/
+.join label {
+  font-size: 18px; }
+
+/*# sourceMappingURL=style-en.css.map */
