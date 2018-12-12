@@ -16,9 +16,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
        
-       /* $pref = Pref::find(1);
+        $pref = Pref::find(1);
         if(!empty($pref))
-        View::share('pref',$pref );*/
+        View::share('pref',$pref );
     
         Schema::defaultStringLength(191);
     }

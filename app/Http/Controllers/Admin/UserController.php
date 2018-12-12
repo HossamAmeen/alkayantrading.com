@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use Illuminate\Http\Request;

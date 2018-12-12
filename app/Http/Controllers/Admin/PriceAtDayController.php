@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\controller;
+use App\Http\Controllers\Controller;
 use DB;
 use App\Day;
 use App\Price_at_day;
