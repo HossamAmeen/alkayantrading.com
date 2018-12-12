@@ -9,23 +9,25 @@
 		<meta name="description" content="شركة كيان لتوريد جميع مواد البناء (حديد - اسمنت - الرمل - الزلط السن بجميع مقاساته) وادارة وتشغيل اساطيل النقل البرى بالاضافه الى تشغيل وادارة محطات الخرسانه الجاهزه " >
 		<meta name=”keywords” content="مواد البناء, المقاولات, محطات الخرسانه الجاهزه, اساطيل النقل البرى , تشطيبات" />
 
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+        <link rel="stylesheet" href="{{asset('resources/assets/site/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('resources/assets/site/css/bootstrap-rtl.css')}}">
 
-		<!-- our revolution slider -->
-		  <link rel="stylesheet" href="css/settings.css">
-		  <link rel="stylesheet" href="css/extralayers.css">
+        <!--        our revolution slider-->
+        <link rel="stylesheet" href="{{asset('resources/assets/site/css/settings.css')}}">
+        <link rel="stylesheet" href="{{asset('resources/assets/site/css/extralayers.css')}}">
 
-<!--		owl slider-->
-		<link rel="stylesheet" href="css/swiper.min.css">
+        <!--		owl slider-->
+        <link rel="stylesheet" href="{{asset('resources/assets/site/css/swiper.min.css')}}">
 
-<!--		animate.css -->
-		<link rel="stylesheet" href="css/animate.css">
+        <!--		animate.css -->
+        <link rel="stylesheet" href="{{asset('resources/assets/site/css/animate.css')}}">
 
-		<!--		custom style-->
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/style-en.css">
+        <!--		fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
+
+        <!--		custom style-->
+        <link rel="stylesheet" href="{{asset('resources/assets/site/css/style.css')}}">
 
 	</head>
 	<body>
@@ -40,8 +42,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.html">
-                      <img src="{{asset('images/logo.png')}}" alt="logo" class="logo">
+                  <a class="navbar-brand" href="{{url('ar/')}}">
+
+                      <img src="{{asset('resources/assets/site/images/logo.png')}}" alt="logo" class="logo">
                     </a>
 		      </div>
 
@@ -53,20 +56,20 @@
             @else
             class="page-scroll"
             @endif
-            href= "/ar_index">الرئيسيه</a></li>
+            href= "{{url('ar/')}}">الرئيسيه</a></li>
            
 					<li><a @if($title == 'شركة كيان - خدماتنا')
             class="page-scroll active"
             @else
             class="page-scroll"
             @endif
-            href="{{url('ar_services')}}">خدماتنا </a></li>
+            href="{{url('ar/services')}}">خدماتنا </a></li>
 					<li><a @if($title == 'شركة كيان - الاسعار اليوميه')
             class="page-scroll active"
             @else
             class="page-scroll"
             @endif
-           href="{{url('ar_daily_price')}}">الاسعار اليوميه</a></li>
+           href="{{url('ar/daily_price')}}">الاسعار اليوميه</a></li>
 
           <li><a 
             @if($title == 'شركة كيان -  من نحن')
@@ -74,21 +77,21 @@
             @else
             class="page-scroll"
             @endif
-             href="{{url('ar_about')}}">من نحن</a></li>
+             href="{{url('ar/about')}}">من نحن</a></li>
 
 					<li><a @if($title == 'شركة كيان -  انضم إلينا')
             class="page-scroll active"
             @else
             class="page-scroll"
             @endif
-             href="{{url('ar_join_us')}}">انضم إلينا</a></li>
+             href="{{url('ar/join_us')}}">انضم إلينا</a></li>
 
 					<li><a @if($title == 'شركة كيان - تواصل معانا')
             class="page-scroll active"
             @else
             class="page-scroll"
             @endif
-             href="{{url('ar_contact')}}">تواصل معانا</a></li>
+             href="{{url('ar/contact')}}">تواصل معانا</a></li>
 
 					<li>
 						<div class="dropdown">
@@ -96,8 +99,8 @@
 							  lang
 						  <span class="caret"></span></button>
 						  <ul class="dropdown-menu"> 
-						    <li><a href="#">Arabic</a></li>
-						    <li><a href="#">English</a></li>
+
+						    <li><a href="{{url('changeLanguage/en')}}" >English</a></li>
 						  </ul>
 						</div>
 					</li>
@@ -110,34 +113,34 @@
 
 
     <!--		footer section-->
-		<footer>
-        <div class="container text-center">
-          <div class="content">
-            <img class="img-responsive logo wow pulse" data-wow-duration="3s" src="images/Logo.png" >
-            <div class="text-center socialMedia">
-              <a href="{{$pref->facebook}}" target="_blank" class="social hvr-grow wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="{{$pref->twitter}}" target="_blank" class="social hvr-grow wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="{{$pref->instgram}}" target="_blank" class="social hvr-grow wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="{{$pref->linkedin}}" target="_blank" class="social hvr-grow wow fadeIn" data-wow-duration="2s" data-wow-delay="1.5s">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
+        <footer>
+            <div class="container text-center">
+                <div class="content">
+                    <img class="img-responsive logo wow pulse" data-wow-duration="3s" src="{{asset('resources/assets/site/images/Logo.png')}}" >
+                    <div class="text-center socialMedia">
+                        <a href="{{$pref->facebook}}" target="_blank" class="social hvr-grow wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a   href="{{$pref->twitter}}" target="_blank" class="social hvr-grow wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="{{$pref->instgram}}" target="_blank" class="social hvr-grow wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a  href="{{$pref->linkedin}}" target="_blank" class="social hvr-grow wow fadeIn" data-wow-duration="2s" data-wow-delay="1.5s">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="copywrite" style="direction: ltr;">
-          <p class="text-center">created by 
-            <a href="#">
-              <img src="images/zedy_logo.png" width="70px" alt="zedy company">
-            </a>
-          </p>
-        </div>
-      </footer>
+            <div class="copywrite" style="direction: ltr;">
+                <p class="text-center">created by
+                    <a href="#">
+                        <img src="{{asset('resources/assets/site/images/zedy_logo.png')}}" width="70px" alt="zedy company">
+                    </a>
+                </p>
+            </div>
+        </footer>
       
   <!--		preload section -->
       <div id="loader-wrapper">
@@ -146,12 +149,12 @@
         <div class="loader-section section-right"></div>
   
       </div>    
-        <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('resources/assets/site/js/jquery-2.2.4.min.js')}}"></script>
+        <script src="{{asset('resources/assets/site/js/bootstrap.min.js')}}"></script>
          
         <!--        our revolution slider-->
-          <script src="{{asset('js/jquery.themepunch.tools.min.js')}}"></script>
-          <script src="{{asset('js/jquery.themepunch.revolution.min.js')}}"></script>
+          <script src="{{asset('resources/assets/site/js/jquery.themepunch.tools.min.js')}}"></script>
+          <script src="{{asset('resources/assets/site/js/jquery.themepunch.revolution.min.js')}}"></script>
     
              <!-- Revolution Slider -->	
             <script type="text/javascript">
@@ -244,7 +247,7 @@
             </script>
             
     <!--		our swiper slider-->
-            <script src="js/swiper.min.js"></script>
+            <script src="{{asset('resources/assets/site/js/swiper.min.js')}}"></script>
             <script>
                var swiper = new Swiper('.swiper-container', {
                 spaceBetween: 30,
@@ -265,7 +268,7 @@
              </script>
             
     <!--		wow.js-->
-            <script src="{{asset('js/wow.min.js')}}"></script>
+            <script src="{{asset('resources/assets/site/js/wow.min.js')}}"></script>
             <script>
                   new WOW().init();
                   </script>

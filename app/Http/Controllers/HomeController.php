@@ -11,22 +11,38 @@ use App\Days;
 use DB;
 class HomeController extends Controller
 {
-    public  function  change_language(Request $request){
-        echo url()->previous();
+    public  function  change_language($lang){
+
+       // echo ;
+
+        //echo url()->previous();
+       // $lang = substr(url()->previous(),strripos(url()->previous() , '/') -2 ,2 ) ;
+      //  echo ; );
+
+         //substr(url()->previous(),strripos(url()->previous() , '/') );
+        if($lang == "en")
+
+            $rout =   str_replace("ar","en",url()->previous());
+
+        else
+            $rout =   str_replace("en","ar",url()->previous());
+
+       // return $rout;
+        return redirect($rout);
     }
     public function ar_index()
     {
 
         $data['services'] = Service::all();
         $data['title'] = "kayan trading company";
-        return view('web.ar_index',$data);
+        return view('web.ar.index',$data);
     }
 
     public function ar_services()
     {
         $data['services'] = Service::all();
         $data['title'] =  "شركة كيان - خدماتنا" ; 
-        return view('web.ar_services',$data);
+        return view('web.ar.services',$data);
     }
     public function ar_daily_price($service = NULL)
     {
@@ -70,14 +86,14 @@ class HomeController extends Controller
           $i++; 
         }
         $title =  "شركة كيان - الاسعار اليوميه";
-        
-        return view('web.ar_daily_price' , $categories)->with(compact('data', 'title','categories') );
+        //return $categories;
+        return view('web.ar.daily_price' , $categories)->with(compact('data', 'title','categories') );
        
     }
     public function ar_about()
     {
         $title =  "شركة كيان -  من نحن";
-        return view('web.ar_about')->with(compact('title') );
+        return view('web.ar.about')->with(compact('title') );
 
     }
     public function ar_join_us(Request $request)
@@ -102,7 +118,7 @@ class HomeController extends Controller
         }
        
 
-        return view('web.ar_join_us')->with(compact('title') );
+        return view('web.ar.join_us')->with(compact('title') );
     }
     public function ar_contact(Request $request)
     {
@@ -124,7 +140,7 @@ class HomeController extends Controller
             return redirect()->back();
         }
 
-        return view('web.ar_contacts')->with(compact('title') );
+        return view('web.ar.contacts')->with(compact('title') );
     }
     ////////////////// english
     public function en_index(){
@@ -135,13 +151,13 @@ class HomeController extends Controller
         
        // $pref = Pref::find(1);
        // return \Response::json($pref);	
-        return view('web.en_index',$data)->with(compact('pref'));
+        return view('web.en.index',$data)->with(compact('pref'));
     }
     public function en_services()
     {
         $data['services'] = Service::all();
         $data['title'] =  "شركة كيان - خدماتنا" ; 
-        return view('web.en_services',$data);
+        return view('web.en.services',$data);
     }
     public function en_daily_price($service = NULL)
     {
@@ -194,13 +210,13 @@ class HomeController extends Controller
        // return $data;
         $title =  "شركة كيان - الاسعار اليوميه";
         
-        return view('web.en_daily_price' , $categories)->with(compact('data', 'title','categories') );
+        return view('web.en.daily_price' , $categories)->with(compact('data', 'title','categories') );
        
     }
     public function en_about()
     {
         $title =  "شركة كيان -  من نحن";
-        return view('web.en_about')->with(compact('title') );
+        return view('web.en.about')->with(compact('title') );
 
     }
     public function en_join_us(Request $request)
@@ -225,7 +241,7 @@ class HomeController extends Controller
         }
        
 
-        return view('web.en_join_us')->with(compact('title') );
+        return view('web.en.join_us')->with(compact('title') );
     }
     public function en_contact(Request $request)
     {
@@ -247,7 +263,7 @@ class HomeController extends Controller
             return redirect()->back();
         }
 
-        return view('web.en_contacts')->with(compact('title') );
+        return view('web.en.contacts')->with(compact('title') );
     }
     
 }

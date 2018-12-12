@@ -13,7 +13,7 @@
                             <h3 class="panel-title">بيانات الموقع</h3>
                         </div>
                         <div class="panel-body">
-                        <form id="defaultForm" method="post" class="form-horizontal ls_form" action="/admin/pref/{{$id}}"
+                        <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/pref/' . $id)}}"
                                 data-bv-message="This value is not valid"
                                 data-bv-feedbackicons-valid="fa fa-check"
                                 data-bv-feedbackicons-invalid="fa fa-bug"
@@ -21,7 +21,7 @@
                                 enctype="multipart/form-data"
                                 >
                                 {{csrf_field()}}
-                                {{method_field('PUT')}} 
+                                {{method_field('PUT')}}
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>
@@ -30,8 +30,8 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                @endif  
-                                	 	
+                                @endif
+
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">العنوان بالعربيه</label>
                                     <div class="col-lg-6">
@@ -39,7 +39,7 @@
                                             data-bv-message="The service is not valid"
                                             required data-bv-notempty-message="The service is required and cannot be empty"
                                             value="{{ $arAddress}}"
-                                            
+
                                                 />
                                     </div>
                                 </div>
@@ -153,14 +153,14 @@
                                                     />
                                         </div>
                                 </div>
-                                <div class="form-group"> 
+                                <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
                                         <button type="submit" class="btn btn-primary">update</button>
                                     </div>
                                 </div>
                             </form>
-            
-            
+
+
                         </div>
                     </div>
                 </div>

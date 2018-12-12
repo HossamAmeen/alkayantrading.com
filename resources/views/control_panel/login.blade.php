@@ -15,39 +15,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <!-- TODO: Add a favicon -->
-    <link rel="shortcut icon" href="{{asset('panel/images/ico/fab.ico')}}">
+    <link rel="shortcut icon" href="{{asset('resources/assets/admin/images/ico/fab.ico')}}">
 
 <title>{{$title}}</title>
 
     <!--Page loading plugin Start -->
-    <link rel="stylesheet" href="{{asset('panel/css/rtl-css/plugins/pace-rtl.css')}}">
-    <script src="{{asset('panel/js/pace.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('resources/assets/admin/css/rtl-css/plugins/pace-rtl.css')}}">
+    <script src="{{asset('resources/assets/admin/js/pace.min.js')}}"></script>
     <!--Page loading plugin End   -->
 
     <!-- Plugin Css Put Here -->
-    <link href="{{asset('panel/css/bootstrap-rtl.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('panel/css/rtl-css/plugins/bootstrap-progressbar-3.1.1-rtl.css')}}">
-    <link rel="stylesheet" href="{{asset('panel/css/rtl-css/plugins/jquery-jvectormap-rtl.css')}}">
+    <link href="{{asset('resources/assets/admin/css/bootstrap-rtl.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('resources/assets/admin/css/rtl-css/plugins/bootstrap-progressbar-3.1.1-rtl.css')}}">
+    <link rel="stylesheet" href="{{asset('resources/assets/admin/css/rtl-css/plugins/jquery-jvectormap-rtl.css')}}">
 
     <!--AmaranJS Css Start-->
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/jquery.amaran-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/theme/all-themes-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/theme/awesome-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/theme/default-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/theme/blur-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/theme/user-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/theme/rounded-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/theme/readmore-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('panel/css/rtl-css/plugins/amaranjs/theme/metro-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/jquery.amaran-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/theme/all-themes-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/theme/awesome-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/theme/default-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/theme/blur-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/theme/user-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/theme/rounded-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/theme/readmore-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/plugins/amaranjs/theme/metro-rtl.css')}}" rel="stylesheet">
     <!--AmaranJS Css End -->
 
     <!-- Plugin Css End -->
     <!-- Custom styles Style -->
-    <link href="{{asset('panel/css/rtl-css/style-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/style-rtl.css')}}" rel="stylesheet">
     <!-- Custom styles Style End-->
 
     <!-- Responsive Style For-->
-    <link href="{{asset('panel/css/rtl-css/responsive-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/assets/admin/css/rtl-css/responsive-rtl.css')}}" rel="stylesheet">
     <!-- Responsive Style For-->
 
     <!-- Custom styles for this template -->
@@ -92,7 +92,7 @@
 
                     <div class="login-form">
 
-                        <form action="/admin/login"  method="post">
+                        <form action="{{url('admin/login')}}"  method="post">
                             {{csrf_field()}}
                             <div class="input-group ls-group-input">
                                 <input class="form-control" type="email" value="asd@asd.asd" name="email"> 
@@ -119,21 +119,21 @@
     </div>
     
 </section>
-<script type="text/javascript" src="{{asset('panel/js/color.js')}}"></script>
-<script type="text/javascript" src="{{asset('panel/js/lib/jquery-1.11.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('panel/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('panel/js/multipleAccordion.js')}}"></script>
+<script type="text/javascript" src="{{asset('resources/assets/admin/js/color.js')}}"></script>
+<script type="text/javascript" src="{{asset('resources/assets/admin/js/lib/jquery-1.11.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('resources/assets/admin/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('resources/assets/admin/js/multipleAccordion.js')}}"></script>
 
 <!--easing Library Script Start -->
-<script src="assets/js/lib/jquery.easing.js"></script>
+<script src="{{asset('resources/assets/js/lib/jquery.easing.js')}}"></script>
 <!--easing Library Script End -->
 
 <!--Nano Scroll Script Start -->
-<script src="{{asset('panel/js/jquery.nanoscroller.min.js')}}"></script>
+<script src="{{asset('resources/assets/admin/js/jquery.nanoscroller.min.js')}}"></script>
 <!--Nano Scroll Script End -->
 
 <!--switchery Script Start -->
-<script src="assets/js/switchery.min.js"></script>
+<script src="{{asset('resources/assets/js/switchery.min.js')}}"></script>
 <!--switchery Script End -->
 
 <!--bootstrap switch Button Script Start-->
@@ -149,30 +149,30 @@
 <!--bootstrap-progressbar Library script End-->
 
 <!--FLoat library Script Start -->
-<script type="text/javascript" src="assets/js/chart/flot/jquery.flot.js"></script>
-<script type="text/javascript" src="assets/js/chart/flot/jquery.flot.pie.js"></script>
-<script type="text/javascript" src="assets/js/chart/flot/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="{{asset('resources/assets/js/chart/flot/jquery.flot.js')}}"></script>
+<script type="text/javascript" src="{{asset('resources/assets/js/chart/flot/jquery.flot.pie.js')}}"></script>
+<script type="text/javascript" src="{{asset('resources/assets/js/chart/flot/jquery.flot.resize.js')}}"></script>
 <!--FLoat library Script End -->
 
-<script type="text/javascript" src="{{asset('panel/js/pages/layout.js')}}"></script>
+<script type="text/javascript" src="{{asset('resources/assets/admin/js/pages/layout.js')}}"></script>
 <!--Layout Script End -->
 
 
 
-<script src="{{asset('panel/js/countUp.min.js')}}"></script>
+<script src="{{asset('resources/assets/admin/js/countUp.min.js')}}"></script>
 
 <!-- skycons script start -->
-<script src="{{asset('panel/js/skycons.js')}}"></script>
+<script src="{{asset('resources/assets/admin/js/skycons.js')}}"></script>
 <!-- skycons script end   -->
 
 <!--Vector map library start-->
-<script src="{{asset('panel/js/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
-<script src="{{asset('panel/js/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+<script src="{{asset('resources/assets/admin/js/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{asset('resources/assets/admin/js/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
 <!--Vector map library end-->
 
 <!--AmaranJS library script Start -->
-<script src="{{asset('panel/js/jquery.amaran.js')}}"></script>
+<script src="{{asset('resources/assets/admin/js/jquery.amaran.js')}}"></script>
 <!--AmaranJS library script End   -->
-<script src="{{asset('panel/js/pages/dashboard.js')}}"></script>
+<script src="{{asset('resources/assets/admin/js/pages/dashboard.js')}}"></script>
 </body>
 </html>

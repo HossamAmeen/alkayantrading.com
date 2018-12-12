@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">إضافه خدمه</h3>
+                            <h3 class="panel-title">إضافه منتج</h3>
                         </div>
                         <div class="panel-body">
-                            <form id="defaultForm" method="post" class="form-horizontal ls_form" action="/admin/product"
+                            <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/product')}}"
                                 data-bv-message="This value is not valid"
                                 data-bv-feedbackicons-valid="fa fa-check"
                                 data-bv-feedbackicons-invalid="fa fa-bug"
@@ -66,7 +66,7 @@
                                         <label class="col-lg-3 control-label">category</label>
                                         <div class="col-lg-6">
                                            <select name="category_id">
-                                               <option value="{{NULL}}"></option> 
+
                                             @foreach ($categories as $category)
                                            <option value="{{$category->id}}">{{$category->en_title}}</option>  
                                             @endforeach

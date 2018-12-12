@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Mobile;
-use App\Http\Controllers\controller;
+use App\Http\Controllers\Controller;
 use App\Service;
 use Illuminate\Http\Request;
+
+
+
 
 class MobileController extends Controller
 {

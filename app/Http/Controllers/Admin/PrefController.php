@@ -13,7 +13,7 @@ class PrefController extends Controller
        
         if(session('login')){
             
-            return redirect()->route('pref.index');
+            return redirect()->route('prefs.index');
         }
     
        // return "test";
@@ -31,7 +31,7 @@ class PrefController extends Controller
                 session( ['id' => $user->id] );
                 session( ['role' => $user->role] );
                 
-                return redirect()->route('pref.index');
+                return redirect()->route('prefs.index');
                 
               }
            //  return "test";
@@ -43,13 +43,14 @@ class PrefController extends Controller
     {
         
      
-       $pref = Pref::find(1);
+       $mPref = Pref::find(1);
         $title='اضافه بيانات الموقع';
     
-        if(empty($pref))
-        return view('control_panel.add_pref')->with(compact('title'));
+        if(empty($mPref))
+       // return view('admin._masters.main')->with(compact('title'));
+            return view('control_panel.edit_pref')->with(compact('title'));
             else
-        return redirect()->route('pref.edit',['id' => 1]);
+        return redirect()->route('prefs.edit',['id' => 1]);
     }
 
    
@@ -61,10 +62,10 @@ class PrefController extends Controller
         $rules = $this->formValidation();
         $this->validate($request, $rules);
         $pref = Pref::create($request->all());  
-        //return $pref;
+
         $pref->user_id = session('id');
         $pref->save();
-        return redirect()->route('pref.index');
+        return redirect()->route('prefs.index');
     }
 
 
@@ -76,7 +77,7 @@ class PrefController extends Controller
         if(!empty($pref))
         return view('control_panel.edit_pref',$pref)->with(compact('title'));
         else
-        return redirect()->route('pref.index');
+        return redirect()->route('prefs.index');
     }
 
     
@@ -93,7 +94,7 @@ class PrefController extends Controller
             $pref->save();
             
         }
-        return redirect()->route('pref.index');
+        return redirect()->route('prefs.index');
     }
 
    

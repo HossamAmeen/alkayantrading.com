@@ -26,7 +26,8 @@ class PriceAtDayController extends Controller
            ->get();
         }
       
-        $title= 'عرض الاسعار';
+        $title = 'عرض الاسعار';
+
          return view('control_panel.edit_price_at_day' , $categories)->with(compact('data', 'title','categories') );
 
     }
