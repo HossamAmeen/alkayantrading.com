@@ -1,4 +1,4 @@
-@extends('layouts.panel')
+@extends('admin.panel')
 
 @section('content')
 <!--Page main section start-->
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">الخدمات</h3>
+                        <h3 class="panel-title">المستخدمين</h3>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive ls-table">
@@ -16,10 +16,9 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>الخدمه بالعربيه</th>
-                                    <th>الخدمه بالانجليزي</th>
-                                    <th>المستخدم</th>
-                                    <th>القسم</th>
+                                    <th>الاسم</th>
+                                    <th>الايميل</th>
+                                    <th>رتبه</th>
                                     <th>action</th>
                                    
                                 </tr>
@@ -28,21 +27,20 @@
                                     <?php
                                     $i=1;
                                     ?>
-                                    @foreach ($services as $service)
+                                    @foreach ($users as $user)
                                     
                                    
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>
-                                        <a href="{{url('/admin/service/'.$service->id.'/edit')}}"
+                                        <a href="{{url('/admin/user/'.$user->id.'/edit')}}"
                                             
-                                             aria-pressed="true">{{$service->ar_title}} </a>
+                                             aria-pressed="true">{{$user->name}} </a>
                                     </td>
-                                    <td>{{$service->en_title}}</td>
-                                    <td>{{$service->name}}</td>
-                                    <td>{{$service->cat_en_title}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->role}}</td>
                                     <td >
-                                            <form action='/admin/service/{{ $service->id }}' method="POST">
+                                            <form action='/admin/user/{{ $user->id }}' method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                           <button type="submit" class="btn btn-danger">Delete</button>

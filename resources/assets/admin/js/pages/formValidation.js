@@ -41,7 +41,7 @@ function mask_input_validation(){
     $("#iphone").mask("+33 999 999 999");
     $("#tin").mask("99-9999999");
     $("#ssn").mask("999-99-9999");
-    $("#product").mask("a*-999-a999", { placeholder: " " });
+    $("#products").mask("a*-999-a999", { placeholder: " " });
     $("#eyescript").mask("~9.99 ~9.99 999");
     $("#po").mask("PO: aaa-999-***");
     $("#pct").mask("99%");

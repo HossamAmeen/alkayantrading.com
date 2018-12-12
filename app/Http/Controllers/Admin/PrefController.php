@@ -37,7 +37,7 @@ class PrefController extends Controller
            //  return "test";
         }
         $title='تسجيل الدخول';
-        return view('control_panel.login')->with(compact('title'));
+        return view('admin.login')->with(compact('title'));
     }
     public function index()
     {
@@ -47,8 +47,8 @@ class PrefController extends Controller
         $title='اضافه بيانات الموقع';
     
         if(empty($mPref))
-       // return view('admin._masters.main')->with(compact('title'));
-            return view('control_panel.edit_pref')->with(compact('title'));
+
+            return view('admin.control_panel.prefs.edit_pref')->with(compact('title'));
             else
         return redirect()->route('prefs.edit',['id' => 1]);
     }
@@ -75,7 +75,7 @@ class PrefController extends Controller
         $pref = Pref::find($id);
         $title = ' تعديل بيانات الموقع';
         if(!empty($pref))
-        return view('control_panel.edit_pref',$pref)->with(compact('title'));
+        return view('admin.control_panel.prefs.edit_pref',$pref)->with(compact('title'));
         else
         return redirect()->route('prefs.index');
     }

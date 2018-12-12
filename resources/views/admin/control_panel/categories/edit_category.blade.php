@@ -1,4 +1,4 @@
-@extends('layouts.panel')
+@extends('admin.panel')
 
 @section('content')
 
@@ -10,16 +10,17 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">إضافه منتج</h3>
+                            <h3 class="panel-title">إضافه قسم</h3>
                         </div>
                         <div class="panel-body">
-                            <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/product')}}"
+                        <form id="defaultForm" method="post" class="form-horizontal ls_form" action="/admin/service/{{$id}}"
                                 data-bv-message="This value is not valid"
                                 data-bv-feedbackicons-valid="fa fa-check"
                                 data-bv-feedbackicons-invalid="fa fa-bug"
                                 data-bv-feedbackicons-validating="fa fa-refresh"
                                 enctype="multipart/form-data"
                                 >
+                                {{method_field('PUT')}}
                                 {{csrf_field()}}   
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -32,51 +33,30 @@
                                 @endif  
                                  	 	 	
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">المنتج بالعربي</label>
+                                    <label class="col-lg-3 control-label">خدمه بالعربيه</label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="ar_title"
                                             data-bv-message="The service is not valid"
                                             required data-bv-notempty-message="The service is required and cannot be empty"
-                                            value="{{ old('ar_title')}}"
+                                            value="{{ $ar_title}}"
                                             
                                                 />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                        <label class="col-lg-3 control-label">المنتج  بالانجليزي</label>
+                                        <label class="col-lg-3 control-label">الخدمه بالانجليزي</label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control" name="en_title"
                                                 data-bv-message="The username is not valid"
                                                 required data-bv-notempty-message="The username is required and cannot be empty"
-                                                value="{{ old('en_title')}}"
+                                                value="{{ $en_title}}"
                                                     />
                                         </div>
                                 </div>
-                                <div class="form-group">
-                                        <label class="col-lg-3 control-label">الشركه</label>
-                                        <div class="col-lg-6">
-                                            <input type="text" class="form-control" name="company_name"
-                                                data-bv-message="The username is not valid"
-                                                required data-bv-notempty-message="The username is required and cannot be empty"
-                                                value="{{ old('company_name')}}"
-                                                    />
-                                        </div>
-                                </div>
-                                <div class="form-group">
-                                        <label class="col-lg-3 control-label">category</label>
-                                        <div class="col-lg-6">
-                                           <select name="category_id">
-
-                                            @foreach ($categories as $category)
-                                           <option value="{{$category->id}}">{{$category->en_title}}</option>  
-                                            @endforeach
-                                            
-                                           </select>
-                                        </div>
-                                </div>
+                                                                
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">Sign up</button>
+                                        <button type="submit" class="btn btn-primary">update up</button>
                                     </div>
                                 </div>
                             </form>

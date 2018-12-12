@@ -1,6 +1,6 @@
 
 	
-@extends('layouts.en_app')
+@extends('web.en.en_app')
   @section('content')		
 		<header>
 			<div class="container">

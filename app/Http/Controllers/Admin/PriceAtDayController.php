@@ -28,7 +28,7 @@ class PriceAtDayController extends Controller
       
         $title = 'عرض الاسعار';
 
-         return view('control_panel.edit_price_at_day' , $categories)->with(compact('data', 'title','categories') );
+         return view('admin.control_panel.prices.edit_price_at_day' , $categories)->with(compact('data', 'title','categories') );
 
     }
 
@@ -48,7 +48,7 @@ class PriceAtDayController extends Controller
            ->select('products.id','products.en_title')
            ->get();
         }
-        return view('control_panel.add_price_at_day', $categories)->with(compact('data', 'title','categories') );
+        return view('admin.control_panel.prices.add_price_at_day', $categories)->with(compact('data', 'title','categories') );
     }
 
     public function store(Request $request)
@@ -128,7 +128,7 @@ class PriceAtDayController extends Controller
                 ->get();
         }
         $title= 'عرض الاسعار';
-        return view('control_panel.edit_price_at_day2' , $categories)->with(compact('data', 'title','categories' , 'date') );
+        return view('admin.control_panel.prices.edit_price_at_day2' , $categories)->with(compact('data', 'title','categories' , 'date') );
     }
     function formValidation()
     {

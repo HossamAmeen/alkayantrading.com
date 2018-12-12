@@ -1,5 +1,5 @@
 
-@extends('layouts.ar_app')
+@extends('web.ar.ar_app')
 @section('content')
 	 
 	   

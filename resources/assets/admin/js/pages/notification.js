@@ -296,7 +296,7 @@ function amaran_trigger_call(){
     $('.warningMessage').click(function(){
         $.amaran({
             content:{
-                message:'Can\'t deliver the product',
+                message:'Can\'t deliver the products',
                 size:'32 Kg',
                 file:'H: 32 Road: 21, Chicago, NY 3210',
                 icon:'fa fa fa-truck'
@@ -352,7 +352,7 @@ function amaran_trigger_call(){
     $('.topRightMessage').click(function(){
         $.amaran({
             content:{
-                message:'Can\'t deliver the product',
+                message:'Can\'t deliver the products',
                 size:'32 Kg',
                 file:'H: 32 Road: 21, Chicago, NY 3210',
                 icon:'fa fa fa-truck'

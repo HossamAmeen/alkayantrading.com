@@ -1,4 +1,4 @@
-@extends('layouts.panel')
+@extends('admin.panel')
 
 @section('content')
 <!--Page main section start-->

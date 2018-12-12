@@ -1,4 +1,4 @@
-@extends('layouts.panel')
+@extends('admin.panel')
 
 @section('content')
 <!--Page main section start-->
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">المنتجات</h3>
+                        <h3 class="panel-title">الاقسام</h3>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive ls-table">
@@ -16,11 +16,9 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>المنتج بالعربيه</th>
-                                    <th>المنتج بالانجليزي</th>
-                                    <th>الشركه</th>
+                                    <th>الخدمه بالعربيه</th>
+                                    <th>الخدمه بالانجليزي</th>
                                     <th>المستخدم</th>
-                                    <th>القسم</th>
                                     <th>action</th>
                                    
                                 </tr>
@@ -29,22 +27,20 @@
                                     <?php
                                     $i=1;
                                     ?>
-                                    @foreach ($products as $product)
+                                    @foreach ($categories as $category)
                                     
                                    
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>
-                                        <a href="{{url('/admin/product/'.$product->id.'/edit')}}"
+                                        <a href="{{url('/admin/category/'.$category->id.'/edit')}}"
                                             
-                                             aria-pressed="true">{{$product->ar_title}} </a>
+                                             aria-pressed="true">{{$category->ar_title}} </a>
                                     </td>
-                                    <td>{{$product->en_title}}</td>
-                                    <th>{{$product->company_name}}</th>
-                                    <td>{{$product->name}}</td>
-                                    <td>{{$product->cat_en_title}}</td>
+                                    <td>{{$category->en_title}}</td>
+                                    <td> {{$category->name}} </td>
                                     <td >
-                                            <form action='/admin/product/{{ $product->id }}' method="POST">
+                                            <form action='/admin/category/{{ $category->id }}' method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                           <button type="submit" class="btn btn-danger">Delete</button>

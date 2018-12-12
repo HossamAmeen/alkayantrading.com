@@ -1,4 +1,4 @@
-@extends('layouts.panel')
+@extends('admin.panel')
 
 @section('content')
 <!--Page main section start-->
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">الاقسام</h3>
+                        <h3 class="panel-title">الخدمات</h3>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive ls-table">
@@ -19,6 +19,7 @@
                                     <th>الخدمه بالعربيه</th>
                                     <th>الخدمه بالانجليزي</th>
                                     <th>المستخدم</th>
+                                    <th>القسم</th>
                                     <th>action</th>
                                    
                                 </tr>
@@ -27,20 +28,21 @@
                                     <?php
                                     $i=1;
                                     ?>
-                                    @foreach ($categories as $category)
+                                    @foreach ($services as $service)
                                     
                                    
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>
-                                        <a href="{{url('/admin/category/'.$category->id.'/edit')}}"
+                                        <a href="{{url('/admin/service/'.$service->id.'/edit')}}"
                                             
-                                             aria-pressed="true">{{$category->ar_title}} </a>
+                                             aria-pressed="true">{{$service->ar_title}} </a>
                                     </td>
-                                    <td>{{$category->en_title}}</td>
-                                    <td> {{$category->name}} </td>
+                                    <td>{{$service->en_title}}</td>
+                                    <td>{{$service->name}}</td>
+                                    <td>{{$service->cat_en_title}}</td>
                                     <td >
-                                            <form action='/admin/category/{{ $category->id }}' method="POST">
+                                            <form action='/admin/service/{{ $service->id }}' method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                           <button type="submit" class="btn btn-danger">Delete</button>

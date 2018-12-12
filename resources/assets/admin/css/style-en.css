@@ -12,7 +12,7 @@ p, span, ul, li, footer, a, div, table, tr, td {
   margin-left: 30px;
   font-size: 18px; }
 
-/* services section .products .product-item .content */
+/* services section .products .products-item .content */
 .products .product-item .content {
   position: absolute;
   z-index: 222;

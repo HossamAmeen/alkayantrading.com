@@ -44,10 +44,9 @@ Route::prefix('admin')->group(function () {
         Route::middleware(['middleware' => 'manager'])->group(function () {
             Route::resource('user'    , 'UserController')->middleware('admin');
             Route::resource('prefs'    , 'PrefController')->middleware('admin');
-
             Route::resource('service' , 'ServiceController');
             Route::resource('category'    , 'CategoryController');
-            Route::resource('product'    , 'ProductController');
+            Route::resource('products'    , 'ProductController');
             Route::resource('priceAtDay'    , 'PriceAtDayController');
             Route::get('/copy_day'    , 'PriceAtDayController@copy_day');
             Route::get('/show_prices'    , 'PriceAtDayController@show_prices');

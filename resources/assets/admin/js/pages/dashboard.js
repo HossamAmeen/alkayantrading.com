@@ -328,7 +328,7 @@ function notificationCall(){
         setTimeout(function(){
             $.amaran({
                 content:{
-                    message:'Can\'t deliver the product',
+                    message:'Can\'t deliver the products',
                     size:'32 Kg',
                     file:'H: 32 Road: 21, Chicago, NY 3210',
                     icon:'fa fa fa-truck'
@@ -356,7 +356,7 @@ function autoUpdateNumber(){
         decimal : '.' // character to use as a decimal
     };
 
-    var productUp = new countUp('product-up', 0, 39, 0, 9.5, countUpOptions);
+    var productUp = new countUp('products-up', 0, 39, 0, 9.5, countUpOptions);
     productUp.start();
 
     var incomeShow = new countUp('income-show', 0, 10299.30, 2, 9.5, countUpOptions);

@@ -6,12 +6,12 @@
     <!--Left navigation start-->
     <ul class="mainNav">
         <li @if($title == 'بيانات الموقع') class="active"  @endif >
-            <a href="/admin/pref">
+            <a href="{{url('admin/prefs')}}">
                 <i class="fa fa-bullhorn"></i> <span>بيانات الموقع</span>
             </a>
         </li>
         <li >
-            <a  href="#">
+            <a  href="#" @if($title == 'اضافه مستخدم' || $title == 'عرض المستخدمين') class="active"  @endif>
                 <i class="fa fa-bar-chart-o"></i> <span>المستخدم</span>
             </a>
             <ul>
@@ -25,7 +25,7 @@
             </ul>
         </li>
         <li >
-            <a  href="#">
+            <a  href="#" @if($title == 'اضافه خدمه' || $title == 'عرض الخدمات') class="active"  @endif >
                 <i class="fa fa-bar-chart-o"></i> <span>الخدمات</span>
             </a>
             <ul>
@@ -39,7 +39,7 @@
             </ul>
         </li>
         <li >
-            <a  href="#">
+            <a  href="#" @if($title == 'اضافه قسم' || $title == 'عرض الاقسام') class="active"  @endif >
                 <i class="fa fa-bar-chart-o"></i> <span>الاقسام</span>
             </a>
             <ul>
@@ -53,15 +53,15 @@
             </ul>
         </li>
         <li >
-            <a  href="#">
+            <a  href="#"  @if($title == 'اضافه منتج' || $title == 'عرض المنتجات') class="active"  @endif >
                 <i class="fa fa-bar-chart-o"></i> <span>المنتجات</span>
             </a>
             <ul>
                 <li>
-                    <a  @if($title == 'اضافه منتج') class="active"  @endif href="{{url('admin/product/create')}}">اضافه منتج</a>
+                    <a  @if($title == 'اضافه منتج') class="active"  @endif href="{{url('admin/products/create')}}">اضافه منتج</a>
                 </li>
                 <li>
-                    <a @if($title == 'عرض المنتجات') class="active"  @endif  href="{{url('admin/product')}}">عرض المنتجات</a>
+                    <a @if($title == 'عرض المنتجات') class="active"  @endif  href="{{url('admin/products')}}">عرض المنتجات</a>
                 </li>
 
             </ul>

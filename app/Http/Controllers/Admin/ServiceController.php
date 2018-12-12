@@ -19,7 +19,7 @@ class ServiceController extends Controller
             ->select('services.*', 'users.name','categories.en_title as cat_en_title')
             ->get();
         $data['title'] = 'عرض الخدمات';
-        return view('control_panel.show_services',$data);
+        return view('admin.control_panel.services.show_services',$data);
     }
 
    
@@ -27,7 +27,7 @@ class ServiceController extends Controller
     {
         $data['categories'] = DB::table('categories')->select('id','en_title')->get();
         $data['title'] = 'اضافه خدمه';
-        return view('control_panel.add_service',$data);
+        return view('admin.control_panel.services.add_service',$data);
     }
 
     
@@ -57,7 +57,7 @@ class ServiceController extends Controller
         $title = 'عرض الخدمه';
         $categories = DB::table('categories')->select('id','en_title')->get();
         if(!empty($service))
-        return view('control_panel.edit_service',$service )->with(compact('service', 'title','categories') );
+        return view('admin.control_panel.services.edit_service',$service )->with(compact('service', 'title','categories') );
         else
         return redirect()->route('Service.index');
     }

@@ -1,4 +1,4 @@
-@extends('layouts.panel')
+@extends('admin.panel')
 
 @section('content')
 
@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">إضافه قسم</h3>
+                            <h3 class="panel-title">إضافه خدمه</h3>
                         </div>
                         <div class="panel-body">
                         <form id="defaultForm" method="post" class="form-horizontal ls_form" action="/admin/service/{{$id}}"
@@ -53,10 +53,32 @@
                                                     />
                                         </div>
                                 </div>
-                                                                
+                                <div class="form-group">
+                                        <label class="col-lg-3 control-label">category</label>
+                                        <div class="col-lg-6">
+                                           <select name="category_id">
+                                            @foreach ($categories as $category)
+                                           <option value="{{$category->id}}"
+                                            @if($category->id == $category_id)
+                                            selected
+                                            @endif
+                                            >{{$category->en_title}}</option>  
+                                            @endforeach
+                                           </select>
+                                        </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                        <label class="col-lg-3 control-label">image</label>
+                                        <div class="col-lg-6">
+                                            <input type="file" name="img" >
+                                        
+                                        </div>
+                                        <img src="{{$img}}">    
+                                    </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">update up</button>
+                                        <button type="submit" class="btn btn-primary">Sign up</button>
                                     </div>
                                 </div>
                             </form>

@@ -17,14 +17,14 @@ class CategoryController extends Controller
         ->get();
         
         $data['title'] = 'عرض الاقسام';
-         return view('control_panel.show_categories' , $data);
+         return view('admin.control_panel.categories.show_categories' , $data);
         
     }
 
     public function create()
     {
         $title = 'اضافه قسم';
-        return view('control_panel.add_category' ) ->with(compact('title') );
+        return view('admin.control_panel.categories.add_category' ) ->with(compact('title') );
     }
 
     public function store(Request $request)
@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $title = 'تعديل القسم';
         if(!empty($category))
             {
-                return view('control_panel.edit_category',$category) ->with(compact('title') );
+                return view('admin.control_panel.categories.edit_category',$category) ->with(compact('title') );
             }
         return redirect()->route('category.index');    
     }

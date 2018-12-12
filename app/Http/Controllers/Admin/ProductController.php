@@ -16,16 +16,17 @@ class ProductController extends Controller
             ->leftJoin('categories', 'categories.id', '=', 'products.category_id')
             ->select('products.*', 'users.name','categories.en_title as cat_en_title')
             ->get();
-        // return $data['services'];
+
         $data['title'] = 'عرض المنتجات';
-        return view('control_panel.show_products',$data);
+
+        return view('admin.control_panel.products.show_products',$data);
     }
 
     public function create()
     {
         $data['categories'] = DB::table('categories')->select('id','en_title')->get();
         $data['title'] = 'اضافه منتج';
-        return view('control_panel.add_product',$data);
+        return view('admin.control_panel.products.add_product',$data);
     }
 
     
@@ -38,7 +39,7 @@ class ProductController extends Controller
         
         $product->user_id = session('id') ;
         $product->save();
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
     public function edit($id)
     {
@@ -46,9 +47,9 @@ class ProductController extends Controller
         $title = 'عرض المنتج';
         $categories = DB::table('categories')->select('id','en_title')->get();
         if(!empty($product))
-        return view('control_panel.edit_product',$product )->with(compact('product', 'title','categories') );
+        return view('admin.control_panel.products.edit_product',$product )->with(compact('product', 'title','categories') );
         else
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 
     
@@ -65,7 +66,7 @@ class ProductController extends Controller
             $product->save();
             
         }
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 
     
@@ -79,7 +80,7 @@ class ProductController extends Controller
                 $product->delete();
                 
             }
-            return redirect()->route('product.index');
+            return redirect()->route('products.index');
     }
 
 

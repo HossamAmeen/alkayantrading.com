@@ -1,4 +1,4 @@
-@extends('layouts.panel')
+@extends('admin.panel')
 
 @section('content')
 
@@ -13,14 +13,13 @@
                             <h3 class="panel-title">إضافه خدمه</h3>
                         </div>
                         <div class="panel-body">
-                        <form id="defaultForm" method="post" class="form-horizontal ls_form" action="/admin/service/{{$id}}"
+                            <form id="defaultForm" method="post" class="form-horizontal ls_form" action="/admin/category"
                                 data-bv-message="This value is not valid"
                                 data-bv-feedbackicons-valid="fa fa-check"
                                 data-bv-feedbackicons-invalid="fa fa-bug"
                                 data-bv-feedbackicons-validating="fa fa-refresh"
                                 enctype="multipart/form-data"
                                 >
-                                {{method_field('PUT')}}
                                 {{csrf_field()}}   
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -33,49 +32,26 @@
                                 @endif  
                                  	 	 	
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">خدمه بالعربيه</label>
+                                    <label class="col-lg-3 control-label">قسم بالعربيه</label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="ar_title"
                                             data-bv-message="The service is not valid"
                                             required data-bv-notempty-message="The service is required and cannot be empty"
-                                            value="{{ $ar_title}}"
+                                            value="{{ old('ar_title')}}"
                                             
                                                 />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                        <label class="col-lg-3 control-label">الخدمه بالانجليزي</label>
+                                        <label class="col-lg-3 control-label">قسم بالانجليزي</label>
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control" name="en_title"
                                                 data-bv-message="The username is not valid"
                                                 required data-bv-notempty-message="The username is required and cannot be empty"
-                                                value="{{ $en_title}}"
+                                                value="{{ old('en_title')}}"
                                                     />
                                         </div>
                                 </div>
-                                <div class="form-group">
-                                        <label class="col-lg-3 control-label">category</label>
-                                        <div class="col-lg-6">
-                                           <select name="category_id">
-                                            @foreach ($categories as $category)
-                                           <option value="{{$category->id}}"
-                                            @if($category->id == $category_id)
-                                            selected
-                                            @endif
-                                            >{{$category->en_title}}</option>  
-                                            @endforeach
-                                           </select>
-                                        </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                        <label class="col-lg-3 control-label">image</label>
-                                        <div class="col-lg-6">
-                                            <input type="file" name="img" >
-                                        
-                                        </div>
-                                        <img src="{{$img}}">    
-                                    </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
                                         <button type="submit" class="btn btn-primary">Sign up</button>

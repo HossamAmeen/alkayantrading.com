@@ -13,14 +13,14 @@ class UserController extends Controller
     {
         $data['users'] = User::all();
         $data['title'] = 'عرض المستخدمين';
-        return view('control_panel.show_users',$data);
+        return view('admin.control_panel.users.show_users',$data);
     }
 
    
     public function create()
     {
         $data['title'] = 'اضافه مستخدم';
-        return view('control_panel.add_user',$data);
+        return view('admin.control_panel.users.add_user',$data);
     }
 
     
@@ -57,7 +57,7 @@ class UserController extends Controller
         $title = 'تعديل المستخدمين';
         $user= $user->makeVisible('password'); //// for hidden in model
         if(!empty($user))
-            return view('control_panel.edit_user',$user)->with(compact('user', 'title') );
+            return view('admin.control_panel.users.edit_user',$user)->with(compact('user', 'title') );
         else
             return redirect()->route('user.index');
     }
