@@ -19,11 +19,11 @@ class PrefController extends Controller
        // return "test";
         if($request->isMethod('post')){
            // return "tet";
-          $user = User::where('email', $request->email)->first();
+          $user = User::where('name', $request->name)->first();
           
           $user= $user->makeVisible('password');
             
-            if (User::where('email', $request->email)->exists()  && Hash::check($request->password , $user->password))
+            if (User::where('name', $request->name)->exists()  && Hash::check($request->password , $user->password))
                   
             
                {
@@ -48,7 +48,7 @@ class PrefController extends Controller
     
         if(empty($mPref))
 
-            return view('admin.control_panel.prefs.edit_pref')->with(compact('title'));
+            return view('admin.control_panel.prefs.add_pref')->with(compact('title'));
             else
         return redirect()->route('prefs.edit',['id' => 1]);
     }
@@ -60,7 +60,8 @@ class PrefController extends Controller
     {
        // return $request->all();
         $rules = $this->formValidation();
-        $this->validate($request, $rules);
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $pref = Pref::create($request->all());  
 
         $pref->user_id = session('id');
@@ -86,8 +87,8 @@ class PrefController extends Controller
       //  return "test";
      
         $rules = $this->formValidation();
-        $this->validate($request, $rules);
-        //return $request->all();
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $pref = Pref::find($id);
         if(!empty($pref)){
             $pref->fill($request->all());
@@ -102,14 +103,45 @@ class PrefController extends Controller
     {
 
        return array(
-        'arAddress'     => 'required|regex:/^[\pL\s\-]+$/u',
-        'enAddress'     => 'required|regex:/^[\pL\s\-]+$/u',
-        'enDescription' => 'required|regex:/^[\pL\s\-]+$/u',
-        'arDescription' => 'required|regex:/^[\pL\s\-]+$/u',
+        'arAddress'     => 'required|regex:/^[\pL\s\d\-]+$/u',
+        'enAddress'     => 'required|regex:/^[\pL\s\d\-]+$/u',
+        'enDescription' => 'required|regex:/^[\pL\s\d\-]+$/u',
+        'arDescription' => 'required|regex:/^[\pL\s\d\-]+$/u',
         'phone'         => 'required|numeric',
-        'mainEmail'   => 'required|email',
-        'arMainAddress'   => 'required|regex:/^[\pL\s\-]+$/u',
-        'enMainAddress'   => 'required|regex:/^[\pL\s\-]+$/u'
+        'mainEmail'     => 'required|email',
+        'arMainAddress'   => 'required|regex:/^[\pL\s\d\-]+$/u',
+        'enMainAddress'   => 'required|regex:/^[\pL\s\d\-]+$/u'
        );
+    }
+    function messageValidation(){
+        return array(
+
+            'arAddress.required'     => 'هذا الحقل (العنوان بالعربيه) مطلوب ',
+            'arAddress.*'     => 'هذا الحقل (العنوان بالعربيه) يجيب ان يكون حروف او ارقام  ',
+
+            'enAddress.required'     => 'هذا الحقل (العنوان بالانجليزي) مطلوب ',
+            'enAddress.*'     => 'هذا الحقل (العنوان بالعربيه) يجيب ان يكون حروف او ارقام  ',
+
+            'arDescription.required'     => 'هذا الحقل (الوصف بالعربيه) مطلوب ',
+            'arDescription.*'     => 'هذا الحقل (الوصف بالعربيه) يجيب ان يكون حروف او ارقام  ',
+
+            'enDescription.required'     => 'هذا الحقل (الوصف بالانجليزي) مطلوب ',
+            'enDescription.*'     => 'هذا الحقل (الوصف بالعربيه) يجيب ان يكون حروف او ارقام  ',
+
+            'phone.required'     => 'هذا الحقل (تلفون ) مطلوب ',
+            'phone.*'     => 'هذا الحقل (تلفون) يجيب ان يكون  ارقام  ',
+
+            'mainEmail.required'     => 'هذا الحقل (البريد) مطلوب ',
+            'mainEmail.*'     => 'هذا الحقل (بريد) يجيب ان يكون بريد صحيح  ',
+
+            'arMainAddress.required'     => 'هذا الحقل (العنوان الرئيسي بالعربيه) مطلوب ',
+            'arMainAddress.*'     => 'هذا الحقل (العنوان الرئيسي بالعربيه) يجيب ان يكون حروف او ارقام  ',
+
+
+            'enMainAddress.required'     => 'هذا الحقل (العنوان الرئيسي بالانجليزي) مطلوب ',
+            'enMainAddress.*'     => 'هذا الحقل (العنوان الرئيسي بالانجليزي) يجيب ان يكون حروف او ارقام  ',
+
+
+        );
     }
 }

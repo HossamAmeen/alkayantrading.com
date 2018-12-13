@@ -10,76 +10,32 @@ use Illuminate\Http\Request;
 
 class PriceAtDayController extends Controller
 {
-   
-    public function index()
+
+
+    public function add_price(Request $request , $day_id)
     {
-       
-      $categories = DB::table('categories')->select('id','en_title')->get();
-        $i=1;
-        foreach ( $categories as  $value) {
-           $data['category'.$i++] = DB::table('products')
-           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-           ->join('categories' , 'products.category_id' ,'=','categories.id' )
-           ->where('categories.id','=',$value->id)
-           ->select('products.id','products.en_title' ,'price')
-           ->get();
-        }
-      
-        $title = 'عرض الاسعار';
 
-         return view('admin.control_panel.prices.edit_price_at_day' , $categories)->with(compact('data', 'title','categories') );
-
-    }
-
-    public function create()
-    {
-        $title= 'اضافه الاسعار';
-       /* $data['products'] = DB::table('products')
-        ->select('products.id','en_title')
-        ->get();*/
-        $categories = DB::table('categories')->select('id','en_title')->get();
-        $i=1;
-        foreach ( $categories as  $value) {
-           $data['category'.$i++] = DB::table('products')
-         
-           ->join('categories' , 'products.category_id' ,'=','categories.id' )
-           ->where('categories.id','=',$value->id)
-           ->select('products.id','products.en_title')
-           ->get();
-        }
-        return view('admin.control_panel.prices.add_price_at_day', $categories)->with(compact('data', 'title','categories') );
-    }
-
-    public function store(Request $request)
-    {
-        
         $rules = $this->formValidation();
-        $this->validate($request, $rules);
-        $day = new Day();
-        if(!empty($request->day))
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
 
-        $day->day = $request->day;
 
-        else
-        $day->day = date("Y/m/d");
-        $day->save();
-        
-        
-        
         for ($i=0; $i < count($request->price) ; $i++) { 
-            $price = new Price_at_day();
+            $price =  Price_at_day::where('day_id','=',$day_id)->first();
             $price->user_id = session('id') ;
-            $price->day_id = $day->id ;
+            $price->day_id = $day_id ;
             $price->product_id = $request->product_id[$i];
             $price->price = $request->price[$i];
+          //  return $price;
+           // return $request->all();
             $price->save();
         }
        
        
-        return redirect()->route('priceAtDay.index');
+        return redirect()->route('show_prices');
               
     }
+
 
     public function copy_day(){
 
@@ -110,12 +66,16 @@ class PriceAtDayController extends Controller
     }
     
     public function show_prices(Request $request){
-        //return $date;
+
         $categories = DB::table('categories')->select('id','en_title')->get();
         $date = $request->date;
+
         if(empty($date)){
             $date = date("Y-m-d");
+            $day_id = Day::where('day','=',$date)->first()->id;
         }
+        else
+            $day_id = Day::where('day','=',$date)->first()->id;
         $i=1;
         foreach ( $categories as  $value) {
             $data['category'.$i++] = DB::table('products')
@@ -128,14 +88,27 @@ class PriceAtDayController extends Controller
                 ->get();
         }
         $title= 'عرض الاسعار';
-        return view('admin.control_panel.prices.edit_price_at_day2' , $categories)->with(compact('data', 'title','categories' , 'date') );
+        return view('admin.control_panel.prices.edit_price_at_day' , $categories)->with(compact('data', 'title','categories' , 'date' , 'day_id') );
     }
     function formValidation()
     {
        return array(
        
-        'price'     => 'array||required',
-        'price.*' =>  'required|numeric',
+        'price'     =>  'array|required',
+        'price.*'   =>  'required|numeric',
+        'day'       =>  'date|required'
        );
+    }
+    function messageValidation(){
+        return array(
+
+            'ar_title.required'     => 'هذا الحقل (قسم بالعربيه) مطلوب ',
+            'ar_title.unique'     => 'هذا الحقل (قسم بالعربيه) يوجد بالفعل ',
+            'ar_title.*'            =>  'هذا الحقل (قسم بالعربيه) يجب يحتوي ع حروف وارقام فقط',
+
+            'en_title.required'     => 'هذا الحقل (قسم بالانجليزي) مطلوب ',
+            'en_title.unique'     => 'هذا الحقل (قسم بالانجليزي) يوجد بالفعل ',
+            'en_title.*'            =>  'هذا الحقل (قسم بالانجليزي) يجب يحتوي ع حروف وارقام فقط ',
+        );
     }
 }

@@ -40,7 +40,7 @@
                                     <td>{{$category->en_title}}</td>
                                     <td> {{$category->name}} </td>
                                     <td >
-                                            <form action='/admin/category/{{ $category->id }}' method="POST">
+                                            <form action="{{url('admin/category/'.$category->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                           <button type="submit" class="btn btn-danger">Delete</button>

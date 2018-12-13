@@ -22,11 +22,11 @@
 <!-- TODO: Add a favicon -->
 <link rel="shortcut icon" href="{{asset('resources/assets/admin/images/ico/fab.ico')}}">
 
-<title>kayan</title>
+<title>{{$title}}</title>
 
 <!--Page loading plugin Start -->
 <link rel="stylesheet" href="{{asset('resources/assets/admin/css/rtl-css/plugins/pace-rtl.css')}}">
-<script src="{{asset('resources/assets/admin//js/pace.min.js')}}" ></script>
+<script src="{{asset('resources/assets/admin/js/pace.min.js')}}" ></script>
 <!--Page loading plugin End   -->
 
 <!-- Plugin Css Put Here -->
@@ -60,6 +60,6 @@
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="https:/oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https:/oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->

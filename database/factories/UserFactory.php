@@ -16,11 +16,11 @@ use Faker\Generator as Faker;
 $factory->define(App\User::class, function (Faker $faker) {
      	 	 	 	 
     return [
-        'name' => $faker->name,
+        'name' => 'admin',
         'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'password' => '$2y$10$mXwEFI/nQub9PmCejn59zuozRujElm4bu5D01y.wXpciRnKjHRWNm', // secret
         'remember_token' => str_random(10),
-        'role' => rand(0,1) ,
+        'role' => 1 ,
     ];
 });
 $factory->define(App\Service::class, function (Faker $faker){
@@ -50,7 +50,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'category_id'=>$faker->randomElement($categories),
     ];
 });
-
+/*
 $factory->define(App\Pref::class , function (Faker $faker){
   
     $users = App\User::pluck('id')->toArray();  
@@ -63,15 +63,32 @@ $factory->define(App\Pref::class , function (Faker $faker){
         'address' => $faker->name,
         'user_id'=>$faker->randomElement($users),
     ];
-});
-$factory->define(App\Category::class , function (Faker $faker){
+});**/
+$factory->define(App\Pref::class , function (Faker $faker){
    
-    $users = App\User::pluck('id')->toArray();  
+
     return[
-        
-        'ar_title' => 'تست',
-        'en_title' => $faker->name,
-       
-        'user_id'=>$faker->randomElement($users),
+        'arAddress'     =>'arAddress',
+        'enAddress'     =>'enAddress',
+        'enDescription' =>'enDescription',
+        'arDescription' =>'arDescription',
+        'phone'         =>'01079979798',
+        'arMainAddress' =>'arMainAddress',
+        'enMainAddress' =>'enMainAddress',
+        'enMainAddress' =>'enMainAddress',
+        'mainEmail'     =>'admin@admin.com',
+        'facebook'      =>'https://www.facebook.com/',
+        'twitter'       =>'https://www.twitter.com/',
+        'instgram'      =>'https://www.instgram.com/',
+        'linkedin'      =>'https://www.linkedin.com/',
+
+    ];
+});
+$factory->define(App\Day::class , function (Faker $faker){
+
+
+    return[
+
+       'day' => date("Y-m-d") ,
     ];
 });

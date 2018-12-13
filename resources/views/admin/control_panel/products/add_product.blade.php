@@ -13,7 +13,7 @@
                             <h3 class="panel-title">إضافه منتج</h3>
                         </div>
                         <div class="panel-body">
-                            <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('products')}}"
+                            <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/products')}}"
                                 data-bv-message="This value is not valid"
                                 data-bv-feedbackicons-valid="fa fa-check"
                                 data-bv-feedbackicons-invalid="fa fa-bug"

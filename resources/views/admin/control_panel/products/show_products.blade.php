@@ -35,7 +35,7 @@
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>
-                                        <a href="{{url('products'.$product->id.'/edit')}}"
+                                        <a href="{{url('admin/products/'.$product->id.'/edit')}}"
                                             
                                              aria-pressed="true">{{$product->ar_title}} </a>
                                     </td>
@@ -44,7 +44,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->cat_en_title}}</td>
                                     <td >
-                                            <form action='/admin/product/{{ $product->id }}' method="POST">
+                                            <form action="{{url('admin/products/'.$product->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                           <button type="submit" class="btn btn-danger">Delete</button>

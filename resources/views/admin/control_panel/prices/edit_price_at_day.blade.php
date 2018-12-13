@@ -68,7 +68,7 @@
                         </div>
                         <div class="panel-body" >
                             <div class="table-responsive ls-table">
-                                <form id="defaultForm" method="POST" action="/admin/priceAtDay" class="form-horizontal ls_form" >
+                                <form id="defaultForm" method="POST" action="{{url('admin/add_price/'.$day_id)}}" class="form-horizontal ls_form" >
                                     {{csrf_field()}}
 
                                     <?php

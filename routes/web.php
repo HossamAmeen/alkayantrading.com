@@ -49,17 +49,25 @@ Route::prefix('admin')->group(function () {
             Route::resource('products'    , 'ProductController');
             Route::resource('priceAtDay'    , 'PriceAtDayController');
             Route::get('/copy_day'    , 'PriceAtDayController@copy_day');
-            Route::get('/show_prices'    , 'PriceAtDayController@show_prices');
+            Route::get('/show_prices'    , 'PriceAtDayController@show_prices')->name('show_prices');
+            Route::post('/add_price/{day_id}'    , 'PriceAtDayController@add_price');
         });
         
     });
 });
 //////////return \Response::json($arr);	
 /////////////// mobile
-Route::prefix('API')->group(function () { 
+Route::prefix('api')->group(function () {
     
     Route::namespace('Mobile')->group(function () {
 
-        Route::get('en_index','MobileController@en_index' );
+
+        Route::get('/', 'MobileController@index');
+        Route::get('services', 'MobileController@services');
+        Route::get('daily_price', 'MobileController@en_daily_price');
+        Route::get('about', 'MobileController@about');
+        Route::post('join_us', 'MobileController@join_us');
+        Route::post('contact', 'MobileController@contact');
+
     });
 });

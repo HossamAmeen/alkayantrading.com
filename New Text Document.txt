@@ -2,7 +2,20 @@ t4xtfspii4qm
 A=Y3aY7TZVY-
 
 
+https://alkayantrading.com:2083/
 
 
-????
-01062743177
+
+git clone https://hosam_ameen@bitbucket.org/abdelrahman_elzedy/alkayantrading.com.git
+
+
+
+ssh t4xtfspii4qm@alkayantrading.com
+
+
+
+git remote set-url origin https://github.com/user/repo2.git
+git remote -v
+
+git clone https://github.com/HossamAmeen/alkayantrading.com-.git
+https://hosam_ameen@bitbucket.org/hosam_ameen/alkayantrading.com.git.git

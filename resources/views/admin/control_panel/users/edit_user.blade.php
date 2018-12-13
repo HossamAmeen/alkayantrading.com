@@ -12,7 +12,7 @@
                         <h3 class="panel-title">تعديل المستخدم</h3>
                     </div>
                     <div class="panel-body">
-                    <form id="defaultForm" method="post" class="form-horizontal ls_form" action="/admin/user/{{$id}}"
+                    <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/user/'.$id)}}"
                               data-bv-message="This value is not valid"
                               data-bv-feedbackicons-valid="fa fa-check"
                               data-bv-feedbackicons-invalid="fa fa-bug"
@@ -103,7 +103,7 @@
                                         <input type="file" name="img" >
                                     </div>
                                     <div class="goal-user-image">
-                                    <img class="rounded" src="{{$img}}" alt="user image" height="15%" width="15%" />
+                                    <img class="rounded" src="{{asset('resources/assets/admin/'.$img)}}" alt="user image" height="15%" width="15%" />
                                     </div>    
                             </div>
                             

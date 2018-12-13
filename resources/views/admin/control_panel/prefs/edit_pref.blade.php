@@ -13,7 +13,7 @@
                             <h3 class="panel-title">بيانات الموقع</h3>
                         </div>
                         <div class="panel-body">
-                        <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/pref/' . $id)}}"
+                        <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/prefs/' . $id)}}"
                                 data-bv-message="This value is not valid"
                                 data-bv-feedbackicons-valid="fa fa-check"
                                 data-bv-feedbackicons-invalid="fa fa-bug"
@@ -38,7 +38,7 @@
                                         <input type="text" class="form-control" name="arAddress"
                                             data-bv-message="The service is not valid"
                                             required data-bv-notempty-message="The service is required and cannot be empty"
-                                            value="{{ $arAddress}}"
+                                            value="{{ $arAddress}} "
 
                                                 />
                                     </div>
@@ -136,7 +136,7 @@
                                 <div class="form-group">
                                         <label class="col-lg-3 control-label"> instagram account</label>
                                         <div class="col-lg-6">
-                                            <input type="url" class="form-control" name="instagram"
+                                            <input type="url" class="form-control" name="instgram"
                                                 data-bv-message="The username is not valid"
                                                 required data-bv-notempty-message="The username is required and cannot be empty"
                                                 value="{{$instgram}}"

@@ -13,13 +13,7 @@ class HomeController extends Controller
 {
     public  function  change_language($lang){
 
-       // echo ;
 
-        //echo url()->previous();
-       // $lang = substr(url()->previous(),strripos(url()->previous() , '/') -2 ,2 ) ;
-      //  echo ; );
-
-         //substr(url()->previous(),strripos(url()->previous() , '/') );
         if($lang == "en")
 
             $rout =   str_replace("ar","en",url()->previous());

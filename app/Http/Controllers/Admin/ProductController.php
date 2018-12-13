@@ -32,9 +32,10 @@ class ProductController extends Controller
     
     public function store(Request $request)
     {
-       
+
         $rules = $this->formValidation();
-        $this->validate($request, $rules);
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $product = Product::create($request->all());  
         
         $product->user_id = session('id') ;
@@ -55,9 +56,10 @@ class ProductController extends Controller
     
     public function update(Request $request, $id)
     {
-       // return $request->all();
-        $rules = $this->EditformValidation($id);
-        $this->validate($request, $rules);
+
+        $rules = $this->formValidation();
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $product = Product::find($id);
         if(!empty($product)){
 
@@ -87,18 +89,29 @@ class ProductController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'alpha_num|required|max:99|unique:products',
-        'en_title'    => 'alpha_num|required|max:99|unique:products',
+        'ar_title'     => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products',
+        'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products',
        
        );
     }
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => 'alpha_num|required|max:99|unique:products,ar_title,'.$id,
-            'en_title'    =>  'alpha_num|required|max:99|unique:products,en_title,'.$id,
+            'ar_title'     => 'regex:/^[\pL\s\-]+$/u|required|max:99|unique:products,ar_title,'.$id,
+            'en_title'    =>  'regex:/^[\pL\s\-]+$/u|required|max:99|unique:products,en_title,'.$id,
 			
 			
            );
     }
+
+    function messageValidation(){
+        return array(
+            'ar_title.required'     => 'هذا الحقل (العنوان بالعربيه) مطلوب ',
+            'ar_title.*'            =>  'هذا الحقل (العنوان بالعربيه) يجب يحتوي ع حروف وارقام فقط',
+
+            'en_title.required'     => 'هذا الحقل (العنوان بالانجليزي) مطلوب ',
+            'en_title.*'            =>  'هذا الحقل (العنوان بالانجليزي) يجب يحتوي ع حروف وارقام فقط ',
+        );
+    }
+
 }

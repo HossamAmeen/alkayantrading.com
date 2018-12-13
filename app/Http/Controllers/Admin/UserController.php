@@ -27,7 +27,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $rules = $this->formValidation();
-        $this->validate($request, $rules);
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $user = User::create($request->all());
         
 
@@ -65,7 +66,10 @@ class UserController extends Controller
     
     public function update(Request $request, $id)
     {
-        
+
+        $rules = $this->formValidation();
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
        $user = User::find($id);
        $newPassword = true ; 
        if(!empty($user))
@@ -118,7 +122,7 @@ class UserController extends Controller
     function formValidation()
     {
        return array(
-        'name'     => 'alpha_num|required|max:99',
+        'name'     => 'regex:/^[\pL\s\-]+$/u||required|max:99',
         'email'    => 'required|max:99|email|unique:users,email',
         'password'              => 'required | confirmed ',
         'password_confirmation' => 'required ',
@@ -128,9 +132,27 @@ class UserController extends Controller
     function EditformValidation($id)
     {
         return array(
-            'name'     => 'alpha_num|required|max:99',
+            'name'     => 'regex:/^[\pL\s\-]+$/u|required|max:99',
 			'email'    => 'required|max:99|email|unique:users,email,'.$id,
 			'password' => 'confirmed',
            );
+    }
+    function messageValidation(){
+        return array(
+
+            'name.required'     =>  'هذا الحقل (الاسم) مطلوب ',
+            'name.*'            =>  'هذا الحقل (قسم بالعربيه) يجب يحتوي ع حروف وارقام فقط',
+
+            'email.required'     => 'هذا الحقل (البريد) مطلوب ',
+            'email.unique'     => 'هذا الحقل (البرريد) يوجد بالفعل ',
+            'email.*'            =>  'هذا الحقل (البريد) يجب يحتوي ع حروف وارقام فقط ',
+
+            'password.required'     => 'هذا الحقل (كلمه السر) مطلوب ',
+            'password_confirmation.required'     => 'هذا الحقل (تاكيد كلمه السر) غير مطابق ',
+
+            'image'            =>  'هذا الحقل (اضافه الصورة) يجب ان يكون صورة',
+
+
+        );
     }
 }

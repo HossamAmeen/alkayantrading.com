@@ -42,7 +42,7 @@
                                     <td>{{$service->name}}</td>
                                     <td>{{$service->cat_en_title}}</td>
                                     <td >
-                                            <form action='/admin/service/{{ $service->id }}' method="POST">
+                                            <form action="{{url('admin/service/'.$service->id)}} " method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                           <button type="submit" class="btn btn-danger">Delete</button>

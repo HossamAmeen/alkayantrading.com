@@ -13,7 +13,7 @@
                             <h3 class="panel-title">إضافه خدمه</h3>
                         </div>
                         <div class="panel-body">
-                        <form id="defaultForm" method="post" class="form-horizontal ls_form" action="/admin/service/{{$id}}"
+                        <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/service/'.$id)}}"
                                 data-bv-message="This value is not valid"
                                 data-bv-feedbackicons-valid="fa fa-check"
                                 data-bv-feedbackicons-invalid="fa fa-bug"
@@ -74,7 +74,7 @@
                                             <input type="file" name="img" >
                                         
                                         </div>
-                                        <img src="{{$img}}">    
+                                        <img src="{{asset('resources/assets/admin/'.$img)}}">
                                     </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">

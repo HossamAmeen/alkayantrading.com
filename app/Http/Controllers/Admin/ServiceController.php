@@ -33,9 +33,10 @@ class ServiceController extends Controller
     
     public function store(Request $request)
     {
-       
+
         $rules = $this->formValidation();
-        $this->validate($request, $rules);
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $service = Service::create($request->all());  
         if($request->hasFile('img'))
         {
@@ -65,9 +66,10 @@ class ServiceController extends Controller
     
     public function update(Request $request, $id)
     {
-        
-        $rules = $this->EditformValidation($id);
-        $this->validate($request, $rules);
+
+        $rules = $this->formValidation();
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $service = Service::find($id);
         if(!empty($service)){
 
@@ -123,5 +125,19 @@ class ServiceController extends Controller
             'en_title'    => 'required|max:99|regex:/^[\pL\s\-]+$/u|unique:services,en_title,'.$id,
             'img'=> 'image',			
            );
+    }
+    function messageValidation(){
+        return array(
+
+            'ar_title.required'     => 'هذا الحقل (العنوان بالعربيه) مطلوب ',
+            'ar_title.unique'     => 'هذا الحقل (العنوان بالعربيه) يوجد بالفعل ',
+            'ar_title.*'            =>  'هذا الحقل (العنوان بالعربيه) يجب يحتوي ع حروف وارقام فقط',
+
+            'en_title.required'     => 'هذا الحقل (العنوان بالانجليزي) مطلوب ',
+            'en_title.unique'     => 'هذا الحقل (العنوان بالانجليزي) يوجد بالفعل ',
+            'en_title.*'            =>  'هذا الحقل (العنوان بالانجليزي) يجب يحتوي ع حروف وارقام فقط ',
+
+            'image'            =>  'هذا الحقل (اضافه الصورة) يجب ان يكون صورة',
+        );
     }
 }

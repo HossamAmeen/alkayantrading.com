@@ -40,7 +40,7 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role}}</td>
                                     <td >
-                                            <form action='/admin/user/{{ $user->id }}' method="POST">
+                                            <form action="{{ url('admin/user/'.$user->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                           <button type="submit" class="btn btn-danger">Delete</button>
