@@ -57,7 +57,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
 
-        $rules = $this->formValidation();
+        $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
         $product = Product::find($id);
@@ -89,7 +89,7 @@ class ProductController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products',
+        'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products',
         'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products',
        
        );
@@ -97,8 +97,8 @@ class ProductController extends Controller
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => 'regex:/^[\pL\s\-]+$/u|required|max:99|unique:products,ar_title,'.$id,
-            'en_title'    =>  'regex:/^[\pL\s\-]+$/u|required|max:99|unique:products,en_title,'.$id,
+            'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,ar_title,'.$id,
+            'en_title'    =>  'regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,en_title,'.$id,
 			
 			
            );

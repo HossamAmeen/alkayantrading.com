@@ -103,7 +103,7 @@
                                         <input type="file" name="img" >
                                     </div>
                                     <div class="goal-user-image">
-                                    <img class="rounded" src="{{asset('resources/assets/admin/'.$img)}}" alt="user image" height="15%" width="15%" />
+                                    <img class="rounded" src="{{asset($img)}}" alt="user image" height="15%" width="15%" />
                                     </div>    
                             </div>
                             

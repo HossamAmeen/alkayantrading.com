@@ -37,11 +37,11 @@ class UserController extends Controller
         if($request->hasFile('img'))
         {
            
-            $destination = '../public/images/' ;
+            $destination = 'resources/assets/admin/images' ;
             $img     = $request->file('img');
             //$photo   = $img->getClientOriginalName(); 
             $img->move($destination,$user->id.$request->name.'.png'); 
-            $user->img = '/images/'.$user->id.$request->name.'.png';
+            $user->img = 'resources/assets/admin/images/'.$user->id.$request->name.'.png';
            //return  $user->img;
         }
         $user->save();
@@ -67,7 +67,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-        $rules = $this->formValidation();
+        $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
        $user = User::find($id);
@@ -122,7 +122,7 @@ class UserController extends Controller
     function formValidation()
     {
        return array(
-        'name'     => 'regex:/^[\pL\s\-]+$/u||required|max:99',
+        'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
         'email'    => 'required|max:99|email|unique:users,email',
         'password'              => 'required | confirmed ',
         'password_confirmation' => 'required ',
@@ -132,7 +132,7 @@ class UserController extends Controller
     function EditformValidation($id)
     {
         return array(
-            'name'     => 'regex:/^[\pL\s\-]+$/u|required|max:99',
+            'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
 			'email'    => 'required|max:99|email|unique:users,email,'.$id,
 			'password' => 'confirmed',
            );

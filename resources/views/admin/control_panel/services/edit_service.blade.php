@@ -74,7 +74,7 @@
                                             <input type="file" name="img" >
                                         
                                         </div>
-                                        <img src="{{asset('resources/assets/admin/'.$img)}}">
+                                        <img src="{{asset($img)}}">
                                     </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">

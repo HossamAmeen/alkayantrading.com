@@ -51,7 +51,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        $rules = $this->formValidation();
+        $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
 

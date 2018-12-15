@@ -41,10 +41,12 @@ class ServiceController extends Controller
         if($request->hasFile('img'))
         {
            
-            $destination = '../public/images/' ;
+            $destination = 'resources/assets/site/images/' ;
             $img     = $request->file('img');
-            $img->move($destination,$service->id.$request->en_title.'.png'); 
-            $service->img = '/images/'.$service->id.$request->en_title.'.png';
+
+            $img->move($destination,$service->id.$request->en_title.'.png');
+
+            $service->img = 'resources/assets/site/images/'.$service->id.$request->en_title.'.png';
         
         }
         $service->user_id = session('id');
@@ -67,7 +69,7 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
 
-        $rules = $this->formValidation();
+        $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
         $service = Service::find($id);
@@ -112,8 +114,8 @@ class ServiceController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'required|max:99|unique:services|regex:/^[\pL\s\-]+$/u',
-        'en_title'    => 'required|max:99|unique:services|regex:/^[\pL\s\-]+$/u',
+        'ar_title'     => 'required|max:99|unique:services|regex:/^[\pL\s\d\-]+$/u',
+        'en_title'    => 'required|max:99|unique:services|regex:/^[\pL\s\d\-]+$/u',
         
         'img'=> 'image',
        );
@@ -121,8 +123,8 @@ class ServiceController extends Controller
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => 'required|max:99|regex:/^[\pL\s\-]+$/u|unique:services,ar_title,'.$id,
-            'en_title'    => 'required|max:99|regex:/^[\pL\s\-]+$/u|unique:services,en_title,'.$id,
+            'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,ar_title,'.$id,
+            'en_title'    => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,en_title,'.$id,
             'img'=> 'image',			
            );
     }

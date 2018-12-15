@@ -42,6 +42,7 @@ Route::prefix('admin')->group(function () {
       
         Route::any('/login','PrefController@login')->name('login');
         Route::middleware(['middleware' => 'manager'])->group(function () {
+            Route::get('/', 'ProductController@index');
             Route::resource('user'    , 'UserController')->middleware('admin');
             Route::resource('prefs'    , 'PrefController')->middleware('admin');
             Route::resource('service' , 'ServiceController');

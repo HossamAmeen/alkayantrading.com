@@ -20,20 +20,24 @@ class PrefController extends Controller
         if($request->isMethod('post')){
            // return "tet";
           $user = User::where('name', $request->name)->first();
-          
-          $user= $user->makeVisible('password');
-            
-            if (User::where('name', $request->name)->exists()  && Hash::check($request->password , $user->password))
-                  
-            
-               {
-               // session( ['login' => 1] ) ;
-                session( ['id' => $user->id] );
-                session( ['role' => $user->role] );
-                
-                return redirect()->route('prefs.index');
-                
+
+          if(!empty($user))
+          {
+              $user= $user->makeVisible('password');
+
+              if (User::where('name', $request->name)->exists()  && Hash::check($request->password , $user->password))
+
+
+              {
+                  // session( ['login' => 1] ) ;
+                  session( ['id' => $user->id] );
+                  session( ['role' => $user->role] );
+
+                  return redirect()->route('prefs.index');
+
               }
+          }
+
            //  return "test";
         }
         $title='تسجيل الدخول';
