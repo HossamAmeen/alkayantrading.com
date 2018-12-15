@@ -57,12 +57,18 @@ Route::prefix('admin')->group(function () {
 });
 //////////return \Response::json($arr);	
 /////////////// mobile
+
+
 Route::prefix('api')->group(function () {
     
     Route::namespace('Mobile')->group(function () {
-
-
-        Route::get('/', 'MobileController@index');
+        Route::get('test', function () {
+            return view('test');
+        });
+        Route::post('test', function () {
+            return "test";
+        });
+        Route::get('/', 'MobileController@services');
         Route::get('services', 'MobileController@services');
         Route::get('daily_price', 'MobileController@en_daily_price');
         Route::get('about', 'MobileController@about');

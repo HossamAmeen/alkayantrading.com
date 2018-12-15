@@ -12,7 +12,7 @@ git clone https://hosam_ameen@bitbucket.org/abdelrahman_elzedy/alkayantrading.co
 
 ssh t4xtfspii4qm@alkayantrading.com
 
-
+git push origin
 
 git remote set-url origin https://github.com/user/repo2.git
 git remote -v

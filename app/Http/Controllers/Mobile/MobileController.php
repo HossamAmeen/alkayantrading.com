@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mobile;
 use App\Http\Controllers\Controller;
 use App\Service;
 use App\Pref;
+use DB;
 use Illuminate\Http\Request;
 
 
@@ -11,11 +12,11 @@ use Illuminate\Http\Request;
 
 class MobileController extends Controller
 {
-    public function index()
+   /* public function index()
     {
         $services = Service::all();
         return \Response::json($services);	
-    }
+    }*/
 
     public function services()
     {
@@ -30,14 +31,14 @@ class MobileController extends Controller
 
         $i=1;
         foreach ( $categories as  $value) {
-            $data['category'.$i] = DB::table('products')
+            $data['rows']['category'.$i] = DB::table('products')
                 ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
                 ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
                 ->join('categories' , 'products.category_id' ,'=','categories.id' )
                 ->where('categories.id','=',$value->id)
                 ->where('days.day' ,'=',date('Y/m/d'))
                 ->select('products.id','products.en_title' ,'products.company_name','price')
-                ->get();
+                ->first();
 
 
 
@@ -49,7 +50,7 @@ class MobileController extends Controller
                 // ->where('days.day' ,'=',date('Y/m/d',strtotime("-$numOfDay days")))
                 ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
                 ->select('price')
-                ->get();
+                ->first();
             //$numOfDay++;
 
 
@@ -63,17 +64,32 @@ class MobileController extends Controller
                 //->where('days.day' ,'=',date('Y/m/d',strtotime("-$numOfDay days")))
                 ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
                 ->select('price')
-                ->get();
-            $data['category'.$i]->put('yesterDayPrice', $yesterDayPrice);
-            $data['category'.$i]->put('beforeYesterDayPrice', $yesterDayPrice2);
+                ->first();
+
+            $data['rows']['category'.$i]  =  (array) $data['rows']['category'.$i] ;
+            if(!empty($data['category'.$i]))
+            {
+                $yesterDayPrice = $yesterDayPrice->price;
+                $yesterDayPrice2 = $yesterDayPrice2->price;
+
+                $data['rows']['category'.$i]['yesterDayPrice'] =  $yesterDayPrice ;
+                $data['rows']['category'.$i]['yesterDayPrice2'] =  $yesterDayPrice2 ;
+            }
+
+              /*$yesterDayPrice2 = $yesterDayPrice2->price;
+              array_push( $data['category'.$i]  ,$yesterDayPrice, $yesterDayPrice2);
+         /*  $data['category'.$i]->put('yesterDayPrice', $yesterDayPrice);
+              $data['category'.$i]->put('beforeYesterDayPrice', $yesterDayPrice2);*/
 
 
             $i++;
         }
 
+      //  return var_dump( $data );
+        //print_r($data);
 
-
-        return view('web.en.daily_price' , $categories)->with(compact('data','categories') );
+       return \Response::json($data);
+      //  return view('web.en.daily_price' , $categories)->with(compact('data','categories') );*/
 
     }
     public function about()
@@ -82,8 +98,9 @@ class MobileController extends Controller
         return \Response::json($pref);
 
     }
-    public function en_join_us(Request $request)
+    public function join_us(Request $request)
     {
+
             $data=[
                 'email' =>  $request->email,
                 'name' => $request->name,
@@ -99,7 +116,7 @@ class MobileController extends Controller
             return redirect()->back();
 
     }
-    public function en_contact(Request $request)
+    public function contact(Request $request)
     {
 
         $pref = Pref::find(1);

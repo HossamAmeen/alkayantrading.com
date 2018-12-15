@@ -43,27 +43,13 @@ $factory->define(App\Product::class, function (Faker $faker) {
         $categories = App\Category::pluck('id')->toArray();
         $users = App\User::pluck('id')->toArray();  
     return [
-        'ar_title' => 'تست',
+        'ar_title' => 'اسمنت اسيوط' ,
         'en_title' => $faker->name,      
-        'company_name' => $faker->name . "_company",
+        'company_name' => "اسمنت" . "_company",
         'user_id'=>$faker->randomElement($users),
         'category_id'=>$faker->randomElement($categories),
     ];
 });
-/*
-$factory->define(App\Pref::class , function (Faker $faker){
-  
-    $users = App\User::pluck('id')->toArray();  
-    return[
-        'phone' => $faker->randomDigitNotNull ,
-        'ar_title' => 'تست',
-        'en_title' => $faker->name,
-        'en_description' => $faker->name,
-        'ar_description' => $faker->name,
-        'address' => $faker->name,
-        'user_id'=>$faker->randomElement($users),
-    ];
-});**/
 $factory->define(App\Pref::class , function (Faker $faker){
    
 
