@@ -10,7 +10,7 @@
             </button>
             <a class="navbar-brand" href="{{url('ar/')}}">
 
-                <img src="{{asset('resources/assets/site/images/logo.png')}}" alt="logo" class="logo">
+                <img src="{{asset('resources/assets/site/images/Logo.png')}}" alt="logo" class="logo">
             </a>
         </div>
 
