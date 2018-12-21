@@ -18,7 +18,7 @@ class MobileController extends Controller
     {
         $services['rowa'] = Service::all();
 
-        return json_encode($services['rowa'] , JSON_UNESCAPED_UNICODE) ;
+        return json_encode($services , JSON_UNESCAPED_UNICODE) ;
 
     }
     public function en_daily_price($service = NULL)
@@ -86,7 +86,7 @@ class MobileController extends Controller
     public function about()
     {
         $pref['rows'] = Pref::find(1);
-        return \Response::json($pref);
+        return json_encode($pref , JSON_UNESCAPED_UNICODE);
 
     }
     public function join_us(Request $request)
