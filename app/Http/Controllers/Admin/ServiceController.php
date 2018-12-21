@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Service;
 use App\User;
 use DB;
+//use Image;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -31,30 +33,37 @@ class ServiceController extends Controller
         return view('admin.control_panel.services.add_service',$data);
     }
 
-    
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
 
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
-        $service = Service::create($request->all());  
-//        if($request->hasFile('img'))
-//        {
-//
+        $service = Service::create($request->all());
+        if($request->hasFile('img'))
+        {
+
 //            $destination = 'resources/assets/site/images/' ;
 //            $img     = $request->file('img');
 //
 //            $img->move($destination,$service->id.$request->en_title.'.png');
 //
 //            $service->img = 'resources/assets/site/images/'.$service->id.$request->en_title.'.png';
-//
-//        }
-        dd($_FILES);
-        $service->img =  FileHelper::storeImage('img');
+
+            Intervention\Image\Facades\Image::make($request->file('img')
+                ->save('resources/assets/site/images/'.$service->id.$request->en_title.'.png'));
+
+        }
+
+        $service->img = 'resources/assets/site/images/'.$service->id.$request->en_title.'.png';
         $service->user_id = session('id');
         $service->save();
-//        return redirect()->route('service.index');
+      return redirect()->route('service.index');
     }
     public function edit($id)
     {

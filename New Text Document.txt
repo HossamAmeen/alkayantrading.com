@@ -4,8 +4,6 @@ A=Y3aY7TZVY-
 
 https://alkayantrading.com:2083/
 
-resources/assets/site/images/logo.png
-resources/assets/site/images/Logo.png
 
 git clone https://hosam_ameen@bitbucket.org/abdelrahman_elzedy/alkayantrading.com.git
 
@@ -26,3 +24,4 @@ cd /home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run
 
 cd /usr/local/bin/php/home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run >> /dev/null 2>&1
 
+php -d register_argc_argv=On /home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run
