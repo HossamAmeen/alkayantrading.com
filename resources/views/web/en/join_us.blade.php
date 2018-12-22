@@ -19,7 +19,17 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<form action="/join_us" method="POST">
+						<form action="{{url('en/join_us')}}" method="POST">
+							{{csrf_field()}}
+							@if ($errors->any())
+								<div class="alert alert-danger">
+									<ul>
+										@foreach ($errors->all() as $error)
+											<li>{{ $error }}</li>
+										@endforeach
+									</ul>
+								</div>
+							@endif
 							<div class="form-group">
 							    <label for="name">Name:</label>
 							    <input type="text" class="form-control" name="name" id="name" >

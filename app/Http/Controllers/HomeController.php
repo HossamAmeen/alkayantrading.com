@@ -94,8 +94,8 @@ class HomeController extends Controller
     }
     public function ar_join_us(Request $request)
     {
-        $rules = $this->formValidation();
-        $message = $this->messageValidation();
+        $rules = $this->jobFormValidation();
+        $message = $this->jobMessageValidation();
         $this->validate($request, $rules,$message);
         $title =  "شركة كيان -  انضم إلينا";
 
@@ -124,6 +124,9 @@ class HomeController extends Controller
     }
     public function ar_contact(Request $request)
     {
+        $rules = $this->contactFormValidation();
+        $message = $this->contactMessageValidation();
+        $this->validate($request, $rules,$message);
         $title =  "شركة كيان - تواصل معانا";
         $pref = Pref::find(1);
         if ($request->isMethod('post')) {
@@ -135,8 +138,9 @@ class HomeController extends Controller
                 'text'=>$request->text,
             ];
             Mail::send('mail',$data,function($message) use ($data){
-                $message->from( $pref->mainEmail , 'kayan');
-                $message->to($data['email']);
+
+                $message->from( $data['email'] , 'kayan');
+                $message->to("info@alkayantrading.com");
                 $message->subject('contact');
             });
             return redirect()->back();
@@ -223,8 +227,8 @@ class HomeController extends Controller
     }
     public function en_join_us(Request $request)
     {
-        $rules = $this->formValidation();
-        $message = $this->messageValidation();
+        $rules = $this->jobFormValidation();
+        $message = $this->jobMessageValidation();
         $this->validate($request, $rules,$message);
         $title =  "شركة كيان -  انضم إلينا";
 
@@ -239,8 +243,9 @@ class HomeController extends Controller
             ];
 
             Mail::send('mail',$data,function($message) use ($data){
-                $message->from( $pref->mainEmail , 'kayan');
-                $message->to($data['email']);
+
+                $message->from( $data['email'] , 'kayan');
+                $message->to("info@alkayantrading.com");
                 $message->subject('job');
             });
             return redirect()->back();
@@ -251,8 +256,11 @@ class HomeController extends Controller
     }
     public function en_contact(Request $request)
     {
+        $rules = $this->contactFormValidation();
+        $message = $this->contactMessageValidation();
+        $this->validate($request, $rules,$message);
         $title =  "شركة كيان - تواصل معانا";
-        $pref = Pref::find(1);
+
         if ($request->isMethod('post')) {
       //      Name phone email
             $data=[
@@ -262,8 +270,9 @@ class HomeController extends Controller
                 'text'=>$request->text,
             ];
             Mail::send('mail',$data,function($message) use ($data){
-                $message->from( $pref->mainEmail , 'kayan');
-                $message->to($data['email']);
+
+                $message->from( $data['email'] , 'kayan');
+                $message->to("info@alkayantrading.com");
                 $message->subject('contact');
             });
             return redirect()->back();
@@ -271,18 +280,70 @@ class HomeController extends Controller
 
         return view('web.en.contacts')->with(compact('title') );
     }
-    function formValidation()
+    function jobFormValidation()
     {
-       /* 'email' =>  $request->email,
-                'name' => $request->name,
-                'address'=>$request->address,
-                'phone'=>$request->phone,
-                'job'=>$request->job,*/
+
         return array(
-            'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products',
-            'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products',
+            'name'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99',
+            'address'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
+             'email' => 'required|email',
+            'phone'         => 'required|numeric',
+            'job'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
 
         );
     }
+    function jobMessageValidation(){
+        return array(
+            'name.required'     => 'هذا الحقل (الاسم) مطلوب ',
+            'name.*'            =>  'هذا الحقل (الاسم) يجب يحتوي ع حروف وارقام فقط',
+
+            'address.required'     => 'هذا الحقل (العنوان) مطلوب ',
+            'address.*'            =>  'هذا الحقل (العنوان) يجب يحتوي ع حروف وارقام فقط',
+
+            'email.required'     => 'هذا الحقل (البريد) مطلوب ',
+            'email.*'            =>  'هذا الحقل (البريد)يجب ان يكون بريد صحيح',
+
+            'phone.required'     => 'هذا الحقل (الاسم) مطلوب ',
+            'phone.*'            =>  'هذا الحقل (الاسم) يجب يحتوي ع ارقام فقط',
+
+            'job.required'     => 'هذا الحقل (العمل) مطلوب ',
+            'job.*'            =>  'هذا الحقل (العمل) يجب يحتوي ع حروف وارقام فقط',
+
+
+        );
+    }
+    function contactFormValidation()
+    {
+
+
+
+        return array(
+            'Name'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99',
+
+            'email' => 'required|email',
+            'phone'         => 'required|numeric',
+            'text'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
+
+        );
+    }
+    function contactMessageValidation(){
+        return array(
+            'Name.required'     => 'هذا الحقل (الاسم) مطلوب ',
+            'Name.*'            =>  'هذا الحقل (الاسم) يجب يحتوي ع حروف وارقام فقط',
+
+            'text.required'     => 'هذا الحقل (العنوان) مطلوب ',
+            'text.*'            =>  'هذا الحقل (العنوان) يجب يحتوي ع حروف وارقام فقط',
+
+            'email.required'     => 'هذا الحقل (البريد) مطلوب ',
+            'email.*'            =>  'هذا الحقل (البريد)يجب ان يكون بريد صحيح',
+
+            'phone.required'     => 'هذا الحقل (الاسم) مطلوب ',
+            'phone.*'            =>  'هذا الحقل (الاسم) يجب يحتوي ع ارقام فقط',
+
+
+        );
+    }
+
+
     
 }

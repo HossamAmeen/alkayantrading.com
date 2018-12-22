@@ -50,7 +50,17 @@
             <div class="container">
                 <!-- CONATACT-FORM -->
                 <div id="contact-form" class="col-sm-12">
-                    <form class="contact-form-area" method="post" action="/contact">
+                    <form class="contact-form-area" method="post" action="{{url('en/contact')}}">
+						{{csrf_field()}}
+						@if ($errors->any())
+							<div class="alert alert-danger">
+								<ul>
+									@foreach ($errors->all() as $error)
+										<li>{{ $error }}</li>
+									@endforeach
+								</ul>
+							</div>
+						@endif
                         <div class="row"> 
                             <div class="form-group col-md-12">
                                 <input type="text" name="Name" class="form-control" placeholder="enter your name" id="form-name" required>
