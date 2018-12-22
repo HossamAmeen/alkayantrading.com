@@ -45,7 +45,7 @@ class Kernel extends ConsoleKernel
 //            }
 //        })->everyMinute();
 
-        $schedule->command('copy:day')->dailyAt('14:59');
+        $schedule->command('copy:day')->dailyAt('15:15');
     }
 
     /**
