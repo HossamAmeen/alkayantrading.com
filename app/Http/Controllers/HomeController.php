@@ -94,13 +94,13 @@ class HomeController extends Controller
     }
     public function ar_join_us(Request $request)
     {
-        $rules = $this->jobFormValidation();
-        $message = $this->jobMessageValidation();
-        $this->validate($request, $rules,$message);
+
         $title =  "شركة كيان -  انضم إلينا";
 
         if ($request->isMethod('post')) {
-                
+            $rules = $this->jobFormValidation();
+            $message = $this->jobMessageValidation();
+            $this->validate($request, $rules,$message);
             $data=[
                 'email' =>  $request->email,
                 'name' => $request->name,
@@ -124,13 +124,13 @@ class HomeController extends Controller
     }
     public function ar_contact(Request $request)
     {
-        $rules = $this->contactFormValidation();
-        $message = $this->contactMessageValidation();
-        $this->validate($request, $rules,$message);
+
         $title =  "شركة كيان - تواصل معانا";
         $pref = Pref::find(1);
         if ($request->isMethod('post')) {
-      //      Name phone email
+            $rules = $this->contactFormValidation();
+            $message = $this->contactMessageValidation();
+            $this->validate($request, $rules,$message);
             $data=[
                 'email' =>  $request->email,
                 'Name' => $request->Name,
@@ -227,13 +227,13 @@ class HomeController extends Controller
     }
     public function en_join_us(Request $request)
     {
-        $rules = $this->jobFormValidation();
-        $message = $this->jobMessageValidation();
-        $this->validate($request, $rules,$message);
+
         $title =  "شركة كيان -  انضم إلينا";
 
         if ($request->isMethod('post')) {
-
+            $rules = $this->jobFormValidation();
+            $message = $this->jobMessageValidation();
+            $this->validate($request, $rules,$message);
             $data=[
                 'email' =>  $request->email,
                 'name' => $request->name,
@@ -256,13 +256,13 @@ class HomeController extends Controller
     }
     public function en_contact(Request $request)
     {
-        $rules = $this->contactFormValidation();
-        $message = $this->contactMessageValidation();
-        $this->validate($request, $rules,$message);
+
         $title =  "شركة كيان - تواصل معانا";
 
         if ($request->isMethod('post')) {
-      //      Name phone email
+            $rules = $this->contactFormValidation();
+            $message = $this->contactMessageValidation();
+            $this->validate($request, $rules,$message);
             $data=[
                 'email' =>  $request->email,
                 'Name' => $request->Name,
