@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Image;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -32,18 +33,20 @@ class UserController extends Controller
         $user = User::create($request->all());
         
 
-        $user->password = Hash::make($request->password); 
-        
+        $user->password = Hash::make($request->password);
+
         if($request->hasFile('img'))
         {
-           
-            $destination = 'resources/assets/admin/images' ;
-            $img     = $request->file('img');
-            //$photo   = $img->getClientOriginalName(); 
-            $img->move($destination,$user->id.$request->name.'.png'); 
-            $user->img = 'resources/assets/admin/images/'.$user->id.$request->name.'.png';
-           //return  $user->img;
+            $photo = $request->file('img');
+            $imagename = time().'.'.$photo->getClientOriginalExtension();
+
+            $destinationPath = 'resources/assets/admin/images/';
+            $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+            $thumb_img->save($destinationPath.$imagename,80);
+            $user->img = $destinationPath . $imagename;
         }
+
+
         $user->save();
         return redirect()->route('user.index');
     }
@@ -73,9 +76,9 @@ class UserController extends Controller
        $user = User::find($id);
        $newPassword = true ; 
        if(!empty($user))
-       {        
-          
-        
+       {
+
+
             if($request->password  == $user->password){
                 $newPassword = false ;
             }
@@ -85,22 +88,17 @@ class UserController extends Controller
 
             if($newPassword){
                 $user->password =  Hash::make($request->password); 
-            }      
+            }
+           if($request->hasFile('img'))
+           {
+               $photo = $request->file('img');
+               $imagename =   time().'.'.$photo->getClientOriginalExtension();
+               $destinationPath = 'resources/assets/admin/images/';
+               $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+               $thumb_img->save($destinationPath.$imagename,80);
+               $user->img = $destinationPath . $imagename;
+           }
 
-                if($request->hasFile('img'))
-                {
-                    $path =  '../public/'.$user->img;
-                    if(file_exists($path)) {
-                        unlink($path);
-                    
-                    }
-
-                    $destination = '../public/images/' ;
-                    $img       = $request->file('img');
-                    $img->move($destination,$user->id.$request->name.'.png'); 
-                    $user->img = '/images/'.$user->id.$request->name.'.png';
-                    
-            }   
                 $user->save();
         }
 

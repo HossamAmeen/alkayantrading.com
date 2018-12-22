@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Service;
 use App\User;
 use DB;
-//use Image;
-use Intervention\Image\Facades\Image;
+use Image;
+
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -55,12 +55,19 @@ class ServiceController extends Controller
 //
 //            $service->img = 'resources/assets/site/images/'.$service->id.$request->en_title.'.png';
 
-            Intervention\Image\Facades\Image::make($request->file('img')
-                ->save('resources/assets/site/images/'.$service->id.$request->en_title.'.png'));
+           $photo = $request->file('img');
+            $imagename = time().'.'.$photo->getClientOriginalExtension();
 
+            $destinationPath = 'resources/assets/admin/images/';
+            $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+            $thumb_img->save($destinationPath.$imagename,80);
         }
 
-        $service->img = 'resources/assets/site/images/'.$service->id.$request->en_title.'.png';
+
+
+
+
+        $service->img = $destinationPath.$imagename;
         $service->user_id = session('id');
         $service->save();
       return redirect()->route('service.index');
@@ -85,21 +92,28 @@ class ServiceController extends Controller
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
         $service = Service::find($id);
+
+
+
+      /*  $path = $service->img;
+        if(file_exists($path)) {
+            unlink($path);
+        }*/
+      //  return $request;
         if(!empty($service)){
 
             $service->fill($request->all());
+
             if($request->hasFile('img'))
             {
-                $path =  '../public/'.$service->img;
-                if(file_exists($path)) {
-                    unlink($path);
-                   
-                }
 
-                $destination = '../public/images/' ;
-                $img       = $request->file('img');
-                $img->move($destination,$service->id.$request->name.'.png'); 
-                $service->img = '/images/'.$service->id.$request->name.'.png';
+                $photo = $request->file('img');
+                $imagename =   time().'.'.$photo->getClientOriginalExtension();
+               // return $photo;
+                $destinationPath = 'resources/assets/admin/images/';
+                $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+                $thumb_img->save($destinationPath.$imagename,80);
+                 $service->img = $destinationPath.$imagename;
                 
             }   
             $service->save();
@@ -121,6 +135,8 @@ class ServiceController extends Controller
             }
             return redirect()->route('service.index');
     }
+
+
 
 
     function formValidation()

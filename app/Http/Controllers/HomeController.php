@@ -9,6 +9,8 @@ use App\Pref;
 use App\Product;
 use App\Days;
 use DB;
+use Mail;
+
 class HomeController extends Controller
 {
     public  function  change_language($lang){
@@ -92,6 +94,9 @@ class HomeController extends Controller
     }
     public function ar_join_us(Request $request)
     {
+        $rules = $this->formValidation();
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $title =  "شركة كيان -  انضم إلينا";
 
         if ($request->isMethod('post')) {
@@ -103,9 +108,12 @@ class HomeController extends Controller
                 'phone'=>$request->phone,
                 'job'=>$request->job,
             ];
+
+           // return $data['email'] ;
             Mail::send('mail',$data,function($message) use ($data){
-                $message->from( $pref->mainEmail , 'kayan');
-                $message->to($data['email']);
+
+                $message->from( $data['email'] , 'kayan');
+                $message->to("info@alkayantrading.com");
                 $message->subject('job');
             });
             return redirect()->back();
@@ -215,10 +223,13 @@ class HomeController extends Controller
     }
     public function en_join_us(Request $request)
     {
+        $rules = $this->formValidation();
+        $message = $this->messageValidation();
+        $this->validate($request, $rules,$message);
         $title =  "شركة كيان -  انضم إلينا";
 
         if ($request->isMethod('post')) {
-                
+
             $data=[
                 'email' =>  $request->email,
                 'name' => $request->name,
@@ -226,6 +237,7 @@ class HomeController extends Controller
                 'phone'=>$request->phone,
                 'job'=>$request->job,
             ];
+
             Mail::send('mail',$data,function($message) use ($data){
                 $message->from( $pref->mainEmail , 'kayan');
                 $message->to($data['email']);
@@ -258,6 +270,19 @@ class HomeController extends Controller
         }
 
         return view('web.en.contacts')->with(compact('title') );
+    }
+    function formValidation()
+    {
+       /* 'email' =>  $request->email,
+                'name' => $request->name,
+                'address'=>$request->address,
+                'phone'=>$request->phone,
+                'job'=>$request->job,*/
+        return array(
+            'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products',
+            'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products',
+
+        );
     }
     
 }

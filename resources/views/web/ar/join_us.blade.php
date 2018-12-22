@@ -21,7 +21,8 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<form action="#">
+						<form action="{{url('ar/join_us')}}" method="post">
+							{{csrf_field()}}
 							<div class="form-group">
 							    <label for="name">الاسم بالكامل:</label>
 							    <input type="text" class="form-control" name="name" id="name" >
