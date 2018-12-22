@@ -10110,3 +10110,11 @@ hr.footer-border {
 .weatherItem {
     text-align: right;
 }
+
+/* success msg */
+.sucess-msg {
+  text-align: center;
+  background-color: #a6e0a6;
+  font-weight: bold;
+  font-size: 18px;
+}

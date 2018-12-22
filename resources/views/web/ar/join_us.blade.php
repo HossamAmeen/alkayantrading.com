@@ -14,6 +14,9 @@
 		
 <!--		join us section-->
 		<section class="join">
+			<div class="alert alert-success">
+				<strong>Success!</strong>  {{session()->get('status')}}
+			</div>
 			<div class="container">
 				<div class="text-center head-div">
 					<h1 class="header wow bounceInUp" data-wow-duration="2s"> انضم الينا </h1>

@@ -70,6 +70,7 @@ class ServiceController extends Controller
         $service->img = $destinationPath.$imagename;
         $service->user_id = session('id');
         $service->save();
+        $request->session()->flash('status', 'Task was successful!');
       return redirect()->route('service.index');
     }
     public function edit($id)
@@ -119,6 +120,7 @@ class ServiceController extends Controller
             $service->save();
             
         }
+        $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('service.index');
     }
 

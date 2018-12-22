@@ -66,6 +66,9 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">الاقسام</h3>
                         </div>
+                        <div class="alert alert-success">
+                            <strong>Success!</strong>  {{session()->get('status')}}
+                        </div>
                         <div class="panel-body" >
                             <div class="table-responsive ls-table">
                                 <form id="defaultForm" method="POST" action="{{url('admin/add_price/'.$day_id)}}" class="form-horizontal ls_form" >

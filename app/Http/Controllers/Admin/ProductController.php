@@ -40,6 +40,8 @@ class ProductController extends Controller
         
         $product->user_id = session('id') ;
         $product->save();
+        $request->session()->flash('status', 'Task was successful!');
+
         return redirect()->route('products.index');
     }
     public function edit($id)
@@ -68,6 +70,7 @@ class ProductController extends Controller
             $product->save();
             
         }
+        $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('products.index');
     }
 
@@ -91,6 +94,7 @@ class ProductController extends Controller
        return array(
         'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products',
         'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products',
+        'company_name'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
        
        );
     }
@@ -99,7 +103,7 @@ class ProductController extends Controller
         return array(
             'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,ar_title,'.$id,
             'en_title'    =>  'regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,en_title,'.$id,
-			
+            'company_name'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
 			
            );
     }
@@ -111,6 +115,9 @@ class ProductController extends Controller
 
             'en_title.required'     => 'هذا الحقل (العنوان بالانجليزي) مطلوب ',
             'en_title.*'            =>  'هذا الحقل (العنوان بالانجليزي) يجب يحتوي ع حروف وارقام فقط ',
+
+            'company_name.required'     => 'هذا الحقل (الشركه) مطلوب ',
+            'company_name.*'            =>  'هذا الحقل (الشركه) يجب يحتوي ع حروف وارقام فقط',
         );
     }
 

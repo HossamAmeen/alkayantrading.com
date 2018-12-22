@@ -46,7 +46,7 @@ class UserController extends Controller
             $user->img = $destinationPath . $imagename;
         }
 
-
+        $request->session()->flash('status', 'Task was successful!');
         $user->save();
         return redirect()->route('user.index');
     }
@@ -101,7 +101,7 @@ class UserController extends Controller
 
                 $user->save();
         }
-
+        $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('user.index');
 
     }

@@ -30,8 +30,8 @@ class PriceAtDayController extends Controller
            // return $request->all();
             $price->save();
         }
-       
-       
+
+        $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('show_prices');
               
     }

@@ -10,6 +10,13 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">الاقسام</h3>
                     </div>
+
+                    @if (session()->get('status') )
+                        <div class="alert alert-success">
+                            <strong>{{session()->get('status')}}</strong>
+                        </div>
+                    @endif
+
                     <div class="panel-body">
                         <div class="table-responsive ls-table">
                             <table class="table">
@@ -43,9 +50,10 @@
                                             <form action="{{url('admin/category/'.$category->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
+                                                <a href="{{url('/admin/category/'.$category->id.'/edit')}}" class="btn btn-info">Update</a>
                                           <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
-                                            
+
                                             
                                     </td>
                                 </tr>

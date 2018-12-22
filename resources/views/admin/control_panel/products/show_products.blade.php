@@ -9,9 +9,15 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">المنتجات</h3>
-                    </div>
+                        </div>
+
+                    @if (session()->get('status') )
+                        <div class="alert alert-success">
+                            <strong>{{session()->get('status')}}</strong>
+                        </div>
+                    @endif
                     <div class="panel-body">
-                        <div class="table-responsive ls-table">
+                    <div class="table-responsive ls-table">
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -47,9 +53,11 @@
                                             <form action="{{url('admin/products/'.$product->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
+                                          <a href="{{url('admin/products/'.$product->id.'/edit')}}" class="btn btn-info">update</a>
                                           <button type="submit" class="btn btn-danger">Delete</button>
+
                                             </form>
-                                            
+
                                             
                                     </td>
                                 </tr>

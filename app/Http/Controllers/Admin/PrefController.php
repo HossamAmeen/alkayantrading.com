@@ -70,6 +70,7 @@ class PrefController extends Controller
 
         $pref->user_id = session('id');
         $pref->save();
+        $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('prefs.index');
     }
 
@@ -99,6 +100,7 @@ class PrefController extends Controller
             $pref->save();
             
         }
+        $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('prefs.index');
     }
 

@@ -35,6 +35,7 @@ class CategoryController extends Controller
         $category = Category::create($request->all());
         $category->user_id = session('id') ;
         $category->save();
+        $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('category.index');
     }
     public function edit($id)
@@ -65,7 +66,7 @@ class CategoryController extends Controller
                 $category->save();
                // return $category;
             }
-
+        $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('category.index');
     }
     public function destroy($id)
