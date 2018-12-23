@@ -2,8 +2,8 @@
 
 
 //////////////// web 
-Route::any('upload' , 'ExelController@exportExcel');
-Route::any('upload' , 'ExelController@importExcel');
+Route::any('exportExcel' , 'ExelController@exportExcel');
+Route::any('upload' , 'ExelController@import');
 /////// arabic
 Route::get('/', 'HomeController@ar_index');
 
