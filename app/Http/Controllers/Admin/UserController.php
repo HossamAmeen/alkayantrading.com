@@ -133,6 +133,7 @@ class UserController extends Controller
             'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
 			'email'    => 'required|max:99|email|unique:users,email,'.$id,
 			'password' => 'confirmed',
+            'img'=> 'image',
            );
     }
     function messageValidation(){

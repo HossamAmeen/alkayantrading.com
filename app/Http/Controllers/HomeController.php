@@ -8,6 +8,8 @@ use App\Service;
 use App\Pref;
 use App\Product;
 use App\Days;
+use App\Review;
+use App\Team;
 use DB;
 use Mail;
 
@@ -30,6 +32,7 @@ class HomeController extends Controller
     {
 
         $data['services'] = Service::all();
+        $data['reviews'] =  Review::all();
         $data['title'] = "kayan trading company";
         return view('web.ar.index',$data);
     }
@@ -89,7 +92,8 @@ class HomeController extends Controller
     public function ar_about()
     {
         $title =  "شركة كيان -  من نحن";
-        return view('web.ar.about')->with(compact('title') );
+        $data['teams'] = Team::all();
+        return view('web.ar.about' , $data)->with(compact('title') );
 
     }
     public function ar_join_us(Request $request)
@@ -152,12 +156,13 @@ class HomeController extends Controller
     public function en_index(){
 
         $data['services'] = Service::all();
+        $data['reviews'] =  Review::all();
         $data['title'] = "kayan trading company";
-        $pref = Pref::find(1);
+
         
        // $pref = Pref::find(1);
        // return \Response::json($pref);	
-        return view('web.en.index',$data)->with(compact('pref'));
+        return view('web.en.index',$data);
     }
     public function en_services()
     {
@@ -222,7 +227,8 @@ class HomeController extends Controller
     public function en_about()
     {
         $title =  "شركة كيان -  من نحن";
-        return view('web.en.about')->with(compact('title') );
+        $data['teams'] = Team::all();
+        return view('web.ar.about' , $data)->with(compact('title') );
 
     }
     public function en_join_us(Request $request)

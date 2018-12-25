@@ -1,29 +1,38 @@
 <?php
-
 namespace App\Imports;
 
-use App\User;
-use Maatwebsite\Excel\Concerns\ToModel;
 
-class UsersImport implements ToModel
+use App\Day;
+use App\Product;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use App\Price_at_day;
+
+class UsersImport implements ToCollection
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
-    public function model(array $row)
+    public function collection(Collection $rows)
     {
+        $date = date("Y-m-d");
+        $day_id = Day::where('day','=',$date)->first()->id;
 
-        return new User([
+        foreach ($rows as $row)
+        {
+            $price =  Price_at_day::where('day_id','=',$day_id)->first();
+            $price->user_id = session('id') ;
+            $price->day_id = $day_id ;
+
+            $product_id  = Product::where('en_title','=',$row[0])->first();
+            if(!empty($product_id))
+            {
+                $product_id = $product_id->id;
+                $price->product_id = $product_id;
+                $price->price = $row[1];
+                $price->save();
+            }
 
 
-            'name'     => $row[0],
-            'email'    => $row[1],
-            'password' => $row[2],
-            'img'      => $row[3],
-            'role'      => $row[4],
-            'deleted_at' => $row[5],
-        ]);
+
+        }
+
     }
 }

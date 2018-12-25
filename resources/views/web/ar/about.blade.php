@@ -51,33 +51,17 @@
 						<h1 class="header wow bounceInUp" data-wow-duration="2s" >فريق العمل  </h1>
 						<span class="after-head"><i class="fas fa-users"></i></span>
 					</div>
-					<div class="col-md-4">
-						<div class="item wow fadeIn" data-wow-duration="2s">
-							<img src="{{asset('resources/assets/site/images/member.jpeg')}}" class="img-responsive">
-							<div class="content text-center">
-								<p class="name">محمود كمال</p>
-								<p class="position">مدير مجلس الاداره</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="item wow fadeIn" data-wow-duration="2s" data-wow-delay="0.5s">
-							<img src="{{asset('resources/assets/site/images/member.jpeg')}}" class="img-responsive">
-							<div class="content text-center">
-								<p class="name">محمود كمال</p>
-								<p class="position">مدير مجلس الاداره</p>
-							</div>
-						</div>
-					</div>
+					@foreach($teams as $team)
 					<div class="col-md-4">
 						<div class="item wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
-							<img src="{{asset('resources/assets/site/images/member.jpeg')}}" class="img-responsive">
+							<img src="{{asset($team->img)}}" class="img-responsive">
 							<div class="content text-center">
-								<p class="name">محمود كمال</p>
-								<p class="position">مدير مجلس الاداره</p>
+								<p class="name">{{$team->name}}</p>
+								<p class="position">{{$team->job}}</p>
 							</div>
 						</div>
 					</div>
+					@endforeach
 				</div>
 			</div>
 		</section>

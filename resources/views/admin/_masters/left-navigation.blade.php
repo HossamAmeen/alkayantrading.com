@@ -66,6 +66,34 @@
 
             </ul>
         </li>
+        <li >
+            <a  href="#"  @if($title == 'اضافه عضو' || $title == 'عرض الاعضاء') class="active"  @endif >
+                <i class="fa fa-bar-chart-o"></i> <span>الاعضاء</span>
+            </a>
+            <ul>
+                <li>
+                    <a  @if($title == 'اضافه عضو') class="active"  @endif href="{{url('admin/team/create')}}">اضافه عضو</a>
+                </li>
+                <li>
+                    <a @if($title == 'عرض الاعضاء') class="active"  @endif  href="{{url('admin/team')}}">عرض الاعضضاء</a>
+                </li>
+
+            </ul>
+        </li>
+        <li >
+            <a  href="#"  @if($title == 'اضافه تعليق' || $title == 'عرض التعليقات') class="active"  @endif >
+                <i class="fa fa-bar-chart-o"></i> <span>التلعيقات</span>
+            </a>
+            <ul>
+                <li>
+                    <a  @if($title == 'اضافه تعليق') class="active"  @endif href="{{url('admin/review/create')}}">اضافه تعليق</a>
+                </li>
+                <li>
+                    <a @if($title == 'عرض التعليقات') class="active"  @endif  href="{{url('admin/review')}}">عرض التعليقات</a>
+                </li>
+
+            </ul>
+        </li>
 
         <li >
             <a  href="{{url('admin/show_prices')}}">

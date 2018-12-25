@@ -102,49 +102,29 @@
 				</div>
 			</div>
 		</section>
-		
-<!--		testimonials section-->
+
+		<!--		testimonials section-->
 		<section class="testimonials padding">
 			<div class="container">
 				<!-- Swiper -->
-			  <div class="swiper-container">
-			    <div class="swiper-wrapper">
-				<div class="swiper-slide">
-				 	<img src="{{asset('resources/assets/site/images/ehab.jpg')}}" alt="client-review">
-					<div class="content">
-						<p class="review">من الناس المحترمه جدا في السوق.</p>
-						<p class="name">Ehab Shehata</p>
-						<p class="face"><a target="_blank" href="https://www.facebook.com/ehab.shehata.399?fref=nf&__tn__=m-R">
-							<i class="fab fa-facebook-f"></i></a></p>
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						@foreach($reviews as $review)
+							<div class="swiper-slide">
+								<img src="{{asset($review->img)}}" alt="client-review">
+								<div class="content">
+									<p class="review">{{$review->review}}</p>
+									<p class="name">{{$review->name}}</p>
+
+								</div>
+							</div>
+
+						@endforeach
 					</div>
-				 </div>
-				<div class="swiper-slide">
-				 	<img src="{{asset('resources/assets/site/images/hany.jpg')}}" alt="client-review">
-					<div class="content">
-						<p class="review">معاملة محترمة ,
-									اقل اسعار فى السوق ,
-									التزام تام بالمواعيد .</p>
-						<p class="name"> Hany Abokresha</p>
-						<p class="face">
-							<a target="_blank" href="https://www.facebook.com/hany.abokresha?fref=nf&__xts__%5B0%5D=68.ARDqHMF3w0GN0oQzbm7HEVAAmpQlKF2arHmRsCUiRiK0gtEgUu6HSKMeAdjQB9LKsr_9JlQZZ0GwI3V5wxcoX_HQmH280ii5oE8S99MHq_m-pS7uqjQ3SZ6u9soL1cbSolRmC1AtMzeXpo6a79VhWcNogx0ZnbvlNi7a6nEhk93YQEm-FuRFSQ&__tn__=m-R">
-								<i class="fab fa-facebook-f"></i>
-							</a>
-						</p>
-					</div>   
-				 </div>
-				<div class="swiper-slide">
-					 <img src="{{asset('resources/assets/site/images/omar.jpg')}}" alt="client-review">
-					<div class="content">
-						<p class="review">It's your best option to build up your future life </p>
-						<p class="name"> Omar Elgretly</p>
-						<p class="face"><a target="_blank" href="https://www.facebook.com/omar.elgretly?hc_ref=ARSU9HrjVOlqs1udERTzwAQmWh7FL7E0M22Np6l9tV4HVIme3Xs6hdgmuQgIS9KbAis&__xts__[0]=68.ARBBQ-sxhQnGFSEsK7JVzvhPj-HRhCWUycJvdasYvNesFxhQp3In1CB2oBZUWAF1woWSv7DglipeLJ6-4Jo5FLC8FZOksKV_jaU-GltYP_hr_1HdYBLcAlWtnoFVcuVEPKJ9s4LDGQQstGWypvLy4nj3cL2qYdtyHqKzthe-0nc2cNrhStrKxw&__tn__=lC-R"><i class="fab fa-facebook-f"></i></a></p>
-					</div>  
-				 </div>
-			    </div>
-			    <!-- Add Pagination -->
-			    <div class="swiper-pagination"></div>
-			    
-			  </div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
+
+				</div>
 			</div>
 		</section>
 		

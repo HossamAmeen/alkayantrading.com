@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Price_at_day extends Model
 {
    // $table = ''
-   protected $fillable = [ 'product_id' , 'price'];
+   protected $fillable = [ 'day_id','product_id' , 'price'];
 }

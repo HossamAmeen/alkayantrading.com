@@ -16,6 +16,7 @@ Route::prefix('ar')->group(function () {
     Route::get('/contact', 'HomeController@ar_contact');
     Route::post('/join_us', 'HomeController@ar_join_us');
     Route::post('/contact', 'HomeController@ar_contact');
+
 });
 
 
@@ -50,10 +51,13 @@ Route::prefix('admin')->group(function () {
             Route::resource('service' , 'ServiceController');
             Route::resource('category'    , 'CategoryController');
             Route::resource('products'    , 'ProductController');
+            Route::resource('/team', 'TeamController');
+            Route::resource('/review', 'ReviewController');
             Route::resource('priceAtDay'    , 'PriceAtDayController');
             Route::get('/copy_day'    , 'PriceAtDayController@copy_day');
             Route::get('/show_prices'    , 'PriceAtDayController@show_prices')->name('show_prices');
             Route::post('/add_price/{day_id}'    , 'PriceAtDayController@add_price');
+
         });
         
     });
