@@ -12,41 +12,37 @@ class PrefController extends Controller
     public function login(Request $request){
        
         if(session('login')){
-            
             return redirect()->route('prefs.index');
         }
-    
-       // return "test";
         if($request->isMethod('post')){
-           // return "tet";
           $user = User::where('name', $request->name)->first();
-
           if(!empty($user))
           {
               $user= $user->makeVisible('password');
 
               if (User::where('name', $request->name)->exists()  && Hash::check($request->password , $user->password))
-
-
               {
-                  // session( ['login' => 1] ) ;
                   session( ['id' => $user->id] );
                   session( ['role' => $user->role] );
-
                   return redirect()->route('prefs.index');
-
               }
+              else
+                  $request->session()->flash('status', 'password is wrong!! try again please!');
           }
-
-           //  return "test";
+          else
+              $request->session()->flash('status', 'username  is wrong!! try again please!');
         }
+        $title='تسجيل الدخول';
+        return view('admin.login')->with(compact('title'));
+    }
+    public  function logout(Request $request){
+        $request->session()->forget(['id', 'role']);
+        $request->session()->flush();
         $title='تسجيل الدخول';
         return view('admin.login')->with(compact('title'));
     }
     public function index()
     {
-        
-     
        $mPref = Pref::find(1);
         $title='اضافه بيانات الموقع';
     
@@ -56,26 +52,18 @@ class PrefController extends Controller
             else
         return redirect()->route('prefs.edit',['id' => 1]);
     }
-
-   
-
-    
     public function store(Request $request)
     {
-       // return $request->all();
+
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
-        $pref = Pref::create($request->all());  
-
+        $pref = Pref::create($request->all());
         $pref->user_id = session('id');
         $pref->save();
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'add was successful!');
         return redirect()->route('prefs.index');
     }
-
-
-    
     public function edit($id)
     {
         $pref = Pref::find($id);
@@ -85,12 +73,9 @@ class PrefController extends Controller
         else
         return redirect()->route('prefs.index');
     }
-
-    
     public function update(Request $request, $id)
     {
-      //  return "test";
-     
+
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
@@ -100,11 +85,9 @@ class PrefController extends Controller
             $pref->save();
             
         }
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'update  was successful!');
         return redirect()->route('prefs.index');
     }
-
-   
     function formValidation()
     {
 

@@ -5,7 +5,7 @@
 
     <!--Left navigation start-->
     <ul class="mainNav">
-        <li @if($title == 'بيانات الموقع') class="active"  @endif >
+        <li @if($title == 'اضافه بيانات الموقع' || ' تعديل بيانات الموقع') class="active"  @endif >
             <a href="{{url('admin/prefs')}}">
                 <i class="fa fa-bullhorn"></i> <span>بيانات الموقع</span>
             </a>
@@ -25,20 +25,6 @@
             </ul>
         </li>
         <li >
-            <a  href="#" @if($title == 'اضافه خدمه' || $title == 'عرض الخدمات') class="active"  @endif >
-                <i class="fa fa-bar-chart-o"></i> <span>الخدمات</span>
-            </a>
-            <ul>
-                <li>
-                    <a  @if($title == 'اضافه خدمه') class="active"  @endif href="{{url('admin/service/create')}}">اضافه خدمه</a>
-                </li>
-                <li>
-                    <a @if($title == 'عرض الخدمات') class="active"  @endif  href="{{url('admin/service')}}">عرض الخدمات</a>
-                </li>
-
-            </ul>
-        </li>
-        <li >
             <a  href="#" @if($title == 'اضافه قسم' || $title == 'عرض الاقسام') class="active"  @endif >
                 <i class="fa fa-bar-chart-o"></i> <span>الاقسام</span>
             </a>
@@ -48,6 +34,20 @@
                 </li>
                 <li>
                     <a @if($title == 'عرض الاقسام') class="active"  @endif  href="{{url('admin/category')}}">عرض الاقسام</a>
+                </li>
+
+            </ul>
+        </li>
+        <li >
+            <a  href="#" @if($title == 'اضافه خدمه' || $title == 'عرض الخدمات') class="active"  @endif >
+                <i class="fa fa-bar-chart-o"></i> <span>الخدمات</span>
+            </a>
+            <ul>
+                <li>
+                    <a  @if($title == 'اضافه خدمه') class="active"  @endif href="{{url('admin/service/create')}}">اضافه خدمه</a>
+                </li>
+                <li>
+                    <a @if($title == 'عرض الخدمات') class="active"  @endif  href="{{url('admin/service')}}">عرض الخدمات</a>
                 </li>
 
             </ul>

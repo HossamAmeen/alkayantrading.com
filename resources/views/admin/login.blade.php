@@ -94,6 +94,11 @@
 
                         <form action="{{url('admin/login')}}"  method="post">
                             {{csrf_field()}}
+                            @if (session()->get('status') )
+                                <div class="alert alert-danger">
+                                    <strong>{{session()->get('status')}}</strong>
+                                </div>
+                            @endif
                             <div class="input-group ls-group-input">
                                 <input class="form-control" type="text" value="asd" name="name">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>

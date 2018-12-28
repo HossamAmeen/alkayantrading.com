@@ -2,11 +2,8 @@
 
 
 //////////////// web 
-Route::any('exportExcel' , 'ExelController@exportExcel');
-Route::any('upload' , 'ExelController@import');
 /////// arabic
 Route::get('/', 'HomeController@ar_index');
-
 Route::prefix('ar')->group(function () {
     Route::get('/', 'HomeController@ar_index');
     Route::get('/services', 'HomeController@ar_services');
@@ -34,17 +31,19 @@ Route::prefix('en')->group(function () {
 
 
 
-/////////// control_panel
-
-////////// asd@asd.asd asd
+/////////// control_panell
 /////////////// Admin 
-Route::prefix('admin')->group(function () { 
-    /////////// localhost:8000/admin
-    
+Route::prefix('admin')->group(function () {
+    /////////// localhost/admin
+
     Route::namespace('Admin')->group(function () {
-      
+
         Route::any('/login','PrefController@login')->name('login');
+        Route::get('logout' , 'PrefController@logout');
+
         Route::middleware(['middleware' => 'manager'])->group(function () {
+            Route::get('exportExcel' , 'PriceAtDayController@exportExcel');
+            Route::post('upload' , 'PriceAtDayController@import');
             Route::get('/', 'ProductController@index');
             Route::resource('user'    , 'UserController')->middleware('admin');
             Route::resource('prefs'    , 'PrefController')->middleware('admin');
@@ -59,13 +58,14 @@ Route::prefix('admin')->group(function () {
             Route::post('/add_price/{day_id}'    , 'PriceAtDayController@add_price');
 
         });
-        
+
     });
 });
-//////////return \Response::json($arr);	
+
+
+
+
 /////////////// mobile
-
-
 Route::prefix('api')->group(function () {
     
     Route::namespace('Mobile')->group(function () {

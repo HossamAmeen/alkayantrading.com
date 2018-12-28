@@ -5,12 +5,29 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Day;
 use App\Price_at_day;
-use App\Category;
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PriceAtDayController extends Controller
 {
 
+    public  function  exportExcel(){
+        return Excel::download(new UsersExport, 'products.xlsx');
+    }
+    public function import(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            Excel::import(new UsersImport, $request->file('excel'));
+            $request->session()->flash('status', 'uploaded was successfully!');
+        }
+
+
+        return redirect()->route('show_prices');
+
+    }
 
     public function add_price(Request $request , $day_id)
     {
@@ -31,7 +48,7 @@ class PriceAtDayController extends Controller
             $price->save();
         }
 
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'added was successfully!');
         return redirect()->route('show_prices');
               
     }
@@ -66,6 +83,7 @@ class PriceAtDayController extends Controller
     }
     
     public function show_prices(Request $request){
+
 
         $categories = DB::table('categories')->select('id','en_title')->get();
         $date = $request->date;

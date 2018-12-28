@@ -10,10 +10,15 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">المستخدمين</h3>
                     </div>
-
+                    
                     @if (session()->get('status') )
                         <div class="alert alert-success">
                             <strong>{{session()->get('status')}}</strong>
+                        </div>
+                    @endif
+                    @if (session()->get('delete') )
+                        <div class="alert alert-danger">
+                            <strong>{{session()->get('delete')}}</strong>
                         </div>
                     @endif
                     <div class="panel-body">

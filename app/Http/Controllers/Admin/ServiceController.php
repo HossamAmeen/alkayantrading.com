@@ -15,62 +15,40 @@ class ServiceController extends Controller
    
     public function index()
     {
-      
         $data['services'] = DB::table('services')
             ->join('users', 'users.id', '=', 'services.user_id')
             ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
             ->select('services.*', 'users.name','categories.en_title as cat_en_title')
+            ->where('services.deleted_at','=' , null)
             ->get();
         $data['title'] = 'عرض الخدمات';
         return view('admin.control_panel.services.show_services',$data);
     }
-
-   
     public function create()
     {
         $data['categories'] = DB::table('categories')->select('id','en_title')->get();
         $data['title'] = 'اضافه خدمه';
         return view('admin.control_panel.services.add_service',$data);
     }
-
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
-
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
         $service = Service::create($request->all());
         if($request->hasFile('img'))
         {
-
-//            $destination = 'resources/assets/site/images/' ;
-//            $img     = $request->file('img');
-//
-//            $img->move($destination,$service->id.$request->en_title.'.png');
-//
-//            $service->img = 'resources/assets/site/images/'.$service->id.$request->en_title.'.png';
-
+           $service->img = 'resources/assets/site/images/'.$service->id.$request->en_title.'.png';
            $photo = $request->file('img');
             $imagename = time().'.'.$photo->getClientOriginalExtension();
-
             $destinationPath = 'resources/assets/admin/images/';
-            $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+            $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
             $thumb_img->save($destinationPath.$imagename,80);
         }
-
-
-
-
-
         $service->img = $destinationPath.$imagename;
         $service->user_id = session('id');
         $service->save();
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'added was successfully!');
       return redirect()->route('service.index');
     }
     public function edit($id)
@@ -82,79 +60,61 @@ class ServiceController extends Controller
         if(!empty($service))
         return view('admin.control_panel.services.edit_service',$service )->with(compact('service', 'title','categories') );
         else
-        return redirect()->route('Service.index');
+        return redirect()->route('service.index');
     }
-
-    
     public function update(Request $request, $id)
     {
-
         $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
         $service = Service::find($id);
-
-
-
-      /*  $path = $service->img;
-        if(file_exists($path)) {
-            unlink($path);
-        }*/
-      //  return $request;
+        $path =  $service->img ;
+        $hasFile=false;
         if(!empty($service)){
-
             $service->fill($request->all());
-
             if($request->hasFile('img'))
             {
-
                 $photo = $request->file('img');
                 $imagename =   time().'.'.$photo->getClientOriginalExtension();
-               // return $photo;
                 $destinationPath = 'resources/assets/admin/images/';
                 $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
                 $thumb_img->save($destinationPath.$imagename,80);
                  $service->img = $destinationPath.$imagename;
-                
+                 $hasFile=true;
             }   
             $service->save();
-            
         }
-        $request->session()->flash('status', 'Task was successful!');
+        if($hasFile) {
+            
+             unlink($path);
+         }
+        $request->session()->flash('status', 'updated was successfully!');
         return redirect()->route('service.index');
     }
-
-    
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-      
         $service = Service::find($id);
-        
         if(!empty($service))
             { 
                 $service->delete();
-                
+                $request->session()->flash('delete', 'deleted was successfully!');
             }
-            return redirect()->route('service.index');
+
+        return redirect()->route('service.index');
     }
-
-
-
-
     function formValidation()
     {
        return array(
-        'ar_title'     => 'required|max:99|unique:services|regex:/^[\pL\s\d\-]+$/u',
-        'en_title'    => 'required|max:99|unique:services|regex:/^[\pL\s\d\-]+$/u',
-        
+        'ar_title'     => 'required|max:99|unique:services,ar_title,deleted_at|regex:/^[\pL\s\d\-]+$/u',
+        'en_title'    => 'required|max:99|unique:services,en_title,deleted_at|regex:/^[\pL\s\d\-]+$/u',
         'img'=> 'image',
        );
     }
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,ar_title,'.$id,
-            'en_title'    => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,en_title,'.$id,
+            'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,ar_title,deleted_at,'.$id,
+            'en_title'    => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,en_title,deleted_at,'.$id,
             'img'=> 'image',			
            );
     }

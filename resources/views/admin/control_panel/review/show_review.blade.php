@@ -16,6 +16,11 @@
                             <strong>{{session()->get('status')}}</strong>
                         </div>
                     @endif
+                    @if (session()->get('delete') )
+                        <div class="alert alert-success">
+                            <strong>{{session()->get('delete')}}</strong>
+                        </div>
+                    @endif
                     <div class="panel-body">
                         <div class="table-responsive ls-table">
                             <table class="table">
@@ -23,8 +28,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>الاسم</th>
-                                    <th>الايميل</th>
-                                    <th>رتبه</th>
+                                    <th>التعليق</th>
                                     <th>action</th>
                                    
                                 </tr>

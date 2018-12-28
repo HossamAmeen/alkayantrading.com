@@ -45,58 +45,16 @@
                             </div>
         
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Email address</label>
+                                <label class="col-lg-3 control-label">التعليق</label>
                                 <div class="col-lg-6">
                                     <input class="form-control" name="review" type="text" required
-                                     data-bv-emailaddress-message="The input is not a valid email address" 
-                                value="{{$review}}"/>
+                                     value="{{$review->review}}"
+                              />
                                 </div>
                             </div>
-        
-                            <div class="form-group">
-                                    <label class="col-lg-3 control-label">Password</label>
-                                    <div class="col-lg-6">
-                                        <input type="password" class="form-control" name="password"
-                                            value="{{ $password}}"
-                                            required data-bv-notempty-message="The password is required and cannot be empty"
-                                            data-bv-identical="true" data-bv-identical-field="confirmPassword" data-bv-identical-message="The password and its confirm are not the same"
-                                            data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username"/>
-                                    </div>
-                                </div>
-            
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Retype password</label>
-                                    <div class="col-lg-6">
-                                        <input type="password" class="form-control" name="password_confirmation"
-                                        value="{{ $password}}"
-                                            required data-bv-notempty-message="The confirm password is required and cannot be empty"
-                                            data-bv-identical="true" data-bv-identical-field="password" data-bv-identical-message="The password and its confirm are not the same"
-                                            data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username"/>
-                                    </div>
-                                </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">الرتبه</label>
-                                <div class="col-lg-5">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="radio" name="role" value="1" 
-                                            @if($role == 1) 
-                                                 checked
-                                            @endif
-                                            /> admin
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="radio" name="role" value="0" 
-                                            @if($role == 0) 
-                                                 checked
-                                            @endif
-                                            /> manager                                       
-                                         </label>
-                                    </div>
-                                </div>
-                            </div>
+
+
+
                             <div class="form-group">
                                     <label class="col-lg-3 control-label">image</label>
                                     <div class="col-lg-6">

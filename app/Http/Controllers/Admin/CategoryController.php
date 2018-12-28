@@ -15,10 +15,8 @@ class CategoryController extends Controller
         ->join('users' , 'users.id' , '=' , 'categories.user_id')
         ->select('categories.*','users.name')
         ->get();
-        
         $data['title'] = 'عرض الاقسام';
          return view('admin.control_panel.categories.show_categories' , $data);
-        
     }
 
     public function create()
@@ -35,7 +33,7 @@ class CategoryController extends Controller
         $category = Category::create($request->all());
         $category->user_id = session('id') ;
         $category->save();
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'added was successfully!');
         return redirect()->route('category.index');
     }
     public function edit($id)
@@ -55,36 +53,32 @@ class CategoryController extends Controller
         $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
-
         $category = Category::find($id);
-
         if(!empty($category))
             {
-
-               // return "test";
                 $category->fill($request->all());
                 $category->save();
-               // return $category;
+                $request->session()->flash('status', 'updated was successfully!');
             }
-        $request->session()->flash('status', 'Task was successful!');
+
         return redirect()->route('category.index');
     }
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $category = Category::find($id);
         
         if(!empty($category))
             { 
                 $category->delete();
-                
+                $request->session()->flash('delete', 'deleted was successfully!');
             }
             return redirect()->route('category.index');
     }
     function formValidation()
     {
        return array(
-        'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories',
-        'en_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories',
+        'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories,ar_title',
+        'en_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories,en_title',
        );
     }
     function EditformValidation($id)

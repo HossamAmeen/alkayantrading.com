@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">إضافه تعليق</h3>
+                            <h3 class="panel-title">إضافه عضو</h3>
                         </div>
                         <div class="panel-body">
                             <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/team')}}"
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">Sign up</button>
+                                        <button type="submit" class="btn btn-primary">add</button>
                                     </div>
                                 </div>
                             </form>

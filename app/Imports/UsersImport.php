@@ -12,21 +12,22 @@ class UsersImport implements ToCollection
 {
     public function collection(Collection $rows)
     {
-        $date = date("Y-m-d");
-        $day_id = Day::where('day','=',$date)->first()->id;
+
+        $day_id = Day::where('day','=',date("Y-m-d"))->first()->id;
 
         foreach ($rows as $row)
         {
-            $price =  Price_at_day::where('day_id','=',$day_id)->first();
-            $price->user_id = session('id') ;
-            $price->day_id = $day_id ;
+            $product_id  = Product::where('en_title','=',$row[3])->first();
 
-            $product_id  = Product::where('en_title','=',$row[0])->first();
-            if(!empty($product_id))
+
+           // echo  $product_id . " " . $row[1];
+            if(!empty($product_id)&& !empty($row[4]))
             {
-                $product_id = $product_id->id;
-                $price->product_id = $product_id;
-                $price->price = $row[1];
+                $price =  Price_at_day::where('day_id','=',$day_id)
+                ->where('product_id','=',$product_id->id)->first();
+                $price->user_id = session('id') ;
+                $price->price = $row[4];
+                //var_dump($price);
                 $price->save();
             }
 

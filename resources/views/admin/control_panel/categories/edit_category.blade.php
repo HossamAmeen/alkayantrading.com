@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">إضافه قسم</h3>
+                            <h3 class="panel-title">تعديل قسم</h3>
                         </div>
                         <div class="panel-body">
                         <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/category/'.$id)}}"
@@ -56,7 +56,7 @@
                                                                 
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">update up</button>
+                                        <button type="submit" class="btn btn-primary">update</button>
                                     </div>
                                 </div>
                             </form>

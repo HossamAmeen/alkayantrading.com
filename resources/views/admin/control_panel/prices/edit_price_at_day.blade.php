@@ -64,13 +64,29 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">الاقسام</h3>
+                            <h3 class="panel-title">الاسعار</h3>
                         </div>
+                        @if(!empty(session()->get('status')))
                         <div class="alert alert-success">
                             <strong>Success!</strong>  {{session()->get('status')}}
                         </div>
+                        @endif
                         <div class="panel-body" >
                             <div class="table-responsive ls-table">
+                                <a class="btn btn-primary" href="{{url('admin/exportExcel')}}" role="button">download excel</a>
+                                <form method="post" action="{{url('admin/upload')}}" enctype="multipart/form-data">
+                                    {{csrf_field()}}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01" name="excel">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="add">
+                                </form>
                                 <form id="defaultForm" method="POST" action="{{url('admin/add_price/'.$day_id)}}" class="form-horizontal ls_form" >
                                     {{csrf_field()}}
 

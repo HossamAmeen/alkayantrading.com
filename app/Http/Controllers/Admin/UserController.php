@@ -16,44 +16,31 @@ class UserController extends Controller
         $data['title'] = 'عرض المستخدمين';
         return view('admin.control_panel.users.show_users',$data);
     }
-
-   
     public function create()
     {
         $data['title'] = 'اضافه مستخدم';
         return view('admin.control_panel.users.add_user',$data);
     }
-
-    
     public function store(Request $request)
     {
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
         $user = User::create($request->all());
-        
-
         $user->password = Hash::make($request->password);
-
         if($request->hasFile('img'))
         {
             $photo = $request->file('img');
             $imagename = time().'.'.$photo->getClientOriginalExtension();
-
             $destinationPath = 'resources/assets/admin/images/';
-            $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
-            $thumb_img->save($destinationPath.$imagename,80);
+            $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
+            $thumb_img->save($destinationPath.$imagename,60);
             $user->img = $destinationPath . $imagename;
         }
-
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'Added successfully!');
         $user->save();
         return redirect()->route('user.index');
     }
-   
-    
-   
-
     public function edit($id)
     {
         
@@ -69,16 +56,15 @@ class UserController extends Controller
     
     public function update(Request $request, $id)
     {
-
         $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
        $user = User::find($id);
+       $path =  $user->img ;
+       $hasFile=false;
        $newPassword = true ; 
        if(!empty($user))
        {
-
-
             if($request->password  == $user->password){
                 $newPassword = false ;
             }
@@ -94,26 +80,30 @@ class UserController extends Controller
                $photo = $request->file('img');
                $imagename =   time().'.'.$photo->getClientOriginalExtension();
                $destinationPath = 'resources/assets/admin/images/';
-               $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+               $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
                $thumb_img->save($destinationPath.$imagename,80);
                $user->img = $destinationPath . $imagename;
+               $hasFile=true;
            }
-
                 $user->save();
         }
-        $request->session()->flash('status', 'Task was successful!');
+        if($hasFile) {
+             unlink($path);
+         }
+        $request->session()->flash('status', 'updated was successfully!');
         return redirect()->route('user.index');
-
     }
 
     
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $user = User::find($id);
         if(!empty($user)){
            
          $user->delete();
+         $request->session()->flash('delete', 'deleted was successfully!');
          }
+
          return redirect()->route('user.index');
     }
     

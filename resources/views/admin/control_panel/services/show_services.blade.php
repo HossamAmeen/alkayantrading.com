@@ -16,7 +16,11 @@
                             <strong>{{session()->get('status')}}</strong>
                         </div>
                     @endif
-
+                    @if (session()->get('delete') )
+                        <div class="alert alert-danger">
+                            <strong>{{session()->get('delete')}}</strong>
+                        </div>
+                    @endif
                     <div class="panel-body">
                         <div class="table-responsive ls-table">
                             <table class="table">

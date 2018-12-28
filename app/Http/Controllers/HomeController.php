@@ -228,7 +228,7 @@ class HomeController extends Controller
     {
         $title =  "شركة كيان -  من نحن";
         $data['teams'] = Team::all();
-        return view('web.ar.about' , $data)->with(compact('title') );
+        return view('web.en.about' , $data)->with(compact('title') );
 
     }
     public function en_join_us(Request $request)

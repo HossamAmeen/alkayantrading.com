@@ -13,50 +13,36 @@ class TeamController extends Controller
         $data['title'] = 'عرض الاعضاء';
         return view('admin.control_panel.team.show_team',$data);
     }
-
-
     public function create()
     {
         $data['title'] = 'اضافه عضو';
         return view('admin.control_panel.team.add_team',$data);
     }
-
-
     public function store(Request $request)
     {
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
         $team = Team::create($request->all());
-
-
-
-
         if($request->hasFile('img'))
         {
             $photo = $request->file('img');
             $imagename = time().'.'.$photo->getClientOriginalExtension();
 
             $destinationPath = 'resources/assets/admin/images/';
-            $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+            $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
             $thumb_img->save($destinationPath.$imagename,80);
             $team->img = $destinationPath . $imagename;
         }
-
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'added was successfully!');
         $team->save();
         return redirect()->route('team.index');
     }
-
-
-
-
     public function edit($id)
     {
-
         $team = Team::find($id);
-        $title = 'تعديل المستخدمين';
-        $team= $team->makeVisible('password'); //// for hidden in model
+        $title = 'تعديل الاعضاء';
+
         if(!empty($team))
             return view('admin.control_panel.team.edit_team',$team)->with(compact('team', 'title') );
         else
@@ -66,7 +52,6 @@ class TeamController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
@@ -74,15 +59,12 @@ class TeamController extends Controller
         $newPassword = true ;
         if(!empty($team))
         {
-
-
             if($request->password  == $team->password){
                 $newPassword = false ;
             }
             $rules = $this->EditformValidation($id);
             $this->validate($request, $rules);
             $team->fill($request->all());
-
             if($newPassword){
                 $team->password =  Hash::make($request->password);
             }
@@ -91,25 +73,24 @@ class TeamController extends Controller
                 $photo = $request->file('img');
                 $imagename =   time().'.'.$photo->getClientOriginalExtension();
                 $destinationPath = 'resources/assets/admin/images/';
-                $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+                $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
                 $thumb_img->save($destinationPath.$imagename,80);
                 $team->img = $destinationPath . $imagename;
             }
-
             $team->save();
         }
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'updated was successfully!');
         return redirect()->route('team.index');
-
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $team = Team::find($id);
         if(!empty($team)){
 
             $team->delete();
+            $request->session()->flash('delete', 'deleted was successfully!');
         }
         return redirect()->route('team.index');
     }

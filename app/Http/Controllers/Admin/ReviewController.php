@@ -13,48 +13,37 @@ class ReviewController extends Controller
         $data['title'] = 'عرض التعليقات';
         return view('admin.control_panel.review.show_review',$data);
     }
-
-
     public function create()
     {
         $data['title'] = 'اضافه تعليق';
         return view('admin.control_panel.review.add_review',$data);
     }
-
-
     public function store(Request $request)
     {
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
         $review = Review::create($request->all());
-
-
         if($request->hasFile('img'))
         {
             $photo = $request->file('img');
             $imagename = time().'.'.$photo->getClientOriginalExtension();
 
             $destinationPath = 'resources/assets/admin/images/';
-            $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+            $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
             $thumb_img->save($destinationPath.$imagename,80);
             $review->img = $destinationPath . $imagename;
         }
 
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'added was successfully!');
         $review->save();
         return redirect()->route('review.index');
     }
-
-
-
-
     public function edit($id)
     {
-
         $review = Review::find($id);
-        $title = 'تعديل المستخدمين';
-        $review= $review->makeVisible('password'); //// for hidden in model
+        $title = 'تعديل التعليق';
+
         if(!empty($review))
             return view('admin.control_panel.review.edit_review',$review)->with(compact('review', 'title') );
         else
@@ -64,7 +53,6 @@ class ReviewController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
@@ -72,8 +60,6 @@ class ReviewController extends Controller
         $newPassword = true ;
         if(!empty($review))
         {
-
-
             if($request->password  == $review->password){
                 $newPassword = false ;
             }
@@ -89,25 +75,26 @@ class ReviewController extends Controller
                 $photo = $request->file('img');
                 $imagename =   time().'.'.$photo->getClientOriginalExtension();
                 $destinationPath = 'resources/assets/admin/images/';
-                $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
+                $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
                 $thumb_img->save($destinationPath.$imagename,80);
                 $review->img = $destinationPath . $imagename;
             }
 
             $review->save();
         }
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'updated was successfully!');
         return redirect()->route('review.index');
 
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $review = Review::find($id);
         if(!empty($review)){
 
             $review->delete();
+            $request->session()->flash('delete', 'deleted was successfully!');
         }
         return redirect()->route('review.index');
     }
@@ -135,8 +122,6 @@ class ReviewController extends Controller
             'name.*'            =>  'هذا الحقل (قسم بالعربيه) يجب يحتوي ع حروف وارقام فقط',
 
             'review.required'     => 'هذا الحقل (التعليق) مطلوب ',
-
-            'email.*'            =>  'هذا الحقل (البريد) يجب يحتوي ع حروف وارقام فقط ',
 
             'image'            =>  'هذا الحقل (اضافه الصورة) يجب ان يكون صورة',
 

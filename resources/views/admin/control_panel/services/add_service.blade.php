@@ -58,7 +58,7 @@
                                            <select name="category_id">
                                                <option value="{{NULL}}"></option> 
                                             @foreach ($categories as $category)
-                                           <option value="{{$category->id}}">{{$category->en_title}}</option>  
+                                           <option value="{{$category->id}}" @if($category->id == old('category_id')) selected @endif>{{$category->en_title}}</option>
                                             @endforeach
                                             
                                            </select>
@@ -73,7 +73,7 @@
                                     </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">Sign up</button>
+                                        <button type="submit" class="btn btn-primary">add</button>
                                     </div>
                                 </div>
                             </form>
