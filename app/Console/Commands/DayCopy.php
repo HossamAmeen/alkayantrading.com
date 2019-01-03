@@ -41,11 +41,11 @@ class DayCopy extends Command
         $newDay = new Day();
         $newDay->day = date("Y-m-d");
         $newDay->save();
-
-        $yesterday = Day::where('day', '=', date('Y/m/d', strtotime('-1 days')))->first();
-
+        Log.info('cron started');
+       /* $yesterday = Day::where('day', '=', date('Y/m/d', strtotime('-1 days')))->first();
+        if (!empty($yesterday))
         $price_at_yesterdays = Price_at_day::where('day_id', '=', $yesterday->id)->get();
-
+        if (!empty($price_at_yesterdays))
         foreach ($price_at_yesterdays as $price_at_yesterday) {
 
             $price_at_day = new Price_at_day();
@@ -54,6 +54,6 @@ class DayCopy extends Command
             $price_at_day->price = $price_at_yesterday->price;
             $price_at_day->user_id = $price_at_yesterday->user_id;
             $price_at_day->save();
-        }
+        }*/
     }
 }

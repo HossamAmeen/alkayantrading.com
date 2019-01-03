@@ -15,6 +15,8 @@ class ProductController extends Controller
             ->join('users', 'users.id', '=', 'products.user_id')
             ->leftJoin('categories', 'categories.id', '=', 'products.category_id')
             ->select('products.*', 'users.name','categories.en_title as cat_en_title')
+            ->where('categories.deleted_at','=',null)
+            ->where('products.deleted_at','=',null)
             ->get();
 
         $data['title'] = 'عرض المنتجات';
@@ -24,7 +26,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $data['categories'] = DB::table('categories')->select('id','en_title')->get();
+        $data['categories'] = DB::table('categories')->where('deleted_at','=',null)->select('id','en_title')->get();
         $data['title'] = 'اضافه منتج';
         return view('admin.control_panel.products.add_product',$data);
     }
@@ -92,8 +94,8 @@ class ProductController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products',
-        'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products',
+        'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products,NULL,id,deleted_at,NULL',
+        'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products,NULL,id,deleted_at,NULL',
         'company_name'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
        
        );
@@ -101,8 +103,8 @@ class ProductController extends Controller
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,ar_title,'.$id,
-            'en_title'    =>  'regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,en_title,'.$id,
+            'ar_title'     => "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,ar_title,$id,id,deleted_at,NULL",
+            'en_title'    =>  "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,en_title,$id,id,deleted_at,NULL",
             'company_name'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
 			
            );

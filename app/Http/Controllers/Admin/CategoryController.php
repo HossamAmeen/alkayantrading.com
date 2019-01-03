@@ -14,6 +14,7 @@ class CategoryController extends Controller
         $data['categories'] = DB::table('categories')
         ->join('users' , 'users.id' , '=' , 'categories.user_id')
         ->select('categories.*','users.name')
+       ->where('categories.deleted_at' , '=' , NULL)
         ->get();
         $data['title'] = 'عرض الاقسام';
          return view('admin.control_panel.categories.show_categories' , $data);
@@ -77,15 +78,15 @@ class CategoryController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories,ar_title',
-        'en_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories,en_title',
+        'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories,ar_title,NULL,id,deleted_at,NULL',
+        'en_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories,en_title,NULL,id,deleted_at,NULL',
        );
     }
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:categories,ar_title,'.$id,
-            'en_title'    =>  'regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:categories,en_title,'.$id,
+            'ar_title'     => "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique::categories,ar_title,$id,id,deleted_at,NULL",
+            'en_title'    =>  "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:categories,en_title,$id,id,deleted_at,NULL",
 
 
         );

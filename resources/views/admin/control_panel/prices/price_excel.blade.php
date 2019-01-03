@@ -1,19 +1,40 @@
 <html>
     <body>
-        <table>
-                <table class="table">
-                    <tbody>
-                        <?php $i=1; ?>
-                        @foreach ($products as $item)
-                            <tr>
-                                <td>{{$i++}}</td>
-                                <td >{{$item->ar_title}}</td>
-                                <td >{{$item->company_name}}</td>
-                                <td >{{$item->en_title}}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-        </table>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>id</th>
+            <th>user_id</th>
+            <th>الشركه</th>
+            <th>اسم المنتج بالعربي</th>
+            <th>اسم المنتج بالانجليزي</th>
+            <th>price</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        $i=1;
+        ?>
+        @foreach ($products as $product)
+
+
+            <tr>
+                <td>{{$i++}}</td>
+                <td>{{$product->id}}</td>
+                <td>{{$product->user_id}}</td>
+                <th>{{$product->company_name}}</th>
+                <td>
+                  {{$product->ar_title}}
+                </td>
+                <td>{{$product->en_title}}</td>
+
+
+
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
     </body>
 </html>

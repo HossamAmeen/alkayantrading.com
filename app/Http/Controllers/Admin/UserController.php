@@ -111,7 +111,7 @@ class UserController extends Controller
     {
        return array(
         'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
-        'email'    => 'required|max:99|email|unique:users,email',
+        'email'    => 'required|max:99|email|unique:users,email,NULL,id,deleted_at,NULL',
         'password'              => 'required | confirmed ',
         'password_confirmation' => 'required ',
         'img'=> 'image',
@@ -121,7 +121,7 @@ class UserController extends Controller
     {
         return array(
             'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
-			'email'    => 'required|max:99|email|unique:users,email,'.$id,
+			'email'    => "required|max:99|email|unique:users,email,$id,id,deleted_at,NULL",
 			'password' => 'confirmed',
             'img'=> 'image',
            );

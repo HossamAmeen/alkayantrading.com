@@ -25,3 +25,5 @@ cd /home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run
 cd /usr/local/bin/php/home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run >> /dev/null 2>&1
 
 php -d register_argc_argv=On /home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run
+
+ cd /home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run 

@@ -26,7 +26,7 @@ class ServiceController extends Controller
     }
     public function create()
     {
-        $data['categories'] = DB::table('categories')->select('id','en_title')->get();
+        $data['categories'] = DB::table('categories')->where('deleted_at','=',null)->select('id','en_title')->get();
         $data['title'] = 'اضافه خدمه';
         return view('admin.control_panel.services.add_service',$data);
     }
@@ -44,8 +44,9 @@ class ServiceController extends Controller
             $destinationPath = 'resources/assets/admin/images/';
             $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
             $thumb_img->save($destinationPath.$imagename,80);
+            $service->img = $destinationPath.$imagename;
         }
-        $service->img = $destinationPath.$imagename;
+
         $service->user_id = session('id');
         $service->save();
         $request->session()->flash('status', 'added was successfully!');
@@ -105,16 +106,16 @@ class ServiceController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'required|max:99|unique:services,ar_title,deleted_at|regex:/^[\pL\s\d\-]+$/u',
-        'en_title'    => 'required|max:99|unique:services,en_title,deleted_at|regex:/^[\pL\s\d\-]+$/u',
+        'ar_title'     => 'required|max:99|unique:services,ar_title,NULL,id,deleted_at,NULL|regex:/^[\pL\s\d\-]+$/u',
+        'en_title'    => 'required|max:99|unique:services,en_title,NULL,id,deleted_at,NULL|regex:/^[\pL\s\d\-]+$/u',
         'img'=> 'image',
        );
     }
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,ar_title,deleted_at,'.$id,
-            'en_title'    => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,en_title,deleted_at,'.$id,
+            'ar_title'     => "required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,ar_title,deleted_at,$id,id,deleted_at,NULL",
+            'en_title'    => "required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,en_title,$id,id,deleted_at,NULL",
             'img'=> 'image',			
            );
     }

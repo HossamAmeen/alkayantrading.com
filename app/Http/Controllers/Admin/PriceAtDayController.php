@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Product;
 use DB;
 use App\Day;
 use App\Price_at_day;
@@ -28,7 +29,6 @@ class PriceAtDayController extends Controller
         return redirect()->route('show_prices');
 
     }
-
     public function add_price(Request $request , $day_id)
     {
 
@@ -37,51 +37,18 @@ class PriceAtDayController extends Controller
         $this->validate($request, $rules,$message);
 
 
-        for ($i=0; $i < count($request->price) ; $i++) { 
-            $price =  Price_at_day::where('day_id','=',$day_id)->first();
+        for ($i=0; $i < count($request->price) ; $i++) {
+
+            $price =  Price_at_day::where('day_id','=',$day_id)->where('product_id','=',$request->product_id[$i])->first();
             $price->user_id = session('id') ;
-            $price->day_id = $day_id ;
-            $price->product_id = $request->product_id[$i];
             $price->price = $request->price[$i];
-          //  return $price;
-           // return $request->all();
             $price->save();
+            $request->session()->flash('status', 'added was successfully!');
         }
 
-        $request->session()->flash('status', 'added was successfully!');
         return redirect()->route('show_prices');
               
     }
-
-
-    public function copy_day(){
-
-        $yesterday =  Day::where('day','=',date('Y/m/d',strtotime('-1 days')))->first();
-
-
-       $price_at_yesterdays = Price_at_day::where('day_id','=',$yesterday->id)->get();
-        //return count($price_at_yesterdays);
-        foreach ($price_at_yesterdays as $price_at_yesterday)
-        {
-          //  return $price_at_yesterday->product_id;
-            $price_at_day = new Price_at_day();
-            $price_at_day->product_id = $price_at_yesterday->product_id;
-            $price_at_day->day_id = $price_at_yesterday->day_id +1 ;
-            $price_at_day->price = $price_at_yesterday->price;
-            $price_at_day->user_id = $price_at_yesterday->user_id;
-            $price_at_day->save();
-        }
-
-        /*
-         $today = new Day();
-         $today->day = date("Y/m/d");
-         $today->save();*/
-
-
-
-
-    }
-    
     public function show_prices(Request $request){
 
 
