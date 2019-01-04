@@ -989,3 +989,129 @@
 #4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #5 {main}
 "} 
+[2019-01-03 20:44:09] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:45:01] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:46:01] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:47:02] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:48:01] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:49:02] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:50:01] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:51:02] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:52:02] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:53:01] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:54:01] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:55:01] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:56:02] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2019-01-03 20:57:01] local.ERROR: Invalid argument supplied for foreach() {"exception":"[object] (ErrorException(code: 0): Invalid argument supplied for foreach() at /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php:265)
+[stacktrace]
+#0 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Input/ArgvInput.php(265): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Invalid argumen...', '/home/t4xtfspii...', 265, Array)
+#1 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/symfony/console/Application.php(1014): Symfony\\Component\\Console\\Input\\ArgvInput->getFirstArgument()
+#2 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Console/Application.php(79): Symfony\\Component\\Console\\Application->getCommandName(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#3 /home/t4xtfspii4qm/public_html/alkayantrading.com/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan(36): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 

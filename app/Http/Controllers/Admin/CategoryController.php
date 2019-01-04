@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Category;
 use DB;
 class CategoryController extends Controller
@@ -11,6 +12,7 @@ class CategoryController extends Controller
     
     public function index()
     {
+        Log::info('Showing user profile for user: ');
         $data['categories'] = DB::table('categories')
         ->join('users' , 'users.id' , '=' , 'categories.user_id')
         ->select('categories.*','users.name')

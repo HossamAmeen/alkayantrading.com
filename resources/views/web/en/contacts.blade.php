@@ -66,22 +66,22 @@
 						@endif
                         <div class="row"> 
                             <div class="form-group col-md-12">
-                                <input type="text" name="Name" class="form-control" placeholder="enter your name" id="form-name" required>
+                                <input type="text" name="name" class="form-control" value="{{old('name')}}" placeholder="enter your name" id="form-name" required>
                             </div>
                         </div>
                         <div class="col-sm-12"> 
                             <div class="row"> 
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="phone" class="form-control" placeholder="phone number" id="form-phone" required>
+                                    <input type="text" name="phone"  value="{{old('phone')}}" class="form-control" placeholder="phone number" id="form-phone" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="email" class="form-control" placeholder="E-mail" id="form-email" required>
+                                    <input type="text" name="email" class="form-control"  value="{{old('email')}}" placeholder="E-mail" id="form-email" required>
                                 </div>
                             </div>
                             
                         </div>
                         <div class="col-sm-12">
-                            <textarea  name="text" rows="8" placeholder="Leave a Message" class="form-control" id="form-msg" name="message" required></textarea>
+                            <textarea  name="text" rows="8" placeholder="Leave a Message" value="{{old('text')}}" class="form-control" id="form-msg" name="text" required></textarea>
                             <input type="submit" name="ارسال" value="submit" id="submit" class="btn btn-default hvr-grow">
                         </div>
                     </form>

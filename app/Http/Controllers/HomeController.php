@@ -114,12 +114,15 @@ class HomeController extends Controller
             ];
 
            // return $data['email'] ;
-            Mail::send('mail',$data,function($message) use ($data){
-
+            //$pref = Pref::find(1);
+            Mail::send('web.job_mail',$data,function($message) use ($data){
+                $pref = Pref::find(1);
                 $message->from( $data['email'] , 'kayan');
-                $message->to("info@alkayantrading.com");
-                $message->subject('job');
+                $message->to($pref['mainEmail']);
+                $message->subject("job");
+
             });
+            $request->session()->flash('status', 'send mail  was successful!');
             return redirect()->back();
         }
        
@@ -130,23 +133,26 @@ class HomeController extends Controller
     {
 
         $title =  "شركة كيان - تواصل معانا";
-        $pref = Pref::find(1);
+
         if ($request->isMethod('post')) {
             $rules = $this->contactFormValidation();
             $message = $this->contactMessageValidation();
             $this->validate($request, $rules,$message);
             $data=[
                 'email' =>  $request->email,
-                'Name' => $request->Name,
+                'name' => $request->name,
                 'phone'=>$request->phone,
                 'text'=>$request->text,
             ];
-            Mail::send('mail',$data,function($message) use ($data){
+
+            Mail::send('web.contact_mail',$data,function($message) use ($data){
+                $pref = Pref::find(1);
 
                 $message->from( $data['email'] , 'kayan');
-                $message->to("info@alkayantrading.com");
+                $message->to($pref['mainEmail']);
                 $message->subject('contact');
             });
+            $request->session()->flash('status', 'send mail  was successful!');
             return redirect()->back();
         }
 
@@ -248,12 +254,13 @@ class HomeController extends Controller
                 'job'=>$request->job,
             ];
 
-            Mail::send('mail',$data,function($message) use ($data){
-
+            Mail::send('web.job_mail',$data,function($message) use ($data){
+                $pref = Pref::find(1);
                 $message->from( $data['email'] , 'kayan');
-                $message->to("info@alkayantrading.com");
+                $message->to($pref['mainEmail']);
                 $message->subject('job');
             });
+            $request->session()->flash('status', 'send mail  was successful!');
             return redirect()->back();
         }
        
@@ -273,14 +280,15 @@ class HomeController extends Controller
                 'email' =>  $request->email,
                 'Name' => $request->Name,
                 'phone'=>$request->phone,
-                'text'=>$request->text,
+                'message'=>$request->message,
             ];
-            Mail::send('mail',$data,function($message) use ($data){
-
+            Mail::send('web.contact_mail',$data,function($message) use ($data){
+                $pref = Pref::find(1);
                 $message->from( $data['email'] , 'kayan');
-                $message->to("info@alkayantrading.com");
+                $message->to($pref['mainEmail']);
                 $message->subject('contact');
             });
+            $request->session()->flash('status', 'send mail  was successful!');
             return redirect()->back();
         }
 
@@ -290,11 +298,11 @@ class HomeController extends Controller
     {
 
         return array(
-            'name'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99',
-            'address'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
+            'name'     => 'required|regex:/^[\pL\s\d\-]+$/u||max:99',
+            'address'    => 'required|regex:/^[\pL\s\-]+$/u||max:99',
              'email' => 'required|email',
-            'phone'         => 'required|numeric',
-            'job'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
+            'phone'         => 'required|numeric|min:1000000000',
+            'job'    => 'required|regex:/^[\pL\s\-]+$/u||max:99',
 
         );
     }
@@ -309,8 +317,9 @@ class HomeController extends Controller
             'email.required'     => 'هذا الحقل (البريد) مطلوب ',
             'email.*'            =>  'هذا الحقل (البريد)يجب ان يكون بريد صحيح',
 
-            'phone.required'     => 'هذا الحقل (الاسم) مطلوب ',
-            'phone.*'            =>  'هذا الحقل (الاسم) يجب يحتوي ع ارقام فقط',
+            'phone.required'     => 'هذا الحقل (التلفون) مطلوب ',
+            'phone.min'          => 'هذا الحقل (التلفون) يجب الا يقل عن 11 رقم ',
+            'phone.*'            =>  'هذا الحقل (التلفون) يجب يحتوي ع ارقام فقط',
 
             'job.required'     => 'هذا الحقل (العمل) مطلوب ',
             'job.*'            =>  'هذا الحقل (العمل) يجب يحتوي ع حروف وارقام فقط',
@@ -324,27 +333,28 @@ class HomeController extends Controller
 
 
         return array(
-            'Name'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99',
+            'name'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99',
 
             'email' => 'required|email',
-            'phone'         => 'required|numeric',
+            'phone'         => 'required|numeric|min:1000000000',
             'text'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
 
         );
     }
     function contactMessageValidation(){
         return array(
-            'Name.required'     => 'هذا الحقل (الاسم) مطلوب ',
-            'Name.*'            =>  'هذا الحقل (الاسم) يجب يحتوي ع حروف وارقام فقط',
+            'name.required'     => 'هذا الحقل (الاسم) مطلوب ',
+            'name.*'            =>  'هذا الحقل (الاسم) يجب يحتوي ع حروف وارقام فقط',
 
-            'text.required'     => 'هذا الحقل (العنوان) مطلوب ',
-            'text.*'            =>  'هذا الحقل (العنوان) يجب يحتوي ع حروف وارقام فقط',
+            'text.required'     => 'هذا الحقل (الرساله) مطلوب ',
+            'text.*'            =>  'هذا الحقل (الرساله) يجب يحتوي ع حروف وارقام فقط',
 
             'email.required'     => 'هذا الحقل (البريد) مطلوب ',
             'email.*'            =>  'هذا الحقل (البريد)يجب ان يكون بريد صحيح',
 
-            'phone.required'     => 'هذا الحقل (الاسم) مطلوب ',
-            'phone.*'            =>  'هذا الحقل (الاسم) يجب يحتوي ع ارقام فقط',
+            'phone.required'     => 'هذا الحقل (التلفون) مطلوب ',
+            'phone.min'          => 'هذا الحقل (التلفون) يجب الا يقل عن 11 رقم ',
+            'phone.*'            =>  'هذا الحقل (التلفون) يجب يحتوي ع ارقام فقط',
 
 
         );

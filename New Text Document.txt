@@ -11,19 +11,9 @@ git clone https://hosam_ameen@bitbucket.org/abdelrahman_elzedy/alkayantrading.co
 
 ssh t4xtfspii4qm@alkayantrading.com
 
-git push origin
 
 git remote set-url origin https://github.com/user/repo2.git
 git remote -v
 
-git clone https://github.com/HossamAmeen/alkayantrading.com-.git
-https://hosam_ameen@bitbucket.org/hosam_ameen/alkayantrading.com.git.git
 
-
-cd /home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run >> /dev/null 2>&1
-
-cd /usr/local/bin/php/home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run >> /dev/null 2>&1
-
-php -d register_argc_argv=On /home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run
-
- cd /home/t4xtfspii4qm/public_html/alkayantrading.com && php artisan schedule:run 
+ php-cli -q /home/t4xtfspii4qm/public_html/alkayantrading.com/artisan schedule:run >> /dev/null 2>&1 

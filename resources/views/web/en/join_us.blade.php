@@ -35,27 +35,27 @@
 							@endif
 							<div class="form-group">
 							    <label for="name">Name:</label>
-							    <input type="text" class="form-control" name="name" id="name" >
+							    <input type="text" class="form-control" value="{{old('name')}}" name="name" id="name" >
 							 </div>
 							 
 							<div class="form-group">
 							    <label for="name"> Address:</label>
-							    <input type="text" class="form-control" name="address" id="address" >
+							    <input type="text" class="form-control"  value="{{old('address')}}"  name="address" id="address" >
 							 </div>
 							
 							<div class="form-group">
 							    <label for="name"> Phone Numbers:</label>
-							    <input type="number" class="form-control" name="phone" id="phone" >
+							    <input type="number" class="form-control" value="{{old('phone')}}"  name="phone" id="phone" >
 							 </div>
 							
 							  <div class="form-group">
 							    <label for="email">E-mail:</label>
-							    <input type="email" class="form-control" name="email" id="email">
+							    <input type="email" class="form-control" value="{{old('email')}}"  name="email" id="email" >
 							  </div>
 							
 							<div class="form-group">
 							    <label for="name"> Job description:</label>
-							    <input type="text" class="form-control" name="job" id="job" >
+							    <input type="text" class="form-control" name="job" value="{{old('job')}}"  id="job" >
 							 </div>
 							
 							<div class="text-center button">

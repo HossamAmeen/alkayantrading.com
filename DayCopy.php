@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Day;
 use App\Price_at_day;
+use Log;
 class DayCopy extends Command
 {
     /**
@@ -41,8 +42,7 @@ class DayCopy extends Command
         $newDay = new Day();
         $newDay->day = date("Y-m-d");
         $newDay->save();
-       // Log.info('cron started');
-
+        Log.info('cron started');
        /* $yesterday = Day::where('day', '=', date('Y/m/d', strtotime('-1 days')))->first();
         if (!empty($yesterday))
         $price_at_yesterdays = Price_at_day::where('day_id', '=', $yesterday->id)->get();
