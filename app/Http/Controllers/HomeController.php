@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Routing\Route;
 use URL;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Service;
 use App\Pref;
@@ -133,7 +134,7 @@ class HomeController extends Controller
     {
 
         $title =  "شركة كيان - تواصل معانا";
-
+            Log::info('start sending message');
         if ($request->isMethod('post')) {
             $rules = $this->contactFormValidation();
             $message = $this->contactMessageValidation();
