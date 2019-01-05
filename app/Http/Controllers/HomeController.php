@@ -149,7 +149,7 @@ class HomeController extends Controller
             $subject  = "contact";
             $email = $request->email;
     
-            Mail::send(['html' => 'emails.contact'], ['text' => $text], function ($message) use ($email, $title, $subject) {
+            Mail::send(['html' => 'web.contact_mail'], ['text' => $text], function ($message) use ($email, $title, $subject) {
                 $message->from('abdelrahman.elzedy@gmail.com', $title);
     
                 $message->to('contact@alkayantrading.com')->subject($subject);
