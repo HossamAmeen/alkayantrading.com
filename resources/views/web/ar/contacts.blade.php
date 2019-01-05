@@ -76,7 +76,7 @@
                         <div class="col-sm-12">
                             <div class="row"> 
                                 <div class="form-group col-md-6">
-                                    <input type="number" class="form-control" name="phone" id="phone"    value="{{old('phone')}}" required>
+                                    <input type="text" class="form-control" name="phone" id="phone"    value="{{old('phone')}}" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <input type="text" name="email" value="{{old('email')}}" class="form-control" placeholder="الايميل" id="form-email" required>
