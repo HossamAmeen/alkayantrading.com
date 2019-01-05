@@ -144,6 +144,7 @@ class HomeController extends Controller
             //     'phone'=>$request->phone,
             //     'text'=>$request->text,
             // ];
+            
             $title  = $request->name;
             $text  = $request->text;
             $phone  = $request->phone;
