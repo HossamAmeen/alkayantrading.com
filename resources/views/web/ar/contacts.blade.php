@@ -31,7 +31,7 @@
 						<div class="content">
 							<h3 class="title">تليفون</h3>
 							<p class="details"><strong>محمول: </strong>{{$pref->phone}} </p>
-							<p class="details"><strong>ارضى : </strong>2143339 / 088</p>
+						
 						</div>
 					</div>
 					<div class="col-sm-4 item wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
@@ -76,7 +76,7 @@
                         <div class="col-sm-12">
                             <div class="row"> 
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" placeholder="التليفون" id="form-phone" required>
+                                    <input type="number" class="form-control" name="phone" id="phone"    value="{{old('phone')}}" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <input type="text" name="email" value="{{old('email')}}" class="form-control" placeholder="الايميل" id="form-email" required>

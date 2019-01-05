@@ -62,7 +62,7 @@ $factory->define(App\Pref::class , function (Faker $faker){
         'arMainAddress' =>'arMainAddress',
         'enMainAddress' =>'enMainAddress',
         'enMainAddress' =>'enMainAddress',
-        'mainEmail'     =>'admin@admin.com',
+        'mainEmail'     =>'contact@alkayantrading.com',
         'facebook'      =>'https://www.facebook.com/',
         'twitter'       =>'https://www.twitter.com/',
         'instgram'      =>'https://www.instgram.com/',

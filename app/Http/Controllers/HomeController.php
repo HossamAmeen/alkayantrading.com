@@ -138,20 +138,30 @@ class HomeController extends Controller
             $rules = $this->contactFormValidation();
             $message = $this->contactMessageValidation();
             $this->validate($request, $rules,$message);
-            $data=[
-                'email' =>  $request->email,
-                'name' => $request->name,
-                'phone'=>$request->phone,
-                'text'=>$request->text,
-            ];
-
-            Mail::send('web.contact_mail',$data,function($message) use ($data){
-                $pref = Pref::find(1);
-
-                $message->from( $data['email'] , 'kayan');
-                $message->to($pref['mainEmail']);
-                $message->subject('contact');
+            // $data=[
+            //     'email' =>  $request->email,
+            //     'name' => $request->name,
+            //     'phone'=>$request->phone,
+            //     'text'=>$request->text,
+            // ];
+            $title  = $request->name;
+            $text  = $request->text;
+            $subject  = "contact";
+            $email = $request->email;
+    
+            Mail::send(['html' => 'emails.contact'], ['text' => $text], function ($message) use ($email, $title, $subject) {
+                $message->from('abdelrahman.elzedy@gmail.com', $title);
+    
+                $message->to('contact@alkayantrading.com')->subject($subject);
             });
+
+            // Mail::send('web.contact_mail',$data,function($message) use ($data){
+            //     $pref = Pref::find(1);
+
+            //     $message->from( $data['email'] , 'kayan');
+            //     $message->to($pref['mainEmail']);
+            //     $message->subject('contact');
+            // });
             $request->session()->flash('status', 'send mail  was successful!');
             return redirect()->back();
         }
@@ -360,6 +370,67 @@ class HomeController extends Controller
         );
     }
 
+//     public function post_contact(Requests $request){
 
+//         $this->validate($request, $this->get_contact_form_validation_rules(), $this->get_contact_form_validation_messages());
+//         $title  = Input::get('name');
+//         $text  = Input::get('msg');
+//         $subject  = Input::get('subject');
+//         $email = Input::get('email');
+
+//         Mail::send(['html' => 'emails.contact'], ['text' => $text], function ($message) use ($email, $title, $subject) {
+//             $message->from($email, $title);
+
+//             $message->to('info@elmasria.co')->subject($subject);
+//         });
+// //        return Redirect('/');
+
+//     }//end post contact
+
+//     private function get_contact_form_validation_messages() {
+//         return array(
+//             'title.required'                => "رجاء إدخال الاسم",
+//         );
+//     }//end get validation messages
+
+//     private function get_contact_form_validation_rules()
+//     {
+//         return array(
+//             'title' => 'required',
+//             'msg' => 'required',
+//             'email' => 'required',
+//             'subject' => 'required',
+//         );
+//     }
+
+//     public function api_contact(Requests $request){
+
+//         $token = Input::get('token');
+//         if ($token !== APIHelper::TOKEN) {
+//             $data['error'] = "true";
+//             echo json_encode($data);
+//             return;
+//         }
+
+//         $this->validate($request, $this->get_contact_form_validation_rules(), $this->get_contact_form_validation_messages());
+//         $title  = Input::get('title');
+//         $text  = Input::get('msg');
+//         $subject  = Input::get('subject');
+//         $email = Input::get('email');
+
+//         Mail::send(['html' => 'emails.contact'], ['text' => $text], function ($message) use ($email, $title, $subject) {
+//             $message->from($email, $title);
+
+//             $message->to('info@elmasria.co')->subject($subject);
+//         });
+
+//         $data['error'] = "false";
+//         echo json_encode($data);
+//         return;
+
+
+// //        return Redirect('/');
+
+//     }//end post contact
     
 }

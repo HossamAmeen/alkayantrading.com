@@ -71,7 +71,7 @@
                             <i class="glyphicon glyphicon-user"></i>
 
                         </div>
-                        <h3>Identify Yourself</h3>
+                        <h3>log In</h3>
                         <div class="social-btn-login">
                             <ul>
                                 <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
@@ -100,7 +100,7 @@
                                 </div>
                             @endif
                             <div class="input-group ls-group-input">
-                                <input class="form-control" type="text" value="asd" name="name">
+                                <input class="form-control" type="text" value="" name="name">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                             </div>
 
