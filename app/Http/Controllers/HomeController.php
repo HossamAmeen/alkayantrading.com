@@ -151,7 +151,7 @@ class HomeController extends Controller
             $phone  = $request->phone;
             $subject  = "contact";
             $email = $request->email;
-    
+            Log::info($request->all());
             Mail::send(['html' => 'web.contact_mail'], ['text' => $text], function ($message) use ($email, $title, $subject,$phone,$text) {
                 $message->from('abdelrahman.elzedy@gmail.com', $title);
     
