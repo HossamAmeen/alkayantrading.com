@@ -12,7 +12,7 @@
         </li>
         <li >
             <a  href="#" @if($title == 'اضافه مستخدم' || $title == 'عرض المستخدمين') class="active"  @endif>
-                <i class="fa fa-bar-chart-o"></i> <span>المستخدم</span>
+                <i class="fa fa-bar-chart-o"></i> <span>المستخدمين</span>
             </a>
             <ul>
                 <li>
@@ -68,7 +68,7 @@
         </li>
         <li >
             <a  href="#"  @if($title == 'اضافه عضو' || $title == 'عرض الاعضاء') class="active"  @endif >
-                <i class="fa fa-bar-chart-o"></i> <span>الاعضاء</span>
+                <i class="fa fa-bar-chart-o"></i> <span>فريق العمل</span>
             </a>
             <ul>
                 <li>
@@ -82,14 +82,14 @@
         </li>
         <li >
             <a  href="#"  @if($title == 'اضافه تعليق' || $title == 'عرض التعليقات') class="active"  @endif >
-                <i class="fa fa-bar-chart-o"></i> <span>التلعيقات</span>
+                <i class="fa fa-bar-chart-o"></i> <span>آراء العملاء</span>
             </a>
             <ul>
                 <li>
-                    <a  @if($title == 'اضافه تعليق') class="active"  @endif href="{{url('admin/review/create')}}">اضافه تعليق</a>
+                    <a  @if($title == 'اضافه تعليق') class="active"  @endif href="{{url('admin/review/create')}}">اضافه رآي</a>
                 </li>
                 <li>
-                    <a @if($title == 'عرض التعليقات') class="active"  @endif  href="{{url('admin/review')}}">عرض التعليقات</a>
+                    <a @if($title == 'عرض التعليقات') class="active"  @endif  href="{{url('admin/review')}}">عرض الآراء</a>
                 </li>
 
             </ul>
@@ -101,6 +101,14 @@
             </a>
 
         </li>
+
+        <li >
+            <a  href="{{url('admin/logout')}}">
+                <i class="fa fa-power-off"></i> <span>تسجيل خروج</span>
+            </a>
+
+        </li>
+
 
     </ul>
     <!--Left navigation end-->

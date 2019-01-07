@@ -31,7 +31,7 @@
                                     </div>
                                 @endif  
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">name</label>
+                                <label class="col-lg-3 control-label">الاسم</label>
                                 <div class="col-lg-6">
                                     <input type="text" class="form-control" name="name"
                                            data-bv-message="The username is not valid"
@@ -45,7 +45,7 @@
                             </div>
         
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">التعليق</label>
+                                <label class="col-lg-3 control-label">الرآي</label>
                                 <div class="col-lg-6">
                                     <input class="form-control" name="review" type="text" required
                                      value="{{$review->review}}"
@@ -56,7 +56,7 @@
 
 
                             <div class="form-group">
-                                    <label class="col-lg-3 control-label">image</label>
+                                    <label class="col-lg-3 control-label">صورة</label>
                                     <div class="col-lg-6">
                                         <input type="file" name="img" >
                                     </div>
@@ -67,7 +67,7 @@
                             
                             <div class="form-group">
                                 <div class="col-lg-9 col-lg-offset-3">
-                                    <button type="submit" class="btn btn-primary">update</button>
+                                    <button type="submit" class="btn btn-primary">تحديث</button>
                                 </div>
                             </div>
                         </form>

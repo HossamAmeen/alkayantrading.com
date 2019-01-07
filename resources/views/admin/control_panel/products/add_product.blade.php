@@ -63,7 +63,7 @@
                                         </div>
                                 </div>
                                 <div class="form-group">
-                                        <label class="col-lg-3 control-label">category</label>
+                                        <label class="col-lg-3 control-label">قسم</label>
                                         <div class="col-lg-6">
                                            <select name="category_id">
 
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">add</button>
+                                        <button type="submit" class="btn btn-primary">إضافه</button>
                                     </div>
                                 </div>
                             </form>

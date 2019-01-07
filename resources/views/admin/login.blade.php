@@ -100,7 +100,7 @@
                                 </div>
                             @endif
                             <div class="input-group ls-group-input">
-                                <input class="form-control" type="text" value="" name="name">
+                                <input class="form-control" type="text" placeholder="username" name="name">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                             </div>
 

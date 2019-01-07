@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">تعديل منتج</h3>
+                            <h3 class="panel-title">تعديل الخدمه</h3>
                         </div>
                         <div class="panel-body">
                         <form id="defaultForm" method="post" class="form-horizontal ls_form" action="{{url('admin/service/'.$id)}}"
@@ -54,7 +54,7 @@
                                         </div>
                                 </div>
                                 <div class="form-group">
-                                        <label class="col-lg-3 control-label">category</label>
+                                        <label class="col-lg-3 control-label">قسم</label>
                                         <div class="col-lg-6">
                                            <select name="category_id">
                                             @foreach ($categories as $category)
@@ -69,7 +69,7 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                        <label class="col-lg-3 control-label">image</label>
+                                        <label class="col-lg-3 control-label">صورة</label>
                                         <div class="col-lg-6">
                                             <input type="file" name="img" >
                                         
@@ -78,7 +78,7 @@
                                     </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">update</button>
+                                        <button type="submit" class="btn btn-primary">تحديث</button>
                                     </div>
                                 </div>
                             </form>

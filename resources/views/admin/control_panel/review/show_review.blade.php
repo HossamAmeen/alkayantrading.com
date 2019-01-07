@@ -53,7 +53,7 @@
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                                 <a href="{{url('/admin/review/'.$review->id.'/edit')}}" class="btn btn-info">update</a>
-                                          <button type="submit" class="btn btn-danger">Delete</button>
+                                          <button type="submit" class="btn btn-danger check">Delete</button>
                                             </form>
                                             
                                             

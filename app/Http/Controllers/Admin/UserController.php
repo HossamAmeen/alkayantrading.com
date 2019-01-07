@@ -37,7 +37,7 @@ class UserController extends Controller
             $thumb_img->save($destinationPath.$imagename,60);
             $user->img = $destinationPath . $imagename;
         }
-        $request->session()->flash('status', 'Added successfully!');
+        $request->session()->flash('status', 'تم الاضافه بنجاح');
         $user->save();
         return redirect()->route('user.index');
     }
@@ -81,7 +81,7 @@ class UserController extends Controller
                $imagename =   time().'.'.$photo->getClientOriginalExtension();
                $destinationPath = 'resources/assets/admin/images/';
                $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
-               $thumb_img->save($destinationPath.$imagename,80);
+               $thumb_img->save($destinationPath.$imagename);
                $user->img = $destinationPath . $imagename;
                $hasFile=true;
            }
@@ -90,7 +90,7 @@ class UserController extends Controller
         if($hasFile) {
              unlink($path);
          }
-        $request->session()->flash('status', 'updated was successfully!');
+        $request->session()->flash('status', 'تم التعديل بنجاح');
         return redirect()->route('user.index');
     }
 
@@ -101,7 +101,7 @@ class UserController extends Controller
         if(!empty($user)){
            
          $user->delete();
-         $request->session()->flash('delete', 'deleted was successfully!');
+            $request->session()->flash('delete', 'تم الحذف بنجاح');
          }
 
          return redirect()->route('user.index');

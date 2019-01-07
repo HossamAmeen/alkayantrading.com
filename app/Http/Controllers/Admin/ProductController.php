@@ -38,11 +38,12 @@ class ProductController extends Controller
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
-        $product = Product::create($request->all());  
-        
+
+        $product = Product::create($request->all());
+
         $product->user_id = session('id') ;
         $product->save();
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'تم الاضافه بنجاح');
 
         return redirect()->route('products.index');
     }
@@ -50,7 +51,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $title = 'عرض المنتج';
-        $categories = DB::table('categories')->select('id','en_title')->get();
+        $categories = DB::table('categories')->select('id','en_title')->where('categories.deleted_at' , '=' , NULL)->get();
         if(!empty($product))
         return view('admin.control_panel.products.edit_product',$product )->with(compact('product', 'title','categories') );
         else
@@ -72,12 +73,12 @@ class ProductController extends Controller
             $product->save();
             
         }
-        $request->session()->flash('status', 'Task was successful!');
+        $request->session()->flash('status', 'تم التعديل بنجاح');
         return redirect()->route('products.index');
     }
 
     
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
        // return "delete";
         $product = Product::find($id);
@@ -85,7 +86,7 @@ class ProductController extends Controller
         if(!empty($product))
             { 
                 $product->delete();
-                
+                $request->session()->flash('delete', 'تم الحذف بنجاح');
             }
             return redirect()->route('products.index');
     }
@@ -94,8 +95,8 @@ class ProductController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products,NULL,id,deleted_at,NULL',
-        'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products,NULL,id,deleted_at,NULL',
+        'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products,ar_title,NULL,id,deleted_at,NULL',
+        'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products,en_title,NULL,id,deleted_at,NULL',
         'company_name'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
        
        );

@@ -12,7 +12,6 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">بيانات الموقع</h3>
                         </div>
-
                         @if (session()->get('status') )
                             <div class="alert alert-success">
                                 <strong>{{session()->get('status')}}</strong>
@@ -161,7 +160,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">update</button>
+                                        <button type="submit" class="btn btn-primary">تحديث</button>
                                     </div>
                                 </div>
                             </form>

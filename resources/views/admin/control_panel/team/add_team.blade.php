@@ -31,7 +31,7 @@
                                     </div>
                                 @endif
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">Username</label>
+                                    <label class="col-lg-3 control-label">الامس </label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="name"
                                                data-bv-message="The name is not valid"
@@ -45,7 +45,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">job</label>
+                                    <label class="col-lg-3 control-label">الوظيفه</label>
                                     <div class="col-lg-6">
                                         <input class="form-control" name="job" type="text"
                                                data-bv-emailaddress-message="The input is not a valid email address"
@@ -59,14 +59,14 @@
 
 
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">image</label>
+                                    <label class="col-lg-3 control-label">الصورة</label>
                                     <div class="col-lg-6">
                                         <input type="file" name="img" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">add</button>
+                                        <button type="submit" class="btn btn-primary">إضافه</button>
                                     </div>
                                 </div>
                             </form>

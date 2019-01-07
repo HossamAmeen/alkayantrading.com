@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <!--Logo text start-->
         <div class="header-logo">
-            <a href="/pref" title="">
+            <a target="_blank" href="{{url('/')}}" title="">
                 <h1>kayan</h1>
             </a>
         </div>

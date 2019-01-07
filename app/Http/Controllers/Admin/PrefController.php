@@ -64,12 +64,15 @@ class PrefController extends Controller
         $request->session()->flash('status', 'add was successful!');
         return redirect()->route('prefs.index');
     }
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $pref = Pref::find($id);
         $title = ' تعديل بيانات الموقع';
-        if(!empty($pref))
-        return view('admin.control_panel.prefs.edit_pref',$pref)->with(compact('title'));
+        if(!empty($pref)){
+
+            return view('admin.control_panel.prefs.edit_pref',$pref)->with(compact('title'));
+
+        }
         else
         return redirect()->route('prefs.index');
     }
@@ -83,9 +86,10 @@ class PrefController extends Controller
         if(!empty($pref)){
             $pref->fill($request->all());
             $pref->save();
-            
+
         }
-        $request->session()->flash('status', 'update  was successful!');
+
+        $request->session()->flash('status', 'تم التعديل بنجاح');
         return redirect()->route('prefs.index');
     }
     function formValidation()

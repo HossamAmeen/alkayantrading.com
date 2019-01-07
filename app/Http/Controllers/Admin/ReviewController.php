@@ -35,7 +35,7 @@ class ReviewController extends Controller
             $review->img = $destinationPath . $imagename;
         }
 
-        $request->session()->flash('status', 'added was successfully!');
+        $request->session()->flash('status', 'تم الاضافه بنجاح');
         $review->save();
         return redirect()->route('review.index');
     }
@@ -82,7 +82,7 @@ class ReviewController extends Controller
 
             $review->save();
         }
-        $request->session()->flash('status', 'updated was successfully!');
+        $request->session()->flash('status', 'تم التعديل بنجاح');
         return redirect()->route('review.index');
 
     }
@@ -94,7 +94,7 @@ class ReviewController extends Controller
         if(!empty($review)){
 
             $review->delete();
-            $request->session()->flash('delete', 'deleted was successfully!');
+            $request->session()->flash('delete', 'تم الحذف بنجاح');
         }
         return redirect()->route('review.index');
     }

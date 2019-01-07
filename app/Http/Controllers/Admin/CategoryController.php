@@ -12,7 +12,8 @@ class CategoryController extends Controller
     
     public function index()
     {
-        Log::info('Showing user profile for user: ');
+       // Log::info('Showing user profile for user: ');
+
         $data['categories'] = DB::table('categories')
         ->join('users' , 'users.id' , '=' , 'categories.user_id')
         ->select('categories.*','users.name')
@@ -36,7 +37,7 @@ class CategoryController extends Controller
         $category = Category::create($request->all());
         $category->user_id = session('id') ;
         $category->save();
-        $request->session()->flash('status', 'added was successfully!');
+        $request->session()->flash('status', 'تم الاضافه بنجاح');
         return redirect()->route('category.index');
     }
     public function edit($id)
@@ -61,7 +62,7 @@ class CategoryController extends Controller
             {
                 $category->fill($request->all());
                 $category->save();
-                $request->session()->flash('status', 'updated was successfully!');
+                $request->session()->flash('status', 'تم التعديل بنجاح');
             }
 
         return redirect()->route('category.index');
@@ -73,7 +74,7 @@ class CategoryController extends Controller
         if(!empty($category))
             { 
                 $category->delete();
-                $request->session()->flash('delete', 'deleted was successfully!');
+                $request->session()->flash('delete', 'تم الحذف بنجاح');
             }
             return redirect()->route('category.index');
     }
@@ -87,7 +88,7 @@ class CategoryController extends Controller
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique::categories,ar_title,$id,id,deleted_at,NULL",
+            'ar_title'     => "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:categories,ar_title,$id,id,deleted_at,NULL",
             'en_title'    =>  "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:categories,en_title,$id,id,deleted_at,NULL",
 
 

@@ -34,7 +34,7 @@ class TeamController extends Controller
             $thumb_img->save($destinationPath.$imagename,80);
             $team->img = $destinationPath . $imagename;
         }
-        $request->session()->flash('status', 'added was successfully!');
+        $request->session()->flash('status', 'تم الاضافه بنجاح');
         $team->save();
         return redirect()->route('team.index');
     }
@@ -79,7 +79,7 @@ class TeamController extends Controller
             }
             $team->save();
         }
-        $request->session()->flash('status', 'updated was successfully!');
+        $request->session()->flash('status', 'تم التعديل بنجاح');
         return redirect()->route('team.index');
     }
 
@@ -90,7 +90,7 @@ class TeamController extends Controller
         if(!empty($team)){
 
             $team->delete();
-            $request->session()->flash('delete', 'deleted was successfully!');
+            $request->session()->flash('delete', 'تم الحذف بنجاح');
         }
         return redirect()->route('team.index');
     }

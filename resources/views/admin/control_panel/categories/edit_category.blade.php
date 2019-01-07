@@ -56,7 +56,7 @@
                                                                 
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">update</button>
+                                        <button type="submit" class="btn btn-primary">تحديث</button>
                                     </div>
                                 </div>
                             </form>

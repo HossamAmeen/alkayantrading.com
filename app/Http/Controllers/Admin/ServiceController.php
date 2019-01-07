@@ -49,7 +49,7 @@ class ServiceController extends Controller
 
         $service->user_id = session('id');
         $service->save();
-        $request->session()->flash('status', 'added was successfully!');
+        $request->session()->flash('status', 'تم الاضافه بنجاح');
       return redirect()->route('service.index');
     }
     public function edit($id)
@@ -57,7 +57,7 @@ class ServiceController extends Controller
         
         $service = Service::find($id);
         $title = 'عرض الخدمه';
-        $categories = DB::table('categories')->select('id','en_title')->get();
+        $categories = DB::table('categories')->select('id','en_title')->where('categories.deleted_at' , '=' , NULL)->get();
         if(!empty($service))
         return view('admin.control_panel.services.edit_service',$service )->with(compact('service', 'title','categories') );
         else
@@ -78,8 +78,8 @@ class ServiceController extends Controller
                 $photo = $request->file('img');
                 $imagename =   time().'.'.$photo->getClientOriginalExtension();
                 $destinationPath = 'resources/assets/admin/images/';
-                $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
-                $thumb_img->save($destinationPath.$imagename,80);
+                $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
+                $thumb_img->save($destinationPath.$imagename);
                  $service->img = $destinationPath.$imagename;
                  $hasFile=true;
             }   
@@ -89,7 +89,7 @@ class ServiceController extends Controller
             
              unlink($path);
          }
-        $request->session()->flash('status', 'updated was successfully!');
+        $request->session()->flash('status', 'تم التعديل بنجاح');
         return redirect()->route('service.index');
     }
     public function destroy(Request $request, $id)
@@ -98,7 +98,7 @@ class ServiceController extends Controller
         if(!empty($service))
             { 
                 $service->delete();
-                $request->session()->flash('delete', 'deleted was successfully!');
+                $request->session()->flash('delete', 'تم الحذف بنجاح');
             }
 
         return redirect()->route('service.index');

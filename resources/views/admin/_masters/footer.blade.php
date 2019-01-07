@@ -54,3 +54,39 @@
 <script src="{{asset('resources/assets/admin/js/jquery.amaran.js')}}"></script>
 <!--AmaranJS library script End   -->
 <script src="{{asset('resources/assets/admin/js/pages/dashboard.js')}}"></script>
+
+<script src="{{URL::asset('resources/assets/admin/js/bootbox.min.js')}}"></script>
+<script type="text/javascript">
+    $('.check').click(function(){
+        $url = $(this).attr('href');
+        bootbox.dialog({
+            message: "هل أنت متأكد من أنك تريد القيام بهذه العملية؟",
+            title: "تأكيد القيام بالعملية",
+            buttons: {
+                success: {
+                    label: "نعم!",
+                    className: "btn-success",
+                    callback: function() {
+
+                        if($url == undefined)
+                            $('form').submit();
+                        else{
+                            console.log("should go to " + $url);
+                            window.location = $url;
+
+                        }
+                    }
+                },
+                danger: {
+                    label: "لا!",
+                    className: "btn-danger",
+                    callback: function() {
+                        //Example.show("uh oh, look out!");
+                    }
+                },
+
+            }
+        });
+        return false;
+    });
+    </script>
