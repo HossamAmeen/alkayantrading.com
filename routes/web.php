@@ -76,9 +76,11 @@ Route::prefix('api')->group(function () {
             return "test";
         });
         Route::get('/', 'MobileController@services');
-        Route::get('services', 'MobileController@services');
+        Route::get('en_services', 'MobileController@en_services');
+        Route::get('ar_services', 'MobileController@en_services');
         Route::get('daily_price', 'MobileController@en_daily_price');
-        Route::get('about', 'MobileController@about');
+        Route::get('en_about', 'MobileController@en_about');
+        Route::get('ar_about', 'MobileController@ar_about');
         Route::post('join_us', 'MobileController@join_us');
         Route::post('contact', 'MobileController@contact');
 

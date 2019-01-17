@@ -31,7 +31,7 @@
                                     </div>
                                 @endif
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">الامس </label>
+                                    <label class="col-lg-3 control-label">الاسم </label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="name"
                                                data-bv-message="The name is not valid"

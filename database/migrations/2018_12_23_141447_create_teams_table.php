@@ -17,7 +17,7 @@ class CreateTeamsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('job');
-            $table->string('img')->default('/images/demo/avatar-80.png');
+            $table->string('img')->default('resources/assets/site/images/demo/avatar-80.png');
             $table->softDeletes();
             $table->timestamps();
         });

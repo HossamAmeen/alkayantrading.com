@@ -14,9 +14,20 @@ class MobileController extends Controller
 {
 
 
-    public function services()
+    public function en_services()
     {
-        $services['rowa'] = Service::all();
+        $services['rowa'] = DB::table('services')->select( 'en_title', 'category_id' , 'img')
+            ->where('services.deleted_at','=' , null)
+            ->get();
+
+        return json_encode($services , JSON_UNESCAPED_UNICODE) ;
+
+    }
+    public function ar_services()
+    {
+        $services['rowa'] = DB::table('services')->select( 'ar_title', 'category_id' , 'img')
+            ->where('services.deleted_at','=' , null)
+            ->get();
 
         return json_encode($services , JSON_UNESCAPED_UNICODE) ;
 
@@ -83,9 +94,22 @@ class MobileController extends Controller
 
 
     }
-    public function about()
+    public function en_about()
     {
-        $pref['rows'] = Pref::find(1);
+        $pref['rows'] =  DB::table('prefs')->select( 'enAddress', 'enDescription' ,  'phone'
+            ,'enMainAddress' ,'enMainAddress',
+            'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
+            ->where('services.deleted_at','=' , null)
+            ->get();
+        return json_encode($pref , JSON_UNESCAPED_UNICODE);
+
+    }
+    public function ar_about()
+    {
+        $pref['rows'] =  DB::table('prefs')->select(   'arAddress',  'enDescription' ,  'phone'
+            ,'enMainAddress' ,'enMainAddress','mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
+            ->where('services.deleted_at','=' , null)
+            ->get();
         return json_encode($pref , JSON_UNESCAPED_UNICODE);
 
     }

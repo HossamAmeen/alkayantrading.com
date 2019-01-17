@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('review');
-            $table->string('img')->default('/images/demo/avatar-80.png');
+            $table->string('img')->default('resources/assets/site/images/demo/avatar-80.png');
             $table->softDeletes();
             $table->timestamps();
         });

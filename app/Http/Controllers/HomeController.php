@@ -44,7 +44,7 @@ class HomeController extends Controller
         $data['title'] =  "شركة كيان - خدماتنا" ; 
         return view('web.ar.services',$data);
     }
-    public function ar_daily_price($service = NULL)
+    public function ar_daily_price()
     {
        
         $categories = DB::table('categories')->select('id','ar_title')->get();
