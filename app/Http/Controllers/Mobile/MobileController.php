@@ -16,7 +16,7 @@ class MobileController extends Controller
 
     public function en_services()
     {
-        $services['rowa'] = DB::table('services')->select( 'en_title', 'category_id' , 'img')
+        $services['rowa'] = DB::table('services')->select( 'en_title as title', 'category_id' , 'img')
             ->where('services.deleted_at','=' , null)
             ->get();
 
@@ -37,7 +37,7 @@ class MobileController extends Controller
            ->join('categories' , 'products.category_id' ,'=','categories.id' )
            ->where('categories.id','=',$value->id)
            ->where('days.day' ,'=',date('Y/m/d'))
-           ->select('products.id','products.en_title' ,'products.company_name','price')
+           ->select('products.id','products.en_title as title' ,'products.company_name','price')
            ->get();
 
             
@@ -78,8 +78,8 @@ class MobileController extends Controller
 
     public function en_about()
     {
-        $pref['rows'] =  DB::table('prefs')->select( 'enAddress', 'enDescription' ,  'phone'
-            ,'enMainAddress' ,
+        $pref['rows'] =  DB::table('prefs')->select( 'enAddress as address', 'enDescription as description' ,  'phone'
+            ,'enMainAddress as mainAddress' ,
             'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
             ->get();
         return json_encode($pref , JSON_UNESCAPED_UNICODE);
@@ -87,7 +87,7 @@ class MobileController extends Controller
     }
     public function ar_services()
     {
-        $services['rowa'] = DB::table('services')->select( 'ar_title', 'category_id' , 'img')
+        $services['rowa'] = DB::table('services')->select( 'ar_title as title', 'category_id' , 'img')
             ->where('services.deleted_at','=' , null)
             ->get();
 
@@ -107,7 +107,7 @@ class MobileController extends Controller
            ->join('categories' , 'products.category_id' ,'=','categories.id' )
            ->where('categories.id','=',$value->id)
            ->where('days.day' ,'=',date('Y/m/d'))
-           ->select('products.id','products.ar_title' ,'products.company_name','price')
+           ->select('products.id','products.ar_title as title' ,'products.company_name','price')
            ->get();
 
             
@@ -147,8 +147,8 @@ class MobileController extends Controller
     }
     public function ar_about()
     {
-        $pref['rows'] =  DB::table('prefs')->select(   'arAddress', 'arDescription' ,  'phone'
-        ,'arMainAddress' ,
+        $pref['rows'] =  DB::table('prefs')->select(   'arAddress as address', 'arDescription as description' ,  'phone'
+        ,'arMainAddress as mainAddress' ,
         'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
            
             ->get();

@@ -64,13 +64,13 @@ Route::prefix('admin')->group(function () {
 
 
 
-
+Route::get('en/services', 'MobileController@en_services');
 /////////////// mobile
 Route::prefix('api')->group(function () {
     
     Route::namespace('Mobile')->group(function () {
         
-       
+        Route::get('/', 'MobileController@en_services');
         Route::get('en/services', 'MobileController@en_services');
         Route::get('en/daily_price', 'MobileController@en_daily_price');
         Route::get('en/about', 'MobileController@en_about');
