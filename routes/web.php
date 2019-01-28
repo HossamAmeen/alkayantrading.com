@@ -75,7 +75,7 @@ Route::prefix('api')->group(function () {
         Route::get('en/daily_price', 'MobileController@en_daily_price');
         Route::get('en/about', 'MobileController@en_about');
         Route::get('ar/services', 'MobileController@ar_services');
-        Route::get('er/daily_price', 'MobileController@ar_daily_price');
+        Route::get('ar/daily_price', 'MobileController@ar_daily_price');
         Route::get('ar/about', 'MobileController@ar_about');
         
         Route::post('join_us', 'MobileController@join_us');

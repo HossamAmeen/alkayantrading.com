@@ -16,7 +16,7 @@ class MobileController extends Controller
 
     public function en_services()
     {
-        $services['rowa'] = DB::table('services')->select( 'en_title as title', 'category_id' , 'img')
+        $services['rows'] = DB::table('services')->select( 'en_title as title', 'category_id' , 'img')
             ->where('services.deleted_at','=' , null)
             ->get();
 
@@ -30,6 +30,7 @@ class MobileController extends Controller
         $categories = DB::table('categories')->select('id','en_title')->get();
        
         $i=1;
+            $data = array();
         foreach ( $categories as  $value) {
            $data['category'.$i] = DB::table('products')
            ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
@@ -87,7 +88,7 @@ class MobileController extends Controller
     }
     public function ar_services()
     {
-        $services['rowa'] = DB::table('services')->select( 'ar_title as title', 'category_id' , 'img')
+        $services['rows'] = DB::table('services')->select( 'ar_title as title', 'category_id' , 'img')
             ->where('services.deleted_at','=' , null)
             ->get();
 
@@ -100,6 +101,7 @@ class MobileController extends Controller
         $categories = DB::table('categories')->select('id','ar_title')->get();
        
         $i=1;
+        $data = array();
         foreach ( $categories as  $value) {
            $data['category'.$i] = DB::table('products')
            ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
