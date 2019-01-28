@@ -23,6 +23,68 @@ class MobileController extends Controller
         return json_encode($services , JSON_UNESCAPED_UNICODE) ;
 
     }
+   
+    public function en_daily_price($service = NULL)
+    {
+
+        $categories = DB::table('categories')->select('id','en_title')->get();
+       
+        $i=1;
+        foreach ( $categories as  $value) {
+           $data['category'.$i] = DB::table('products')
+           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+           ->join('categories' , 'products.category_id' ,'=','categories.id' )
+           ->where('categories.id','=',$value->id)
+           ->where('days.day' ,'=',date('Y/m/d'))
+           ->select('products.id','products.en_title' ,'products.company_name','price')
+           ->get();
+
+            
+
+           $yesterDayPrice = DB::table('products')
+           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+           ->join('categories' , 'products.category_id' ,'=','categories.id' )
+           ->where('categories.id','=',$value->id)
+          
+          ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
+           ->select('price')
+           ->get();
+         
+
+           $yesterDayPrice2 =DB::table('products')
+           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+           ->join('categories' , 'products.category_id' ,'=','categories.id' )
+           ->where('categories.id','=',$value->id)
+           
+           ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
+           ->select('price')
+           ->get();
+           $data['category'.$i]->put('yesterDayPrice', $yesterDayPrice);
+           $data['category'.$i]->put('beforeYesterDayPrice', $yesterDayPrice2);
+            
+          
+          $i++; 
+        }
+
+
+
+        return json_encode($data , JSON_UNESCAPED_UNICODE);
+
+
+    }
+
+    public function en_about()
+    {
+        $pref['rows'] =  DB::table('prefs')->select( 'enAddress', 'enDescription' ,  'phone'
+            ,'enMainAddress' ,
+            'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
+            ->get();
+        return json_encode($pref , JSON_UNESCAPED_UNICODE);
+
+    }
     public function ar_services()
     {
         $services['rowa'] = DB::table('services')->select( 'ar_title', 'category_id' , 'img')
@@ -32,60 +94,49 @@ class MobileController extends Controller
         return json_encode($services , JSON_UNESCAPED_UNICODE) ;
 
     }
-    public function en_daily_price($service = NULL)
+    public function ar_daily_price($service = NULL)
     {
 
-        $categories = DB::table('categories')->select('id','en_title')->get();
-
+        $categories = DB::table('categories')->select('id','ar_title')->get();
+       
         $i=1;
         foreach ( $categories as  $value) {
+           $data['category'.$i] = DB::table('products')
+           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+           ->join('categories' , 'products.category_id' ,'=','categories.id' )
+           ->where('categories.id','=',$value->id)
+           ->where('days.day' ,'=',date('Y/m/d'))
+           ->select('products.id','products.ar_title' ,'products.company_name','price')
+           ->get();
 
-            $test = DB::table('products')
-                ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-                ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-                ->join('categories' , 'products.category_id' ,'=','categories.id' )
-                ->where('categories.id','=',$value->id)
-                ->where('days.day' ,'=',date('Y/m/d'))
-                ->select('products.id','products.en_title' ,'products.company_name','price')
-                ->first();
-            if(empty($test))
-                continue;
+            
 
-            else
-                $data['rows']['category'.$i] = $test;
+           $yesterDayPrice = DB::table('products')
+           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+           ->join('categories' , 'products.category_id' ,'=','categories.id' )
+           ->where('categories.id','=',$value->id)
+          
+          ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
+           ->select('price')
+           ->get();
+         
 
-
-            $yesterDayPrice = DB::table('products')
-                ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-                ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-                ->join('categories' , 'products.category_id' ,'=','categories.id' )
-                ->where('categories.id','=',$value->id)
-                ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
-                ->select('price')
-                ->first();
-
-            $yesterDayPrice2 =DB::table('products')
-                ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-                ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-                ->join('categories' , 'products.category_id' ,'=','categories.id' )
-                ->where('categories.id','=',$value->id)
-                //->where('days.day' ,'=',date('Y/m/d',strtotime("-$numOfDay days")))
-                ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
-                ->select('price')
-                ->first();
-
-            $data['rows']['category'.$i]  =  (array) $data['rows']['category'.$i] ; ///// convert to array
-            if(!empty($data['rows']['category'.$i]))
-            {
-                $yesterDayPrice = $yesterDayPrice->price;
-                $yesterDayPrice2 = $yesterDayPrice2->price;
-
-                $data['rows']['category'.$i]['yesterDayPrice'] =  $yesterDayPrice ;
-                $data['rows']['category'.$i]['yesterDayPrice2'] =  $yesterDayPrice2 ;
-            }
-
-
-            $i++;
+           $yesterDayPrice2 =DB::table('products')
+           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+           ->join('categories' , 'products.category_id' ,'=','categories.id' )
+           ->where('categories.id','=',$value->id)
+           
+           ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
+           ->select('price')
+           ->get();
+           $data['category'.$i]->put('yesterDayPrice', $yesterDayPrice);
+           $data['category'.$i]->put('beforeYesterDayPrice', $yesterDayPrice2);
+            
+          
+          $i++; 
         }
 
 
@@ -94,21 +145,12 @@ class MobileController extends Controller
 
 
     }
-    public function en_about()
-    {
-        $pref['rows'] =  DB::table('prefs')->select( 'enAddress', 'enDescription' ,  'phone'
-            ,'enMainAddress' ,'enMainAddress',
-            'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
-            ->where('services.deleted_at','=' , null)
-            ->get();
-        return json_encode($pref , JSON_UNESCAPED_UNICODE);
-
-    }
     public function ar_about()
     {
-        $pref['rows'] =  DB::table('prefs')->select(   'arAddress',  'enDescription' ,  'phone'
-            ,'enMainAddress' ,'enMainAddress','mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
-            ->where('services.deleted_at','=' , null)
+        $pref['rows'] =  DB::table('prefs')->select(   'arAddress', 'arDescription' ,  'phone'
+        ,'arMainAddress' ,
+        'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
+           
             ->get();
         return json_encode($pref , JSON_UNESCAPED_UNICODE);
 

@@ -69,18 +69,15 @@ Route::prefix('admin')->group(function () {
 Route::prefix('api')->group(function () {
     
     Route::namespace('Mobile')->group(function () {
-        Route::get('test', function () {
-            return view('test');
-        });
-        Route::post('test', function () {
-            return "test";
-        });
-        Route::get('/', 'MobileController@services');
-        Route::get('en_services', 'MobileController@en_services');
-        Route::get('ar_services', 'MobileController@en_services');
-        Route::get('daily_price', 'MobileController@en_daily_price');
-        Route::get('en_about', 'MobileController@en_about');
-        Route::get('ar_about', 'MobileController@ar_about');
+        
+       
+        Route::get('en/services', 'MobileController@en_services');
+        Route::get('en/daily_price', 'MobileController@en_daily_price');
+        Route::get('en/about', 'MobileController@en_about');
+        Route::get('ar/services', 'MobileController@ar_services');
+        Route::get('er/daily_price', 'MobileController@ar_daily_price');
+        Route::get('ar/about', 'MobileController@ar_about');
+        
         Route::post('join_us', 'MobileController@join_us');
         Route::post('contact', 'MobileController@contact');
 

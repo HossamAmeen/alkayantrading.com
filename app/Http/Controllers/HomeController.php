@@ -62,7 +62,7 @@ class HomeController extends Controller
 
 
            
-           //while( ){}
+         
            
            $yesterDayPrice = DB::table('products')
            ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
@@ -212,21 +212,18 @@ class HomeController extends Controller
            ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
            ->join('categories' , 'products.category_id' ,'=','categories.id' )
            ->where('categories.id','=',$value->id)
-          // ->where('days.day' ,'=',date('Y/m/d',strtotime("-$numOfDay days")))
+          
           ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
            ->select('price')
            ->get();
-           //$numOfDay++;
-
-           
-         // return date('Y/m/d',strtotime("-$numOfDay days"));
+         
 
            $yesterDayPrice2 =DB::table('products')
            ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
            ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
            ->join('categories' , 'products.category_id' ,'=','categories.id' )
            ->where('categories.id','=',$value->id)
-           //->where('days.day' ,'=',date('Y/m/d',strtotime("-$numOfDay days")))
+           
            ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
            ->select('price')
            ->get();
@@ -236,8 +233,7 @@ class HomeController extends Controller
           
           $i++; 
         }
-         //return $data['category'.--$i] ;
-       // return $data;
+       
         $title =  "شركة كيان - الاسعار اليوميه";
         
         return view('web.en.daily_price' , $categories)->with(compact('data', 'title','categories') );
