@@ -61,9 +61,13 @@
 										
 											
 											<td>	{{$data['category'.$c][$i]->price}} </td>
+											
+												@if(!empty( $data['category'.$c]['yesterDayPrice'][$i]->price )  ) 
 											<td>	{{$data['category'.$c]['yesterDayPrice'][$i]->price }} </td>
-
+												@endif
+												@if(!empty( $data['category'.$c]['beforeYesterDayPrice'][$i]->price )  ) 
 											<td>	{{$data['category'.$c]['beforeYesterDayPrice'][$i]->price}} </td>
+											 	@endif
 												
 									     </tr>
 										@endfor

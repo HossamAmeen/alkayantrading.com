@@ -13,7 +13,17 @@ class UsersImport implements ToCollection
     public function collection(Collection $rows)
     {
 
+        $day = Day::where('day','=',date("Y-m-d"))->first();
+        if( !empty($day) )
         $day_id = Day::where('day','=',date("Y-m-d"))->first()->id;
+        else{
+            $day = new Day();
+            $day->day = date("Y-m-d");
+            $day->save();
+
+            $day_id  = $day->id;
+
+        }
 
         foreach ($rows as $row)
         {
@@ -47,7 +57,7 @@ class UsersImport implements ToCollection
                    $newPrice->price = 1;
                    $newPrice->user_id = $row[2];
                        $newPrice->save();
-                       var_dump($newPrice);
+                       
                }
 
             }

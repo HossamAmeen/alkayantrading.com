@@ -110,14 +110,24 @@
                                             <h3> {{$category->en_title}} </h3>
                                             @if(!empty( $data['category'.$c] ))
                                                 <?php $i=1; ?>
-                                                @foreach ($data['category'.$c++] as $item)
+                                                @foreach ($data['category'.$c] as $item)
                                                     <tr>
                                                         <td>{{$i++}}</td>
                                                         <td >{{$item->en_title}}</td>
-                                                        <th> <input class="form-control" name="price[]" type="number" value="{{$item->price}}"> </th>
+                                                        
+                                                        <th> <input class="form-control" name="price[]" type="number" 
+                                                            @if (isset($item->price))
+                                                            
+                                                                value = "{{$item->price}}" 
+                                                            @else
+                                                            value = "1"
+                                                            @endif
+                                                            > </th>
                                                         <th hidden><input class="form-control" name="product_id[]"   value="{{$item->id}}" > </th>
                                                     </tr>
+                                                    
                                                 @endforeach
+                                                <?php $c++;?>
                                             @endif
                                             </tbody>
                                         </table>

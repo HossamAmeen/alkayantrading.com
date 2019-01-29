@@ -49,21 +49,40 @@ class PriceAtDayController extends Controller
         return redirect()->route('show_prices');
               
     }
-    public function show_prices(Request $request){
+    public function show_prices(Request $request)
+    {
 
 
         $categories = DB::table('categories')->select('id','en_title')->get();
         $date = $request->date;
-
+        //$day_id = 1;
         if(empty($date)){
+            return "tezs";
             $date = date("Y-m-d");
+            $day_id = Day::where('day','=',$date)->first();
+            if(!empty($day_id))
             $day_id = Day::where('day','=',$date)->first()->id;
+            else{ 
+                $day = new Day();
+                $day->day = date("Y-m-d");
+                $day->save();
+                $day_id  = $day->id;
+            }
         }
-        else
+        else{
+            if(!empty($day_id))
             $day_id = Day::where('day','=',$date)->first()->id;
+            else{ 
+                $day = new Day();
+                $day->day = $date;
+                $day->save();
+                $day_id  = $day->id;
+            }
+        }
+            
         $i=1;
         foreach ( $categories as  $value) {
-            $data['category'.$i++] = DB::table('products')
+            $data['category'.$i] = DB::table('products')
                 ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
                 ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
                 ->join('categories' , 'products.category_id' ,'=','categories.id' )
@@ -71,9 +90,22 @@ class PriceAtDayController extends Controller
                 ->where('days.day','=',$date)
                 ->select('products.id','products.en_title' ,'price')
                 ->get();
+            if( count( $data['category'.$i] ) == 0  )
+            {
+                $data['category'.$i] = DB::table('products')
+                ->join('categories' , 'products.category_id' ,'=','categories.id' )
+                ->where('categories.id','=',$value->id)
+                ->select('products.id','products.en_title' )
+                ->get();
+            }    
+         //   echo $i;
+            $i++;
         }
+        
+       //return ($data) ;
+      // return $day_id;
         $title= 'عرض الاسعار';
-        return view('admin.control_panel.prices.edit_price_at_day' , $categories)->with(compact('data', 'title','categories' , 'date' , 'day_id') );
+       return view('admin.control_panel.prices.edit_price_at_day' , $categories)->with(compact('data', 'title','categories' , 'date' , 'day_id') );
     }
     function formValidation()
     {

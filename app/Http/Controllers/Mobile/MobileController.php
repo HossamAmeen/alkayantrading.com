@@ -32,7 +32,7 @@ class MobileController extends Controller
         $i=1;
             $data = array();
         foreach ( $categories as  $value) {
-           $data['category'.$i] = DB::table('products')
+           $data[$value->en_title] = DB::table('products')
            ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
            ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
            ->join('categories' , 'products.category_id' ,'=','categories.id' )
@@ -63,8 +63,8 @@ class MobileController extends Controller
            ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
            ->select('price')
            ->get();
-           $data['category'.$i]->put('yesterDayPrice', $yesterDayPrice);
-           $data['category'.$i]->put('beforeYesterDayPrice', $yesterDayPrice2);
+           $data[$value->en_title]->put('yesterDayPrice', $yesterDayPrice);
+           $data[$value->en_title]->put('beforeYesterDayPrice', $yesterDayPrice2);
             
           
           $i++; 
