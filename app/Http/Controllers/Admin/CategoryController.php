@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Category;
+use App\Service;
 use DB;
 class CategoryController extends Controller
 {
@@ -73,6 +74,22 @@ class CategoryController extends Controller
         
         if(!empty($category))
             { 
+                // $data['services'] = DB::table('services')
+                //     ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
+                //     ->where('categories.id','=' , $id)
+                //     ->where('services.deleted_at','=' , null)
+                //     ->where('categories.deleted_at','=' , null)
+                //     ->get();
+               // return $data['services'] ; 
+                // foreach ($data['services'] as  $services) {
+                //     return $services->id;
+                //     $service = Service::find($services->id);
+                //     return $service;
+                //    $service->category_id = null ; 
+
+                //    $service->save();
+                // }
+               
                 $category->delete();
                 $request->session()->flash('delete', 'تم الحذف بنجاح');
             }

@@ -70,12 +70,13 @@ Route::prefix('api')->group(function () {
     
     Route::namespace('Mobile')->group(function () {
         
-        Route::get('/', 'MobileController@en_services');
+       ////// english
         Route::get('en/services', 'MobileController@en_services');
-        Route::get('en/daily_price', 'MobileController@en_daily_price');
+        Route::get('en/daily_price/{id?}', 'MobileController@en_daily_price');
         Route::get('en/about', 'MobileController@en_about');
+      ////// arabic
         Route::get('ar/services', 'MobileController@ar_services');
-        Route::get('ar/daily_price', 'MobileController@ar_daily_price');
+        Route::get('ar/daily_price/{id?}', 'MobileController@ar_daily_price');
         Route::get('ar/about', 'MobileController@ar_about');
         
         Route::post('join_us', 'MobileController@join_us');
