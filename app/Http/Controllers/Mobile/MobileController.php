@@ -165,7 +165,7 @@ class MobileController extends Controller
         return json_encode($services , JSON_UNESCAPED_UNICODE) ;
 
     }
-    public function ar_daily_price($service = NULL)
+    public function ar_daily_price($id = NULL)
     {
 
         if($id != null)
