@@ -38,9 +38,7 @@
                                     <?php
                                     $i=1;
                                     ?>
-                                    @foreach ($categories as $category)
-                                    
-                                   
+                                @foreach ($categories as $category)    
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>
@@ -49,13 +47,16 @@
                                              aria-pressed="true">{{$category->ar_title}} </a>
                                     </td>
                                     <td>{{$category->en_title}}</td>
-                                    <td> {{$category->name}} </td>
+                                    <td> {{$category->user->name}} </td>
                                     <td >
-                                            <form action="{{url('admin/category/'.$category->id ) }}" method="POST">
+                                            <form action="{{url('admin/category/'. $category->id ) }}" method="POST">
+                                                {{$category->id}}
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
                                                 <a href="{{url('/admin/category/'.$category->id.'/edit')}}" class="btn btn-info">تحديث</a>
-                                          <button type="submit" class="btn btn-danger check" >حذف</button>
+                                                <a href="{{url('/admin/cat/delete/'.$category->id)}}" class="btn btn-info">حذف</a>
+                                                <button type="submit" class="btn btn-danger check" >حذف</button>
+                                                <input type="submit" value="delete" class="btn btn-danger check" >
                                             </form>
 
                                             

@@ -49,6 +49,7 @@ Route::prefix('admin')->group(function () {
             Route::resource('prefs'    , 'PrefController')->middleware('admin');
             Route::resource('service' , 'ServiceController');
             Route::resource('category'    , 'CategoryController');
+            Route::get('cat/delete/{id}', 'CategoryController@destroy');
             Route::resource('products'    , 'ProductController');
             Route::resource('/team', 'TeamController');
             Route::resource('/review', 'ReviewController');

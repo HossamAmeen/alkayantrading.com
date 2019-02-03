@@ -15,11 +15,14 @@ class CategoryController extends Controller
     {
        // Log::info('Showing user profile for user: ');
 
-        $data['categories'] = DB::table('categories')
-        ->join('users' , 'users.id' , '=' , 'categories.user_id')
-        ->select('categories.*','users.name')
-       ->where('categories.deleted_at' , '=' , NULL)
-        ->get();
+    //     $data['categories'] = DB::table('categories')
+    //     ->join('users' , 'users.id' , '=' , 'categories.user_id')
+    //     ->select('categories.*','users.name')
+    //    ->where('categories.deleted_at' , '=' , NULL)
+    //     ->get();
+        $data['categories'] = Category::all();
+  
+    
         $data['title'] = 'عرض الاقسام';
          return view('admin.control_panel.categories.show_categories' , $data);
     }
@@ -70,26 +73,12 @@ class CategoryController extends Controller
     }
     public function destroy(Request $request, $id)
     {
+        return $id; 
         $category = Category::find($id);
         
         if(!empty($category))
             { 
-                // $data['services'] = DB::table('services')
-                //     ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
-                //     ->where('categories.id','=' , $id)
-                //     ->where('services.deleted_at','=' , null)
-                //     ->where('categories.deleted_at','=' , null)
-                //     ->get();
-               // return $data['services'] ; 
-                // foreach ($data['services'] as  $services) {
-                //     return $services->id;
-                //     $service = Service::find($services->id);
-                //     return $service;
-                //    $service->category_id = null ; 
-
-                //    $service->save();
-                // }
-               
+                             
                 $category->delete();
                 $request->session()->flash('delete', 'تم الحذف بنجاح');
             }

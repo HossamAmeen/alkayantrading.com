@@ -23,6 +23,17 @@ $factory->define(App\User::class, function (Faker $faker) {
         'role' => 1 ,
     ];
 });
+$factory->define(App\Category::class, function (Faker $faker) {
+    
+        
+   
+return [
+    'ar_title' => 'اسمنت اسيوط' ,
+    'en_title' => $faker->name,      
+    
+];
+});
+
 $factory->define(App\Service::class, function (Faker $faker){
     $categories = App\Category::pluck('id')->toArray();
     $users = App\User::pluck('id')->toArray();
@@ -39,16 +50,30 @@ $factory->define(App\Service::class, function (Faker $faker){
 
 $factory->define(App\Product::class, function (Faker $faker) {
     
-        //    $type = ['steel' , 'cement' , 'Concrete station', 'tracks' , 'wood' , 'Bricks'];
+        
         $categories = App\Category::pluck('id')->toArray();
         $users = App\User::pluck('id')->toArray();  
     return [
         'ar_title' => 'اسمنت اسيوط' ,
         'en_title' => $faker->name,      
-        'company_name' => "اسمنت" . "_company",
+        'company_name' => $faker->name . "_company",
         'user_id'=>$faker->randomElement($users),
         'category_id'=>$faker->randomElement($categories),
     ];
+});
+$factory->define(App\Price_at_day::class, function (Faker $faker) {
+    
+    
+    $Products = App\Product::pluck('id')->toArray();
+    $day_id = App\Day::pluck('id')->toArray();  
+
+return [
+   
+    'day_id'=>$faker->randomElement($day_id),
+    'product_id'=>$faker->randomElement($Products),
+    'price' => $faker->randomDigit,
+
+];
 });
 $factory->define(App\Pref::class , function (Faker $faker){
    
@@ -63,7 +88,7 @@ $factory->define(App\Pref::class , function (Faker $faker){
         'enMainAddress' =>'enMainAddress',
         'enMainAddress' =>'enMainAddress',
         'mainEmail'     =>'contact@alkayantrading.com',
-        'facebook'      =>'https://www.facebook.com/',
+        'facebook'      =>'https://www.facebook.com/alkayantrading/',
         'twitter'       =>'https://www.twitter.com/',
         'instgram'      =>'https://www.instgram.com/',
         'linkedin'      =>'https://www.linkedin.com/',

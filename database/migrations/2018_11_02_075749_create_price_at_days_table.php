@@ -17,14 +17,14 @@ class CreatePriceAtDaysTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('product_id');      
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')
-            ->onDelete('cascade');
+            ->onDelete('set null');
             $table->unsignedInteger('day_id');      
             $table->foreign('day_id')->references('id')->on('days')->onUpdate('cascade')
-            ->onDelete('cascade');
+            ->onDelete('set null');
             $table->integer('price');
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')
-            ->onDelete('cascade');
+            ->onDelete('set null');
             $table->timestamps();
         });
     }

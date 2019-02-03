@@ -9,4 +9,8 @@ class Category extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [ 'ar_title' , 	'en_title',	];
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

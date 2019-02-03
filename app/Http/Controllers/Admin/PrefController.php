@@ -78,7 +78,7 @@ class PrefController extends Controller
     }
     public function update(Request $request, $id)
     {
-
+        return $request->phone;
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
