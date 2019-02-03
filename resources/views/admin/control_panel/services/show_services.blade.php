@@ -56,8 +56,8 @@
                                             <form action="{{url('admin/service/'.$service->id)}} " method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
-                                                <a href="{{url('/admin/service/'.$service->id.'/edit')}}" class="btn btn-info">update</a>
-                                          <button type="submit" class="btn btn-danger check">Delete</button>
+                                                <a href="{{url('/admin/service/'.$service->id.'/edit')}}" class="btn btn-info">حديث</a>
+                                          <button type="submit" class="btn btn-danger check">حذف</button>
                                             </form>
                                             
                                             

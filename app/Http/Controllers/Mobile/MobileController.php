@@ -83,52 +83,57 @@ class MobileController extends Controller
          $categories = DB::table('categories')->select('id','en_title')->get();
         
        
-         $data2 = array();
+         
          $data = array();
+         $data2 = array();
          
          foreach ( $categories as  $value)
           {
             $data['catname'] = $value->en_title;
+
             $data['prices'] = DB::table('products')
             ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
             ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
             ->join('categories' , 'products.category_id' ,'=','categories.id' )
             ->where('categories.id','=',$value->id)
             ->where('days.day' ,'=',date('Y/m/d'))
-            ->select('products.en_title as title' ,'products.company_name','price as today')
+            ->select('products.id','products.en_title as title' ,'products.company_name','price as today')
             ->get();
             
             
         
-            $yesterDayPrice = DB::table('products')
-            ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-            ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-            ->join('categories' , 'products.category_id' ,'=','categories.id' )
-            ->where('categories.id','=',$value->id)
-            ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
-            ->select('price')
-            ->first();
-             //dd($yesterDayPrice);
-            
-            $yesterDayPrice2 =DB::table('products')
-            ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-            ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-            ->join('categories' , 'products.category_id' ,'=','categories.id' )
-            ->where('categories.id','=',$value->id)
-            ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
-            ->select('price')
-            ->first();
+           
  
             
                    $temp = array();
              foreach ($data['prices'] as $key => $value2) {
-              //   echo $key . ' ' .  $value2->title;
+                
+
+                $yesterDayPrice = DB::table('products')
+                ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+                ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+                ->join('categories' , 'products.category_id' ,'=','categories.id' )
+                ->where('categories.id','=',$value->id)
+                ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
+                ->where('products.id','=',$value2->id)
+                ->select('price')
+                ->first();
+                 //dd($yesterDayPrice);
+                
+                $yesterDayPrice2 =DB::table('products')
+                ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+                ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+                ->join('categories' , 'products.category_id' ,'=','categories.id' )
+                ->where('categories.id','=',$value->id)
+                ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
+                ->where('products.id','=',$value2->id)
+                ->select('price')
+                ->first();
+
               $value2 =   (array) $value2 ;
               $value2['yesterday']=  $yesterDayPrice->price ;
               $value2['beforeYesterday']= $yesterDayPrice2->price ;
-             $value2 =   (object) $value2 ;    
-            
-             $temp[] = $value2;
+              $temp[] = $value2;
              }
        
             $data['prices'] = $temp;

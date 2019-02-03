@@ -52,8 +52,8 @@
                                             <form action="{{ url('admin/review/'.$review->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
-                                                <a href="{{url('/admin/review/'.$review->id.'/edit')}}" class="btn btn-info">update</a>
-                                          <button type="submit" class="btn btn-danger check">Delete</button>
+                                                <a href="{{url('/admin/review/'.$review->id.'/edit')}}" class="btn btn-info">تحديث</a>
+                                          <button type="submit" class="btn btn-danger check">حذف</button>
                                             </form>
                                             
                                             
