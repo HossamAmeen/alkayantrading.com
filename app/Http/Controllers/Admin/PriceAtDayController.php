@@ -57,7 +57,7 @@ class PriceAtDayController extends Controller
         $date = $request->date;
         //$day_id = 1;
         if(empty($date)){
-            return "tezs";
+            
             $date = date("Y-m-d");
             $day_id = Day::where('day','=',$date)->first();
             if(!empty($day_id))
