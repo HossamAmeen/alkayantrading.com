@@ -47,7 +47,11 @@
                                              aria-pressed="true">{{$category->ar_title}} </a>
                                     </td>
                                     <td>{{$category->en_title}}</td>
-                                    <td> {{$category->user->name}} </td>
+                                    @if($category->user != null)
+                                    <td>{{$category->user->name}}</td>
+                                    @else
+                                    <td></td>
+                                    @endif
                                     <td >
                                         <a href="{{url('/admin/category/'.$category->id.'/edit')}}" class="btn btn-info">تحديث</a>
                                         <a href="{{url('/admin/category/delete/'.$category->id)}}" class="btn btn-danger check">حذف</a>

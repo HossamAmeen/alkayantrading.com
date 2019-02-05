@@ -26,19 +26,27 @@ class UserController extends Controller
         $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
-        $user = User::create($request->all());
-        $user->password = Hash::make($request->password);
-        if($request->hasFile('img'))
-        {
-            $photo = $request->file('img');
-            $imagename = time().'.'.$photo->getClientOriginalExtension();
-            $destinationPath = 'resources/assets/admin/images/';
-            $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
-            $thumb_img->save($destinationPath.$imagename,60);
-            $user->img = $destinationPath . $imagename;
+        $user = User::where('email' , $request->email)->first();
+        
+        if($user == null){
+            $user = User::create($request->all());
+            $user->password = Hash::make($request->password);
+            if($request->hasFile('img'))
+            {
+                $photo = $request->file('img');
+                $imagename = time().'.'.$photo->getClientOriginalExtension();
+                $destinationPath = 'resources/assets/admin/images/';
+                $thumb_img = Image::make($photo->getRealPath())->resize(400, 400);
+                $thumb_img->save($destinationPath.$imagename,60);
+                $user->img = $destinationPath . $imagename;
+            }
+            $request->session()->flash('status', 'تم الاضافه بنجاح');
+            $user->save();
         }
-        $request->session()->flash('status', 'تم الاضافه بنجاح');
-        $user->save();
+        else
+        {
+            return redirect()->route('user.create');
+        }
         return redirect()->route('user.index');
     }
     public function edit($id)
