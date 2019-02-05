@@ -15,12 +15,10 @@ class ServiceController extends Controller
    
     public function index()
     {
-        $data['services'] = DB::table('services')
-            ->join('users', 'users.id', '=', 'services.user_id')
-            ->leftJoin('categories', 'categories.id', '=', 'services.category_id')
-            ->select('services.*', 'users.name','categories.en_title as cat_en_title')
-            ->where('services.deleted_at','=' , null)
-            ->get();
+       
+            
+         $data['services'] =   Service::all(); 
+         
         $data['title'] = 'عرض الخدمات';
         return view('admin.control_panel.services.show_services',$data);
     }

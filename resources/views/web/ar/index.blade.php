@@ -81,7 +81,7 @@
 							<div class="content">
 								<h4> {{ $service->arAddress}}</h4>
 								@if($service->category_id !=NULL)
-								<p class="price-link text-center"><a href="{{ url('ar_daily_price')}}">شاهد الاسعار اليوميه</a></p>
+								<p class="price-link text-center"><a href="{{ url('ar/daily_price/'.$service->category_id)}}">شاهد الاسعار اليوميه</a></p>
 								@endif
 							</div>
 						</div>

@@ -51,12 +51,14 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role}}</td>
                                     <td >
-                                            <form action="{{ url('admin/user/'.$user->id ) }}" method="POST">
+                                            <a href="{{url('/admin/user/'.$user->id.'/edit')}}" class="btn btn-info">تحديث</a>
+                                            <a href="{{url('/admin/user/delete/'.$user->id)}}" class="btn btn-danger check">حذف</a>
+                                            {{-- <form action="{{ url('admin/user/'.$user->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
-                                                <a href="{{url('/admin/user/'.$user->id.'/edit')}}" class="btn btn-info">تحديث</a>
+                                                
                                           <button type="submit" class="btn btn-danger check">حذف</button>
-                                            </form>
+                                            </form> --}}
                                             
                                             
                                     </td>

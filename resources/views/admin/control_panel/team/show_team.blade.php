@@ -50,11 +50,14 @@
                                     </td>
                                     <td>{{$team->job}}</td>
                                     <td >
+                                            {{-- < <a href="{{url('/admin/team/delete'.$team->id)}}" class="btn btn-info">حديث</a>
+                                         --}}
                                             <form action="{{ url('admin/team/'.$team->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
-                                                <a href="{{url('/admin/team/'.$team->id.'/edit')}}" class="btn btn-info">حديث</a>
-                                          <button type="submit" class="btn btn-danger check">حذف</button>
+                                              <a href="{{url('/admin/team/'.$team->id.'/edit')}}" class="btn btn-info">حديث</a>
+                                           
+                                                  <button type="submit" class="btn btn-danger check">حذف</button>
                                             </form>
                                             
                                             

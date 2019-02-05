@@ -47,16 +47,28 @@
                                     </td>
                                     <td>{{$product->en_title}}</td>
                                     <th>{{$product->company_name}}</th>
-                                    <td>{{$product->name}}</td>
-                                    <td>{{$product->cat_en_title}}</td>
+                                   
+                                    @if($product->user != null)
+                                    <td>{{$product->user->name}}</td>
+                                    @else
+                                    <td></td>
+                                    @endif
+                                    
+                                    @if($product->category != null)
+                                    <td>{{$product->category->en_title}}</td>
+                                    @else
+                                    <td></td>
+                                    @endif
                                     <td >
-                                            <form action="{{url('admin/products/'.$product->id ) }}" method="POST">
+                                            <a href="{{url('admin/products/'.$product->id.'/edit')}}" class="btn btn-info">تحديث</a>
+                                             <a href="{{url('/admin/products/delete/'.$product->id)}}" class="btn btn-danger check">حذف</a>
+                                            {{-- <form action="{{url('admin/products/'.$product->id ) }}" method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
-                                          <a href="{{url('admin/products/'.$product->id.'/edit')}}" class="btn btn-info">تحديث</a>
-                                          <button type="submit" class="btn btn-danger check">حذف</button>
+                                        
+                                             <button type="submit" class="btn btn-danger check">حذف</button>
 
-                                            </form>
+                                            </form> --}}
 
                                             
                                     </td>

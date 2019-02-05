@@ -80,7 +80,7 @@
 							<div class="content">
 								<h4> {{ $service->en_title}}</h4>
 								@if($service->category_id !=NULL)
-								<p class="price-link text-center"><a href="{{ url('en_daily_price')}}"> watch our price</a></p>
+								<p class="price-link text-center"><a href="{{ url('en/daily_price/'.$service->category_id )}}"> watch our price</a></p>
 								@endif
 							</div>
 						</div>

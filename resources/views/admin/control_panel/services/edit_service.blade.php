@@ -57,6 +57,7 @@
                                         <label class="col-lg-3 control-label">قسم</label>
                                         <div class="col-lg-6">
                                            <select name="category_id">
+                                               <option></option>
                                             @foreach ($categories as $category)
                                            <option value="{{$category->id}}"
                                             @if($category->id == $category_id)

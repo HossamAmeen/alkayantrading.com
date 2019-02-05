@@ -44,7 +44,7 @@ class HomeController extends Controller
         $data['title'] =  "شركة كيان - خدماتنا" ; 
         return view('web.ar.services',$data);
     }
-    public function ar_daily_price()
+    public function ar_daily_price($id)
     {
        
         $categories = DB::table('categories')->select('id','ar_title')->get();
@@ -87,7 +87,7 @@ class HomeController extends Controller
         }
         $title =  "شركة كيان - الاسعار اليوميه";
         //return $categories;
-        return view('web.ar.daily_price' , $categories)->with(compact('data', 'title','categories') );
+        return view('web.ar.daily_price' , $categories)->with(compact('data', 'title','categories' ,  'id') );
        
     }
     public function ar_about()

@@ -21,7 +21,7 @@
 				?>
 
 				@foreach ($categories as $category)
-				<div class="steel-prices" id="steel">
+			<div class="steel-prices" id="{{$category->id}}">
 					<div class="text-center head-div">
 						<h1 class="header"> {{$category->en_title}} </h1>
 						<span class="after-head"><i class="fas fa-dollar-sign"></i></span>

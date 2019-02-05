@@ -7,7 +7,7 @@ Route::get('/', 'HomeController@ar_index');
 Route::prefix('ar')->group(function () {
     Route::get('/', 'HomeController@ar_index');
     Route::get('/services', 'HomeController@ar_services');
-    Route::get('/daily_price', 'HomeController@ar_daily_price');
+    Route::get('/daily_price/{cat_id}', 'HomeController@ar_daily_price');
     Route::get('/about', 'HomeController@ar_about');
     Route::get('/join_us', 'HomeController@ar_join_us');
     Route::get('/contact', 'HomeController@ar_contact');
@@ -21,7 +21,7 @@ Route::get('changeLanguage/{lang}','HomeController@change_language' );
 Route::prefix('en')->group(function () {
     Route::get('/', 'HomeController@en_index');
     Route::get('services', 'HomeController@en_services');
-    Route::get('daily_price', 'HomeController@en_daily_price');
+    Route::get('daily_price/{cat_id}', 'HomeController@en_daily_price');
     Route::get('about', 'HomeController@en_about');
     Route::get('join_us', 'HomeController@en_join_us');
     Route::get('contact', 'HomeController@en_contact');
@@ -45,14 +45,26 @@ Route::prefix('admin')->group(function () {
             Route::get('exportExcel' , 'PriceAtDayController@exportExcel');
             Route::post('upload' , 'PriceAtDayController@import');
             Route::get('/', 'ProductController@index');
+
             Route::resource('user'    , 'UserController')->middleware('admin');
+            Route::get('user/delete/{id}', 'UserController@destroy');
+
             Route::resource('prefs'    , 'PrefController')->middleware('admin');
             Route::resource('service' , 'ServiceController');
+            Route::get('service/delete/{id}', 'ServiceController@destroy');
+
             Route::resource('category'    , 'CategoryController');
-            Route::get('cat/delete/{id}', 'CategoryController@destroy');
+            Route::get('category/delete/{id}', 'CategoryController@destroy');
+
             Route::resource('products'    , 'ProductController');
+            Route::get('products/delete/{id}', 'ProductController@destroy');
+
             Route::resource('/team', 'TeamController');
+            Route::get('team/delete/{id}', 'TeamController@destroy');
+
             Route::resource('/review', 'ReviewController');
+            Route::get('review/delete/{id}', 'ReviewController@destroy');
+
             Route::resource('priceAtDay'    , 'PriceAtDayController');
             Route::get('/copy_day'    , 'PriceAtDayController@copy_day');
             Route::get('/show_prices'    , 'PriceAtDayController@show_prices')->name('show_prices');

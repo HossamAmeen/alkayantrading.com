@@ -13,13 +13,7 @@ class CategoryController extends Controller
     
     public function index()
     {
-       // Log::info('Showing user profile for user: ');
-
-    //     $data['categories'] = DB::table('categories')
-    //     ->join('users' , 'users.id' , '=' , 'categories.user_id')
-    //     ->select('categories.*','users.name')
-    //    ->where('categories.deleted_at' , '=' , NULL)
-    //     ->get();
+      
         $data['categories'] = Category::all();
   
     
@@ -73,7 +67,8 @@ class CategoryController extends Controller
     }
     public function destroy(Request $request, $id)
     {
-        return $id; 
+        
+       // return $id; 
         $category = Category::find($id);
         
         if(!empty($category))

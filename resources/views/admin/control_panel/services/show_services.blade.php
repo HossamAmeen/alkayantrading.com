@@ -50,15 +50,22 @@
                                              aria-pressed="true">{{$service->ar_title}} </a>
                                     </td>
                                     <td>{{$service->en_title}}</td>
-                                    <td>{{$service->name}}</td>
-                                    <td>{{$service->cat_en_title}}</td>
+                                    <td>{{$service->user->name}}</td>
+                                    @if($service->category != null)
+                                    <td>{{$service->category->en_title}}</td>
+                                    @else
+                                    <td></td>
+                                    @endif
+
+                                   
                                     <td >
-                                            <form action="{{url('admin/service/'.$service->id)}} " method="POST">
+                                            <a href="{{url('/admin/service/'.$service->id.'/edit')}}" class="btn btn-info">تحديث</a>
+                                            <a href="{{url('/admin/service/delete/'.$service->id)}}" class="btn btn-danger check">حذف</a>
+                                            {{-- <form action="{{url('admin/service/'.$service->id)}} " method="POST">
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
-                                                <a href="{{url('/admin/service/'.$service->id.'/edit')}}" class="btn btn-info">حديث</a>
-                                          <button type="submit" class="btn btn-danger check">حذف</button>
-                                            </form>
+                                                   <button type="submit" class="btn btn-danger check">حذف</button>
+                                            </form> --}}
                                             
                                             
                                     </td>

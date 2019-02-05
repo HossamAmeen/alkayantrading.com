@@ -49,15 +49,16 @@
                                     <td>{{$category->en_title}}</td>
                                     <td> {{$category->user->name}} </td>
                                     <td >
-                                            <form action="{{url('admin/category/'. $category->id ) }}" method="POST">
-                                                {{$category->id}}
+                                        <a href="{{url('/admin/category/'.$category->id.'/edit')}}" class="btn btn-info">تحديث</a>
+                                        <a href="{{url('/admin/category/delete/'.$category->id)}}" class="btn btn-danger check">حذف</a>
+                                            {{-- <form action="{{url('admin/category/' . $category->id ) }}" method="POST">
+                                              
                                               {{ csrf_field() }}
                                               {{method_field('DELETE')}}
-                                                <a href="{{url('/admin/category/'.$category->id.'/edit')}}" class="btn btn-info">تحديث</a>
-                                                <a href="{{url('/admin/cat/delete/'.$category->id)}}" class="btn btn-info">حذف</a>
+                                               
                                                 <button type="submit" class="btn btn-danger check" >حذف</button>
                                                 <input type="submit" value="delete" class="btn btn-danger check" >
-                                            </form>
+                                            </form> --}}
 
                                             
                                     </td>

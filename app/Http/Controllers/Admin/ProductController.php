@@ -11,14 +11,8 @@ class ProductController extends Controller
     public function index()
     {
       
-        $data['products'] = DB::table('products')
-            ->join('users', 'users.id', '=', 'products.user_id')
-            ->leftJoin('categories', 'categories.id', '=', 'products.category_id')
-            ->select('products.*', 'users.name','categories.en_title as cat_en_title')
-            ->where('categories.deleted_at','=',null)
-            ->where('products.deleted_at','=',null)
-            ->get();
-
+        $data['products'] = Product::all();
+       
         $data['title'] = 'عرض المنتجات';
 
         return view('admin.control_panel.products.show_products',$data);
