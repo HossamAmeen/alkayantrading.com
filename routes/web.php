@@ -3,7 +3,7 @@
 
 //////////////// web 
 /////// arabic
-Route::get('/ar', 'HomeController@ar_index');
+Route::get('/', 'HomeController@ar_index');
 Route::prefix('ar')->group(function () {
     Route::get('/', 'HomeController@ar_index');
     Route::get('/services', 'HomeController@ar_services');

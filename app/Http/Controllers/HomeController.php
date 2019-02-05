@@ -18,7 +18,7 @@ class HomeController extends Controller
 {
     public  function  change_language($lang){
 
-       
+       $prefUrl = url()->previous() ; 
         if($lang == "en")
 
             $rout =   str_replace("ar","en",url()->previous());
@@ -27,6 +27,10 @@ class HomeController extends Controller
             $rout =   str_replace("en","ar",url()->previous());
 
         //return $rout;
+        if( $rout == url()->previous()){
+            $rout = $rout . $lang;
+            //return $rout;
+        }
         return redirect($rout);
     }
     public function ar_index()
