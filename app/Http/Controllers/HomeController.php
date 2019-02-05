@@ -18,7 +18,7 @@ class HomeController extends Controller
 {
     public  function  change_language($lang){
 
-
+       
         if($lang == "en")
 
             $rout =   str_replace("ar","en",url()->previous());
@@ -26,7 +26,7 @@ class HomeController extends Controller
         else
             $rout =   str_replace("en","ar",url()->previous());
 
-       // return $rout;
+        //return $rout;
         return redirect($rout);
     }
     public function ar_index()
@@ -185,6 +185,7 @@ class HomeController extends Controller
     }
     public function en_services()
     {
+       
         $data['services'] = Service::all();
         $data['title'] =  "شركة كيان - خدماتنا" ; 
         return view('web.en.services',$data);

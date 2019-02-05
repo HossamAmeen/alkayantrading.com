@@ -3,7 +3,7 @@
 
 //////////////// web 
 /////// arabic
-Route::get('/', 'HomeController@ar_index');
+Route::get('/ar', 'HomeController@ar_index');
 Route::prefix('ar')->group(function () {
     Route::get('/', 'HomeController@ar_index');
     Route::get('/services', 'HomeController@ar_services');
@@ -77,7 +77,7 @@ Route::prefix('admin')->group(function () {
 
 
 
-Route::get('en/services', 'MobileController@en_services');
+
 /////////////// mobile
 Route::prefix('api')->group(function () {
     

@@ -76,7 +76,7 @@
 					     data-wow-duration="2s">
 						<div class="product-item">
 							<div class="opacity"></div>
-							<img src="{{asset('resources/assets/site/'.$service->img)}}" alt="{{$service->en_title}}" class="img-responsive item-img">
+							<img src="{{asset($service->img)}}" alt="{{$service->en_title}}" class="img-responsive item-img">
 							<div class="content">
 								<h4> {{ $service->en_title}}</h4>
 								@if($service->category_id !=NULL)
