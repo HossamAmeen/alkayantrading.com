@@ -63,9 +63,12 @@ class ServiceController extends Controller
     }
     public function update(Request $request, $id)
     {
+        
         $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
-        $this->validate($request, $rules,$message);
+      
+       // $this->validate($request, $rules,$message);
+      
         $service = Service::find($id);
         $path =  $service->img ;
         $hasFile=false;
@@ -113,7 +116,7 @@ class ServiceController extends Controller
     {
         return array(
             'ar_title'     => "required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,ar_title,deleted_at,$id,id,deleted_at,NULL",
-            'en_title'    => "required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,en_title,$id,id,deleted_at,NULL",
+            'en_title'    =>  "required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,en_title,deleted_at,$id,id,deleted_at,NULL",
             'img'=> 'image',			
            );
     }
