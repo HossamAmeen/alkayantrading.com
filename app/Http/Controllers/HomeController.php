@@ -44,7 +44,7 @@ class HomeController extends Controller
         $data['title'] =  "شركة كيان - خدماتنا" ; 
         return view('web.ar.services',$data);
     }
-    public function ar_daily_price($id)
+    public function ar_daily_price($id = null)
     {
        
         $categories = DB::table('categories')->select('id','ar_title')->get();
@@ -190,7 +190,7 @@ class HomeController extends Controller
         $data['title'] =  "شركة كيان - خدماتنا" ; 
         return view('web.en.services',$data);
     }
-    public function en_daily_price($service = NULL)
+    public function en_daily_price($id = NULL)
     {
        
         $categories = DB::table('categories')->select('id','en_title')->get();
@@ -234,12 +234,12 @@ class HomeController extends Controller
           
           $i++; 
         }
-       
         $title =  "شركة كيان - الاسعار اليوميه";
         
-        return view('web.en.daily_price' , $categories)->with(compact('data', 'title','categories') );
+        return view('web.en.daily_price' , $categories)->with(compact('data', 'title','categories' , 'id') );
        
     }
+    
     public function en_about()
     {
         $title =  "شركة كيان -  من نحن";
