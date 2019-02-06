@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('img')->default('resources\assets\admin\images/avatar-80.png');
+            $table->string('img')->default('resources/assets/admin/images/avatar-80.png');
             /*
              * roles:
              * 1- System Admin

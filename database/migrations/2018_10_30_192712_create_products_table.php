@@ -21,10 +21,10 @@ class CreateProductsTable extends Migration
             $table->string('company_name'); 
             $table->unsignedInteger('category_id')->nullable();      
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')
-            ->onDelete('set null');
+            ->onDelete('cascade');
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')
-            ->onDelete('set null');
+            ->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -19,7 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('en_title');
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')
-            ->onDelete('set null');
+            ->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

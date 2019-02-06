@@ -61,7 +61,7 @@ Route::prefix('admin')->group(function () {
 
             Route::resource('/team', 'TeamController');
             Route::get('team/delete/{id}', 'TeamController@destroy');
-
+            
             Route::resource('/review', 'ReviewController');
             Route::get('review/delete/{id}', 'ReviewController@destroy');
 
