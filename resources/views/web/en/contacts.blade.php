@@ -47,9 +47,11 @@
 		
 		<!--        contact form-->
         <section class="form padding wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">
-			<div class="alert alert-success">
-				<strong>Success!</strong>  {{session()->get('status')}}
-			</div>
+				@if(session()->get('status'))
+				<div class="alert alert-success">
+					<strong>Success  {{session()->get('status')}}</strong>
+				</div>
+				@endif
             <div class="container">
                 <!-- CONATACT-FORM -->
                 <div id="contact-form" class="col-sm-12">

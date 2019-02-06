@@ -17,7 +17,7 @@
 				
 <!--				steel prices-->
 				<?php
-				$c=1;
+				$c=0;
 				?>
 
 				@foreach ($categories as $category)
@@ -40,49 +40,29 @@
 								</tr>
 							</thead>
 							<tbody>
-							
 									
-								
-									
-									@if(!empty( $data['category'.$c] ))
+									@if ($data2[$c]['catname'] == $category->en_title )
 										
-										@for ($i = 0; $i < count($data['category'.$c]) -2 ; $i++)
-										<tr>							
-										
-											
-											<td>	{{1}} </td>
-												
-																	
-										
-											
-											<td>		{{$data['category'.$c][$i]->en_title}} </td>
-													
-																	
-										
-											
-											<td>	{{$data['category'.$c][$i]->price}} </td>
-											
-												@if(!empty( $data['category'.$c]['yesterDayPrice'][$i]->price )  ) 
-											<td>	{{$data['category'.$c]['yesterDayPrice'][$i]->price }} </td>
-												@endif
-												@if(!empty( $data['category'.$c]['beforeYesterDayPrice'][$i]->price )  ) 
-											<td>	{{$data['category'.$c]['beforeYesterDayPrice'][$i]->price}} </td>
-											 	@endif
-												
-									     </tr>
-										@endfor
-											
-										<?php $c++;?>
-										
-									@endif
-									
-									
+											@foreach ($data2[$c]['prices'] as $price)
+										<tr>
+											<td>{{$price['company_name']}} </td>
+											<td>{{$price['title']}} </td>
+											<td>{{$price['today']}} </td>
+											<td>{{$price['yesterday']}} </td>
+											<td>{{$price['beforeYesterday']}} </td>
+										</tr>
+											@endforeach
+
+									@endif									
 							</tbody>
 						</table>
 
 						</div>
 					</div>
 				</div>
+				<?php
+				$c++;
+				?>
 				@endforeach	
 				
 

@@ -43,7 +43,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="text-center head-div">
-						<h1 class="header wow bounceInUp" data-wow-duration="2s" >فريق العمل  </h1>
+						<h1 class="header wow bounceInUp" data-wow-duration="2s" >Team Work  </h1>
 						<span class="after-head"><i class="fas fa-users"></i></span>
 					</div>
 					@foreach($teams as $team)

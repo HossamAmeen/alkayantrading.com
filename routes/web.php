@@ -21,7 +21,7 @@ Route::get('changeLanguage/{lang}','HomeController@change_language' );
 Route::prefix('en')->group(function () {
     Route::get('/', 'HomeController@en_index');
     Route::get('services', 'HomeController@en_services');
-    Route::get('daily_price', 'HomeController@en_daily_price');
+    Route::get('daily_price/{id?}', 'HomeController@en_daily_price');
     Route::get('about', 'HomeController@en_about');
     Route::get('join_us', 'HomeController@en_join_us');
     Route::get('contact', 'HomeController@en_contact');

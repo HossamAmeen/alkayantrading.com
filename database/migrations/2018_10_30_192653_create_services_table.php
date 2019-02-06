@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('ar_title');
             $table->string('en_title');
-            $table->string('img')->default('resources/assets/site/images/demo/avatar-80.png');
+            $table->string('img')->default('resources/assets/site/images/avatar-80.png');
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('category_id')->nullable();
             
