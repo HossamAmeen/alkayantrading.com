@@ -119,7 +119,7 @@ class UserController extends Controller
     {
        return array(
         'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
-        'email'    => 'required|max:99|email|unique:users,email,NULL,id,deleted_at,NULL',
+        'email'    => 'required|max:99|email|unique:users,email,deleted_at',
         'password'              => 'required | confirmed ',
         'password_confirmation' => 'required ',
         'img'=> 'image',

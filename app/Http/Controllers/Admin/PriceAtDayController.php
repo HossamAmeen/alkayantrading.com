@@ -39,7 +39,18 @@ class PriceAtDayController extends Controller
 
         for ($i=0; $i < count($request->price) ; $i++) {
 
-            $price =  Price_at_day::where('day_id','=',$day_id)->where('product_id','=',$request->product_id[$i])->first();
+            $price =  Price_at_day::where('day_id','=',$day_id)
+            ->where('product_id','=',$request->product_id[$i])->first();
+            if($price == null)
+            {
+                $request->session()->flash('status', 'added was successfully!');
+                return redirect()->route('show_prices');
+
+            }
+            else
+            {
+                
+            }
             $price->user_id = session('id') ;
             $price->price = $request->price[$i];
             $price->save();
