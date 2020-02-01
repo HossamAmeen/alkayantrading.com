@@ -25,10 +25,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->exec('php artisan copy:day')->dailyAt('00:01');
-        //  $schedule->command('copy:day')->dailyAt('00:01');
+        // $schedule->command('copy:day')
+        //          ->hourly();
+        //  $schedule->exec('php artisan test:test');
+//        $schedule->call(function () {
+
+//            }
+//        })->everyMinute();
+
+        $schedule->command('copy:day')->dailyAt('00:01');
         // $schedule->command('copy:day')->everyMinute();
-        $schedule->command('copy:day')->hourly();
     }
 
     /**
