@@ -73,14 +73,14 @@
                         </div>
                         <h3>log In</h3>
                         <div class="social-btn-login">
-                            <ul>
+                            {{-- <ul>
                                 <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="javascript:void(0)"><i class="fa fa-github"></i></a></li>
                                 <li><a href="javascript:void(0)"><i class="fa fa-bitbucket"></i></a></li>
-                            </ul>
+                            </ul> --}}
                             <!--<button class="btn ls-dark-btn rounded"><i class="fa fa-facebook"></i></button>
                             <button class="btn ls-dark-btn rounded"><i class="fa fa-twitter"></i></button>
                             <button class="btn ls-dark-btn rounded"><i class="fa fa-linkedin"></i></button>

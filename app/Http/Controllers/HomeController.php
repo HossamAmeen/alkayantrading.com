@@ -11,6 +11,7 @@ use App\Product;
 use App\Days;
 use App\Review;
 use App\Team;
+use App\Day;
 use DB;
 use Mail;
 
@@ -52,6 +53,7 @@ class HomeController extends Controller
     {
        
         $categories = DB::table('categories')->select('id','ar_title')->get();
+        
         
        
          

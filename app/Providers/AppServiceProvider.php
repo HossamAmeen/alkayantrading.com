@@ -15,12 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
-           // if( DB::connection()->getPdo() );
-            $pref = Pref::find(1);
-            if(!empty($pref))
-                View::share('pref',$pref );
+        try {
+            DB::connection()->getPdo();
+             $pref = Pref::find(1);
+             if(!empty($pref))
+                 View::share('pref',$pref );
+        } catch (\Exception $e) {
+          //  die("Could not connect to the database.  Please check your configuration. error:" . $e );
+        }
 
         Schema::defaultStringLength(191);
     }

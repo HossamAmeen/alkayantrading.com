@@ -66,7 +66,7 @@
                                 </div>
             
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label">إاعده كلمه السر</label>
+                                    <label class="col-lg-3 control-label">إعده كلمه السر</label>
                                     <div class="col-lg-6">
                                         <input type="password" class="form-control" name="password_confirmation"
                                             required data-bv-notempty-message="The confirm password is required and cannot be empty"

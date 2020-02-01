@@ -40,7 +40,7 @@ Route::prefix('admin')->group(function () {
 
         Route::any('/login','PrefController@login')->name('login');
         Route::get('logout' , 'PrefController@logout');
-
+        Route::get('user/{id}/edit', 'UserController@edit');
         Route::middleware(['middleware' => 'manager'])->group(function () {
             Route::get('exportExcel' , 'PriceAtDayController@exportExcel');
             Route::post('upload' , 'PriceAtDayController@import');

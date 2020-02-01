@@ -5,11 +5,13 @@
 
     <!--Left navigation start-->
     <ul class="mainNav">
+        @if(session('role') == 1 )
         <li @if($title == 'اضافه بيانات الموقع' || ' تعديل بيانات الموقع') class="active"  @endif >
             <a href="{{url('admin/prefs')}}">
                 <i class="fa fa-bullhorn"></i> <span>بيانات الموقع</span>
             </a>
         </li>
+       
         <li >
             <a  href="#" @if($title == 'اضافه مستخدم' || $title == 'عرض المستخدمين') class="active"  @endif>
                 <i class="fa fa-bar-chart-o"></i> <span>المستخدمين</span>
@@ -24,6 +26,12 @@
 
             </ul>
         </li>
+        @endif 
+        <li>
+            <a @if($title == 'تعديل البيانات') class="active"  @endif  href="{{url('admin/user/'.session('id') .'/edit')}}">
+                <i class="fa fa-bar-chart-o"></i> تعديل بيانات الحساب</a>
+        </li>
+
         <li >
             <a  href="#" @if($title == 'اضافه قسم' || $title == 'عرض الاقسام') class="active"  @endif >
                 <i class="fa fa-bar-chart-o"></i> <span>الاقسام</span>

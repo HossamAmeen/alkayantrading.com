@@ -42,7 +42,7 @@
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="arAddress"
                                             data-bv-message="The service is not valid"
-                                            required data-bv-notempty-message="The service is required and cannot be empty"
+                                             data-bv-notempty-message="The service is required and cannot be empty"
                                             value="{{ $arAddress}} "
 
                                                 />
@@ -53,7 +53,7 @@
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control" name="enAddress"
                                                 data-bv-message="The username is not valid"
-                                                required data-bv-notempty-message="The username is required and cannot be empty"
+                                                 data-bv-notempty-message="The username is required and cannot be empty"
                                                 value="{{$enAddress}}"
                                                     />
                                         </div>
@@ -63,7 +63,7 @@
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control" name="enDescription"
                                                 data-bv-message="The username is not valid"
-                                                required data-bv-notempty-message="The username is required and cannot be empty"
+                                                 data-bv-notempty-message="The username is required and cannot be empty"
                                                 value="{{$enDescription}}"
                                                     />
                                         </div>
@@ -83,7 +83,7 @@
                                         <div class="col-lg-6">
                                             <input type="text" class="form-control" name="phone"
                                                 data-bv-message="The username is not valid"
-                                                required data-bv-notempty-message="The username is required and cannot be empty"
+                                                 data-bv-notempty-message="The username is required and cannot be empty"
                                                 value="{{$phone}}"
                                                     />
                                         </div>
@@ -123,7 +123,7 @@
                                         <div class="col-lg-6">
                                             <input type="url" class="form-control" name="facebook"
                                                 data-bv-message="The username is not valid"
-                                                required data-bv-notempty-message="The username is required and cannot be empty"
+                                                 data-bv-notempty-message="The username is required and cannot be empty"
                                                 value="{{$facebook}}"
                                                     />
                                         </div>
@@ -133,7 +133,7 @@
                                         <div class="col-lg-6">
                                             <input type="url" class="form-control" name="twitter"
                                                 data-bv-message="The username is not valid"
-                                                required data-bv-notempty-message="The username is required and cannot be empty"
+                                                 data-bv-notempty-message="The username is required and cannot be empty"
                                                 value="{{$twitter}}"
                                                     />
                                         </div>
@@ -143,7 +143,7 @@
                                         <div class="col-lg-6">
                                             <input type="url" class="form-control" name="instgram"
                                                 data-bv-message="The username is not valid"
-                                                required data-bv-notempty-message="The username is required and cannot be empty"
+                                                 data-bv-notempty-message="The username is required and cannot be empty"
                                                 value="{{$instgram}}"
                                                     />
                                         </div>
@@ -153,7 +153,7 @@
                                         <div class="col-lg-6">
                                             <input type="url"  class="form-control" name="linkedin"
                                                 data-bv-message="The username is not valid"
-                                                required data-bv-notempty-message="The username is required and cannot be empty"
+                                                 data-bv-notempty-message="The username is required and cannot be empty"
                                                 value="{{$linkedin}}"
                                                     />
                                         </div>

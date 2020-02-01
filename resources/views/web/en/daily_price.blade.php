@@ -45,11 +45,27 @@
 										
 											@foreach ($data2[$c]['prices'] as $price)
 										<tr>
-											<td>{{$price['company_name']}} </td>
-											<td>{{$price['title']}} </td>
-											<td>{{$price['today']}} </td>
-											<td>{{$price['yesterday']}} </td>
-											<td>{{$price['beforeYesterday']}} </td>
+										
+								<td>{{$price['company_name']}} </td>
+								<td>{{$price['title']}} </td>
+
+								@if(isset($price['today'] ))
+								<td>{{$price['today']}} </td>
+								@else
+								<td></td>
+								@endif
+							
+								@if(isset($price['yesterday'] ))
+								<td>{{$price['yesterday']}} </td>
+								@else
+								<td></td>
+								@endif
+								
+								@if(isset($price['beforeYesterday'] ))
+								<td>{{$price['beforeYesterday']}} </td>
+								@else
+								<td></td>
+								@endif
 										</tr>
 											@endforeach
 
