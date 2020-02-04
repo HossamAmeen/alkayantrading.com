@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">الاسعار</h3>
+                            <h3 class="panel-title">أسعار مواد البناء</h3>
                         </div>
                         @if(!empty(session()->get('status')))
                         <div class="alert alert-success">
@@ -73,19 +73,17 @@
                         @endif
                         <div class="panel-body" >
                             <div class="table-responsive ls-table">
-                                <a class="btn btn-primary" href="{{url('admin/exportExcel')}}" role="button">download excel</a>
-                                <form method="post" action="{{url('admin/upload')}}" enctype="multipart/form-data">
+                                <a class="btn btn-primary" href="{{url('admin/exportExcel')}}" role="button">Download Excel Template</a>
+                                <form class="col-md-8" method="post" action="{{url('admin/upload')}}" enctype="multipart/form-data">
                                     {{csrf_field()}}
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                        <div class="custom-file">
+
+                                        <div class="custom-file col-md-6" >
                                             <input type="file" class="custom-file-input" id="inputGroupFile01" name="excel">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                         </div>
-                                    </div>
-                                    <input type="submit" value="add">
+                                        <div class=" col-md-6" >
+
+                                        <input type="submit" value="حفظ الأسعار لليوم">
+</div>
                                 </form>
                                 <form id="defaultForm" method="POST" action="{{url('admin/add_price/'.$day_id)}}" class="form-horizontal ls_form" >
                                     {{csrf_field()}}
@@ -107,13 +105,13 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <h3> {{$category->en_title}} </h3>
+                                            <h3> {{$category->ar_title}} </h3>
                                             @if(!empty( $data['category'.$c] ))
                                                 <?php $i=1; ?>
                                                 @foreach ($data['category'.$c] as $item)
                                                     <tr>
                                                         <td>{{$i++}}</td>
-                                                        <td >{{$item->en_title}}</td>
+                                                        <td >{{$item->ar_title}}</td>
                                                         
                                                         <th> <input class="form-control" name="price[]" type="number" 
                                                             @if (isset($item->price))
@@ -135,7 +133,7 @@
 
                                     <div class="form-group">
                                         <div class="col-lg-9 col-lg-offset-3">
-                                            <button type="submit" class="btn btn-primary">add</button>
+                                            <button  type="submit" class="btn btn-primary col-md-4">حفظ</button>
                                         </div>
                                     </div>
                                 </form>

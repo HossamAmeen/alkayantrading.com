@@ -8,8 +8,10 @@ use App\Day;
 use App\Price_at_day;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
+use Illuminate\Support\Facades\Input;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use Auth;
 
 class PriceAtDayController extends Controller
 {
@@ -31,31 +33,45 @@ class PriceAtDayController extends Controller
     }
     public function add_price(Request $request , $day_id)
     {
+        $day = Input::get('day');
+        $myDay = Day::where('day', '=', $day   )->first();
 
-        $rules = $this->formValidation();
+      /*  $rules = $this->formValidation();
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
+*/
+        $prices = Input::get('price');
+        $products = Input::get('product_id');
 
 
-        for ($i=0; $i < count($request->price) ; $i++) {
+        if(count($prices) != count($products) ){
+            return redirect()->route('show_prices');
 
-            $price =  Price_at_day::where('day_id','=',$day_id)
-            ->where('product_id','=',$request->product_id[$i])->first();
-            if($price == null)
-            {
-                $request->session()->flash('status', 'added was successfully!');
-                return redirect()->route('show_prices');
-
-            }
-            else
-            {
-                
-            }
-            $price->user_id = session('id') ;
-            $price->price = $request->price[$i];
-            $price->save();
-            $request->session()->flash('status', 'added was successfully!');
         }
+
+        foreach($prices as $index => $price ){
+
+            $myProduct = Price_at_day::where('product_id','=',$products[$index])
+                                    ->where('day_id','=',$myDay->id)->first();
+//            dd($myProduct);
+            if(!empty($myProduct)){
+                $myProduct->price = $prices[$index];
+                $myProduct->user_id = Auth::id();
+                $myProduct->save();
+                echo "existing product";
+            }else{
+                $newDay = new Price_at_day ();
+                $newDay->product_id = $products[$index];
+                $newDay->price = $prices[$index];
+                $newDay->day_id = $myDay->id;
+                $newDay->user_id = Auth::id();
+                $newDay->save();
+            }
+
+        }
+
+
+            $request->session()->flash('status', 'تمت الإضافة بنجاح');
 
         return redirect()->route('show_prices');
               
@@ -64,7 +80,7 @@ class PriceAtDayController extends Controller
     {
 
 
-        $categories = DB::table('categories')->select('id','en_title')->get();
+        $categories = DB::table('categories')->select('id','ar_title')->where('deleted_at','=',null)->get();
         $date = $request->date;
         //$day_id = 1;
         if(empty($date)){
@@ -99,14 +115,16 @@ class PriceAtDayController extends Controller
                 ->join('categories' , 'products.category_id' ,'=','categories.id' )
                 ->where('categories.id','=',$value->id)
                 ->where('days.day','=',$date)
-                ->select('products.id','products.en_title' ,'price')
+                ->where('products.deleted_at','=',null)
+                ->select('products.id','products.ar_title' ,'price')
                 ->get();
             if( count( $data['category'.$i] ) == 0  )
             {
                 $data['category'.$i] = DB::table('products')
                 ->join('categories' , 'products.category_id' ,'=','categories.id' )
                 ->where('categories.id','=',$value->id)
-                ->select('products.id','products.en_title' )
+                ->where('products.deleted_at','=',null)
+                ->select('products.id','products.ar_title' )
                 ->get();
             }    
          //   echo $i;
