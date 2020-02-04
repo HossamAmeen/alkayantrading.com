@@ -19,8 +19,8 @@
         </div>
     </div>
     <div class="copywrite" style="direction: ltr;">
-        <p class="text-center">created by
-            <a href="{{url('en/')}}">
+        <p class="text-center">Powered by
+            <a target="_blank" href="http://www.z-edy.com/">
                 <img src="{{asset('resources/assets/site/images/zedy_logo.png')}}" width="70px" alt="zedy company">
             </a>
         </p>

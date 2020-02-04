@@ -7,7 +7,7 @@ Route::get('/', 'HomeController@ar_index');
 Route::prefix('ar')->group(function () {
     Route::get('/', 'HomeController@ar_index');
     Route::get('/services', 'HomeController@ar_services');
-    Route::get('/daily_price/{id?}', 'HomeController@ar_daily_price');
+    Route::get('/daily-prices/{id?}', 'HomeController@ar_daily_price');
     Route::get('/about', 'HomeController@ar_about');
     Route::get('/join_us', 'HomeController@ar_join_us');
     Route::get('/contact', 'HomeController@ar_contact');
@@ -21,7 +21,7 @@ Route::get('changeLanguage/{lang}','HomeController@change_language' );
 Route::prefix('en')->group(function () {
     Route::get('/', 'HomeController@en_index');
     Route::get('services', 'HomeController@en_services');
-    Route::get('daily_price/{id?}', 'HomeController@en_daily_price');
+    Route::get('daily-prices/{id?}', 'HomeController@en_daily_price');
     Route::get('about', 'HomeController@en_about');
     Route::get('join_us', 'HomeController@en_join_us');
     Route::get('contact', 'HomeController@en_contact');
@@ -82,7 +82,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('api')->group(function () {
     
     Route::namespace('Mobile')->group(function () {
-        
+
        ////// english
         Route::get('en/services', 'MobileController@en_services');
         Route::get('en/daily_price/{id?}', 'MobileController@en_daily_price');

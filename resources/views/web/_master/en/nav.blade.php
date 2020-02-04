@@ -34,7 +34,7 @@
                        @else
                        class="page-scroll"
                        @endif
-                       href="{{url('en/daily_price')}}">Daily Price</a></li>
+                       href="{{url('en/daily-prices')}}">Daily Price</a></li>
 
                 <li><a
                             @if($title == 'شركة كيان -  من نحن')

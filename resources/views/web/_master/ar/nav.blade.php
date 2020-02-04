@@ -22,7 +22,7 @@
                             @else
                             class="page-scroll"
                             @endif
-                            href= "{{url('ar/')}}">الرئيسيه</a></li>
+                            href= "{{url('ar/')}}">الرئيسية</a></li>
 
                 <li><a @if($title == 'شركة كيان - خدماتنا')
                        class="page-scroll active"
@@ -35,7 +35,7 @@
                        @else
                        class="page-scroll"
                        @endif
-                       href="{{url('ar/daily_price')}}">الاسعار اليوميه</a></li>
+                       href="{{url('ar/daily-prices')}}">الأسعار اليومية</a></li>
 
                 <li><a
                             @if($title == 'شركة كيان -  من نحن')

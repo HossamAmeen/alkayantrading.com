@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('resources/assets/admin/images/ios/fickle-logo-114.png')}}" />
 
 <!-- TODO: Add a favicon -->
-<link rel="shortcut icon" href="{{asset('resources/assets/admin/images/ico/fab.ico')}}">
+<link rel="icon" href="{{URL::asset('resources/assets/site/images/icon.png')}}">
 
 <title>{{$title}}</title>
 
