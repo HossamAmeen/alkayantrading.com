@@ -10,7 +10,7 @@ class Pref extends Model
     protected $fillable = [
         'arAddress', 'enAddress', 'enDescription' , 'arDescription' , 'phone'
         , 'arMainAddress' ,'enMainAddress' ,
-        'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin'
+        'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin','whatsapp'
     ];
     protected $dates = ['deleted_at'];
 }

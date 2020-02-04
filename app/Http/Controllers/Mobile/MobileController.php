@@ -293,7 +293,7 @@ class MobileController extends Controller
     {
         $pref['rows'] =  DB::table('prefs')->select(   'arAddress as address', 'arDescription as description' ,  'phone'
         ,'arMainAddress as mainAddress' ,
-        'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin')
+        'mainEmail' , 'facebook' , 'twitter' , 'instgram' ,'linkedin','whatsapp')
            
             ->get();
         return json_encode($pref , JSON_UNESCAPED_UNICODE);

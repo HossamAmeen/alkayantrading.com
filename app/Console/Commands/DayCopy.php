@@ -42,12 +42,12 @@ class DayCopy extends Command
         $newDay = new Day();
         $newDay->day = date("Y-m-d");
         $newDay->save();
-        Log::info('cron started as ' . date("Y-m-d"));
+        Log::info('cron started on ' . date("Y-m-d"));
         $yesterday = Day::where('day', '=', date('Y/m/d', strtotime('-1 days') ) )->first();
         if (!empty($yesterday)){
-            Log::info('yesterday id = ' . $yesterday->id);
             $price_at_yesterdays = Price_at_day::where('day_id', '=', $yesterday->id)->get();
         }
+
         if (!empty($price_at_yesterdays))
         foreach ($price_at_yesterdays as $price_at_yesterday) {
             $price_at_day = new Price_at_day();

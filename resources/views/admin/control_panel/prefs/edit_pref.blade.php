@@ -128,6 +128,17 @@
                                                     />
                                         </div>
                                 </div>
+
+                            <div class="form-group">
+                                        <label class="col-lg-3 control-label">whatsapp account</label>
+                                        <div class="col-lg-6">
+                                            <input type="url" class="form-control" name="whatsapp"
+                                                data-bv-message="The username is not valid"
+                                                 data-bv-notempty-message="The username is required and cannot be empty"
+                                                value="{{$whatsapp}}"
+                                                    />
+                                        </div>
+                                </div>
                                 <div class="form-group">
                                         <label class="col-lg-3 control-label"> twitter account</label>
                                         <div class="col-lg-6">
