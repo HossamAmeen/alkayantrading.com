@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Service;
 use App\Pref;
 use App\Product;
-use App\Days;
+use App\Category;
 use App\Review;
 use App\Team;
 use App\Day;
@@ -52,68 +52,68 @@ class HomeController extends Controller
     public function ar_daily_price($id = null)
     {
        
-        $categories = DB::table('categories')->select('id','ar_title')->get();
+        $categories = Category::all();
         
         
        
          
-        $data = array();
-        $data2 = array();
+        // $data = array();
+        // $data2 = array();
         
-        foreach ( $categories as  $value)
-         {
-           $data['catname'] = $value->ar_title;
+        // foreach ( $categories as  $value)
+        //  {
+        //    $data['catname'] = $value->ar_title;
 
-           $data['prices'] = DB::table('products')
-           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-           ->join('categories' , 'products.category_id' ,'=','categories.id' )
-           ->where('categories.id','=',$value->id)
-           ->where('days.day' ,'=',date('Y/m/d'))
-           ->select('products.id','products.ar_title as title' ,'products.company_name','price as today')
-           ->get();
+        //    $data['prices'] = DB::table('products')
+        //    ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+        //    ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+        //    ->join('categories' , 'products.category_id' ,'=','categories.id' )
+        //    ->where('categories.id','=',$value->id)
+        //    ->where('days.day' ,'=',date('Y/m/d'))
+        //    ->select('products.id','products.ar_title as title' ,'products.company_name','price as today')
+        //    ->get();
            
-                  $temp = array();
-            foreach ($data['prices'] as $key => $value2) {
-                $yesterDayPrice = DB::table('products')
-               ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-               ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-               ->join('categories' , 'products.category_id' ,'=','categories.id' )
-               ->where('categories.id','=',$value->id)
-               ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
-               ->where('products.id','=',$value2->id)
-               ->select('price')
-               ->first();
-                //dd($yesterDayPrice);
+        //           $temp = array();
+        //     foreach ($data['prices'] as $key => $value2) {
+        //         $yesterDayPrice = DB::table('products')
+        //        ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+        //        ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+        //        ->join('categories' , 'products.category_id' ,'=','categories.id' )
+        //        ->where('categories.id','=',$value->id)
+        //        ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
+        //        ->where('products.id','=',$value2->id)
+        //        ->select('price')
+        //        ->first();
+        //         //dd($yesterDayPrice);
                
-               $yesterDayPrice2 =DB::table('products')
-               ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-               ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-               ->join('categories' , 'products.category_id' ,'=','categories.id' )
-               ->where('categories.id','=',$value->id)
-               ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
-               ->where('products.id','=',$value2->id)
-               ->select('price')
-               ->first();
+        //        $yesterDayPrice2 =DB::table('products')
+        //        ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
+        //        ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
+        //        ->join('categories' , 'products.category_id' ,'=','categories.id' )
+        //        ->where('categories.id','=',$value->id)
+        //        ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
+        //        ->where('products.id','=',$value2->id)
+        //        ->select('price')
+        //        ->first();
 
-             $value2 =   (array) $value2 ;
-             if($yesterDayPrice !== null)
-             $value2['yesterday']=  $yesterDayPrice->price ;
-             if($yesterDayPrice2 !== null)
-             $value2['beforeYesterday']= $yesterDayPrice2->price ;
-             $temp[] = $value2;
-            }
+        //      $value2 =   (array) $value2 ;
+        //      if($yesterDayPrice !== null)
+        //      $value2['yesterday']=  $yesterDayPrice->price ;
+        //      if($yesterDayPrice2 !== null)
+        //      $value2['beforeYesterday']= $yesterDayPrice2->price ;
+        //      $temp[] = $value2;
+        //     }
       
-           $data['prices'] = $temp;
-           $data2[] = $data;
+        //    $data['prices'] = $temp;
+        //    $data2[] = $data;
    
         
           
          
-        }
+        // }
         $title =  "شركة كيان - الاسعار اليوميه";
       // return $data2;
-        return view('web.ar.daily_price' , $categories)->with(compact('data2', 'title','categories' ,  'id') );
+        return view('web.ar.daily_price' ,compact('title','categories') );
        
     }
     public function ar_about()
@@ -220,67 +220,11 @@ class HomeController extends Controller
     {
        
         
-        $categories = DB::table('categories')->select('id','en_title')->get();
+        $categories = Category::all();
         
-       
-         
-        $data = array();
-        $data2 = array();
-        
-        foreach ( $categories as  $value)
-         {
-           $data['catname'] = $value->en_title;
-
-           $data['prices'] = DB::table('products')
-           ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-           ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-           ->join('categories' , 'products.category_id' ,'=','categories.id' )
-           ->where('categories.id','=',$value->id)
-           ->where('days.day' ,'=',date('Y/m/d'))
-           ->select('products.id','products.en_title as title' ,'products.company_name','price as today')
-           ->get();
-           
-                  $temp = array();
-            foreach ($data['prices'] as $key => $value2) {
-                $yesterDayPrice = DB::table('products')
-               ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-               ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-               ->join('categories' , 'products.category_id' ,'=','categories.id' )
-               ->where('categories.id','=',$value->id)
-               ->where('days.day' ,'=',date('Y/m/d',strtotime("-1 days")))
-               ->where('products.id','=',$value2->id)
-               ->select('price')
-               ->first();
-                //dd($yesterDayPrice);
-               
-               $yesterDayPrice2 =DB::table('products')
-               ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-               ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-               ->join('categories' , 'products.category_id' ,'=','categories.id' )
-               ->where('categories.id','=',$value->id)
-               ->where('days.day' ,'=',date('Y/m/d',strtotime("-2 days")))
-               ->where('products.id','=',$value2->id)
-               ->select('price')
-               ->first();
-
-             $value2 =   (array) $value2 ;
-             if($yesterDayPrice !== null)
-             $value2['yesterday']=  $yesterDayPrice->price ;
-             if($yesterDayPrice2 !== null)
-             $value2['beforeYesterday']= $yesterDayPrice2->price ;
-             $temp[] = $value2;
-            }
-      
-           $data['prices'] = $temp;
-           $data2[] = $data;
-   
-        
-          
-         
-        }
         $title =  "شركة كيان - الاسعار اليوميه";
       // return $data2;
-        return view('web.en.daily_price' , $categories)->with(compact('data2', 'title','categories' ,  'id') );
+        return view('web.en.daily_price' , compact('title','categories') );
        
        
     }

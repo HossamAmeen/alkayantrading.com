@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Product;
 use DB;
-use App\Day;
+use App\Category;
 use App\Price_at_day;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
@@ -31,39 +31,36 @@ class PriceAtDayController extends Controller
         return redirect()->route('show_prices');
 
     }
-    public function add_price(Request $request , $day_id)
+    public function add_price(Request $request , $day_id = null)
     {
-        $day = Input::get('day');
-        $myDay = Day::where('day', '=', $day   )->first();
-
-      /*  $rules = $this->formValidation();
-        $message = $this->messageValidation();
-        $this->validate($request, $rules,$message);
-*/
-        $prices = Input::get('price');
-        $products = Input::get('product_id');
-
-
-        if(count($prices) != count($products) ){
-            return redirect()->route('show_prices');
-
-        }
-
-        foreach($prices as $index => $price ){
-
-            $myProduct = Price_at_day::where('product_id','=',$products[$index])
-                                    ->where('day_id','=',$myDay->id)->first();
-//            dd($myProduct);
+        
+        // foreach($request->products as $item )
+        $products = $request->products ; 
+        // return $products;
+        for($i = 0 ; $i <count($products); $i++ ){
+            
+            if(isset($request->day))
+            $myProduct = Price_at_day::where('product_id','=',$products[$i])
+                                    ->where('day','=',$request->day)->first();
+            else
+            {
+                // return $products[$i];
+                $myProduct = Price_at_day::where('product_id','=',$products[$i])
+                ->where('day','=',date("Y-m-d"))->first();
+            }
+            
             if(!empty($myProduct)){
-                $myProduct->price = $prices[$index];
+                $myProduct->price_today = $request->price[$i];
                 $myProduct->user_id = Auth::id();
                 $myProduct->save();
-                echo "existing product";
+                // echo "existing product";
             }else{
                 $newDay = new Price_at_day ();
-                $newDay->product_id = $products[$index];
-                $newDay->price = $prices[$index];
-                $newDay->day_id = $myDay->id;
+                $newDay->product_id = $products[$i];
+                $newDay->price_today = $request->price[$i];
+                $newDay->price_yesterday = $request->price[$i];
+                $newDay->price_before_yesterday = $request->price[$i];
+                // $newDay->day_id = $myDay->id;
                 $newDay->user_id = Auth::id();
                 $newDay->save();
             }
@@ -79,62 +76,16 @@ class PriceAtDayController extends Controller
     public function show_prices(Request $request)
     {
 
-
-        $categories = DB::table('categories')->select('id','ar_title')->where('deleted_at','=',null)->get();
-        $date = $request->date;
-        //$day_id = 1;
-        if(empty($date)){
-            
-            $date = date("Y-m-d");
-            $day_id = Day::where('day','=',$date)->first();
-            if(!empty($day_id))
-            $day_id = Day::where('day','=',$date)->first()->id;
-            else{ 
-                $day = new Day();
-                $day->day = date("Y-m-d");
-                $day->save();
-                $day_id  = $day->id;
-            }
-        }
-        else{
-            if(!empty($day_id))
-            $day_id = Day::where('day','=',$date)->first()->id;
-            else{ 
-                $day = new Day();
-                $day->day = $date;
-                $day->save();
-                $day_id  = $day->id;
-            }
-        }
-            
-        $i=1;
-        foreach ( $categories as  $value) {
-            $data['category'.$i] = DB::table('products')
-                ->join('price_at_days' , 'price_at_days.product_id' ,'=' , 'products.id')
-                ->join('days' , 'price_at_days.day_id' ,'=' , 'days.id')
-                ->join('categories' , 'products.category_id' ,'=','categories.id' )
-                ->where('categories.id','=',$value->id)
-                ->where('days.day','=',$date)
-                ->where('products.deleted_at','=',null)
-                ->select('products.id','products.ar_title' ,'price')
-                ->get();
-            if( count( $data['category'.$i] ) == 0  )
-            {
-                $data['category'.$i] = DB::table('products')
-                ->join('categories' , 'products.category_id' ,'=','categories.id' )
-                ->where('categories.id','=',$value->id)
-                ->where('products.deleted_at','=',null)
-                ->select('products.id','products.ar_title' )
-                ->get();
-            }    
-         //   echo $i;
-            $i++;
-        }
-        
-       //return ($data) ;
-      // return $day_id;
+        $categories = Category::all();
+        // return $request->date;
+        if(isset($request->date))
+        $products = Price_at_day::where('day', '=',$request->date  )->get();
+        else
+        $products = Price_at_day::where('day', '=', date('Y-m-d') )->get();
+        $day = $request->date ; //// to show in valueof button
+    //   return $products;
         $title= 'عرض الاسعار';
-       return view('admin.control_panel.prices.edit_price_at_day' , $categories)->with(compact('data', 'title','categories' , 'date' , 'day_id') );
+       return view('admin.control_panel.prices.edit_price_at_day' , compact('title','categories' , 'products' , 'day') );
     }
     function formValidation()
     {

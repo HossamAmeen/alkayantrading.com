@@ -13,4 +13,9 @@ class Category extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function products()
+    {
+        return $this->hasMany('App\Product' , 'category_id');
+    }
 }

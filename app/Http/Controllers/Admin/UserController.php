@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use Image;
+use Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -51,7 +52,7 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        
+       
         $user = User::find($id);
         $title = 'تعديل المستخدمين';
         $user= $user->makeVisible('password'); //// for hidden in model
@@ -64,6 +65,7 @@ class UserController extends Controller
     
     public function update(Request $request, $id)
     {
+        
         $rules = $this->EditformValidation($id);
         $message = $this->messageValidation();
         $this->validate($request, $rules,$message);
@@ -96,7 +98,7 @@ class UserController extends Controller
                 $user->save();
         }
         if($hasFile) {
-             unlink($path);
+            // unlink($path);
          }
         $request->session()->flash('status', 'تم التعديل بنجاح');
         return redirect()->route('user.index');

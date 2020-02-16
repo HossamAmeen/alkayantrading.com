@@ -18,10 +18,10 @@ class CreatePriceAtDaysTable extends Migration
             $table->unsignedInteger('product_id');      
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->unsignedInteger('day_id');      
-            $table->foreign('day_id')->references('id')->on('days')->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->integer('price');
+            $table->date('day')->default(date("Y-m-d"));
+            $table->integer('price_today');
+            $table->integer('price_yesterday');
+            $table->integer('price_before_yesterday');
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')
             ->onDelete('cascade');

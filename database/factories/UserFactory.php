@@ -65,13 +65,13 @@ $factory->define(App\Price_at_day::class, function (Faker $faker) {
     
     
     $Products = App\Product::pluck('id')->toArray();
-    $day_id = App\Day::pluck('id')->toArray();  
 
 return [
-   
-    'day_id'=>$faker->randomElement($day_id),
+  
     'product_id'=>$faker->randomElement($Products),
-    'price' => $faker->randomDigit,
+    'price_today' => $faker->randomDigit,
+    'price_yesterday' => $faker->randomDigit,
+    'price_before_yesterday' => $faker->randomDigit,
 
 ];
 });

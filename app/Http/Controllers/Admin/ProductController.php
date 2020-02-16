@@ -63,7 +63,8 @@ class ProductController extends Controller
         if(!empty($product)){
 
             $product->fill($request->all());
-            
+            $product->user_id = session('id') ;
+            $product->save();
             $product->save();
             
         }

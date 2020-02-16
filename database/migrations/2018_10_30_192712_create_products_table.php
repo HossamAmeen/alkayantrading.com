@@ -18,11 +18,11 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('ar_title');
             $table->string('en_title');
-            $table->string('company_name'); 
+            $table->string('company_name')->default('company_name'); 
             $table->unsignedInteger('category_id')->nullable();      
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable()->default(1);
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->softDeletes();

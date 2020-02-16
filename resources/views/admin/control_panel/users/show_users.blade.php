@@ -49,7 +49,12 @@
                                              aria-pressed="true">{{$user->name}} </a>
                                     </td>
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->role}}</td>
+                                    @if($user->role == 1 )
+                                    <td>admin</td>
+                                    @else
+                                    <td>manager</td>
+                                    @endif
+                                   
                                     <td >
                                             <a href="{{url('/admin/user/'.$user->id.'/edit')}}" class="btn btn-info">تحديث</a>
                                             <a href="{{url('/admin/user/delete/'.$user->id)}}" class="btn btn-danger check">حذف</a>

@@ -39,21 +39,22 @@ class DayCopy extends Command
      */
     public function handle()
     {
-        $newDay = new Day();
-        $newDay->day = date("Y-m-d");
-        $newDay->save();
+       
         Log::info('cron started on ' . date("Y-m-d"));
-        $yesterday = Day::where('day', '=', date('Y/m/d', strtotime('-1 days') ) )->first();
-        if (!empty($yesterday)){
-            $price_at_yesterdays = Price_at_day::where('day_id', '=', $yesterday->id)->get();
-        }
-
+       
+    
+            $price_at_yesterdays = Price_at_day::where('day', '=', date('Y-m-d', strtotime('-1 days') ) )->get();
+        
+        Log::info('cron started on ' .  date('Y/m/d', strtotime('-1 days') ) );
         if (!empty($price_at_yesterdays))
         foreach ($price_at_yesterdays as $price_at_yesterday) {
             $price_at_day = new Price_at_day();
             $price_at_day->product_id = $price_at_yesterday->product_id;
-            $price_at_day->day_id = $newDay->id;
-            $price_at_day->price = $price_at_yesterday->price;
+           
+            $price_at_day->price_today = $price_at_yesterday->price_today;
+            $price_at_day->price_yesterday = $price_at_yesterday->price_today;
+            $price_at_day->price_before_yesterday = $price_at_yesterday->price_yesterday;
+
             $price_at_day->save();
         }
     }

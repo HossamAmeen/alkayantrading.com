@@ -45,33 +45,26 @@
 							</tr>
 						</thead>
 						<tbody>
-							@if ($data2[$c]['catname'] == $category->ar_title )
-							@foreach ($data2[$c]['prices'] as $price)
+							
+							@foreach ($category->products as $product)
 							<tr>
 
-								<td>{{$price['company_name']}} </td>
-								<td>{{$price['title']}} </td>
+								<td>{{$product->company_name}} </td>
+								<td>{{$product->ar_title}} </td>
 
-								@if(isset($price['today'] ))
-								<td>{{$price['today']}} </td>
+								@if(isset($product->price) )
+								<td>{{$product->price->price_today}} </td>
+								<td>{{$product->price->price_yesterday}} </td>
+								<td>{{$product->price->price_before_yesterday}} </td>
 								@else
 								<td></td>
-								@endif
-							
-								@if(isset($price['yesterday'] ))
-								<td>{{$price['yesterday']}} </td>
-								@else
+								<td></td>
 								<td></td>
 								@endif
-								
-								@if(isset($price['beforeYesterday'] ))
-								<td>{{$price['beforeYesterday']}} </td>
-								@else
-								<td></td>
-								@endif
+
+													
 							</tr>
 							@endforeach
-							@endif
 
 						</tbody>
 						<?php $c++;?>
