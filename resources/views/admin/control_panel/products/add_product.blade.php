@@ -68,7 +68,8 @@
                                            <select name="category_id">
 
                                             @foreach ($categories as $category)
-                                           <option value="{{$category->id}}" @if($category->id == old('category_id')) selected @endif>{{$category->en_title}}</option>
+                                           <option value="{{$category->id}}" @if($category->id == old('category_id')) 
+                                            selected @endif>{{$category->ar_title}}</option>
                                             @endforeach
                                             
                                            </select>

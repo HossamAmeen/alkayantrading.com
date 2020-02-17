@@ -102,7 +102,7 @@ class ReviewController extends Controller
     function formValidation()
     {
         return array(
-            'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
+            'name'     => 'string|required|max:99',
             'review'    => 'required|max:99',
             'img'=> 'image',
         );
@@ -110,7 +110,7 @@ class ReviewController extends Controller
     function EditformValidation($id)
     {
         return array(
-            'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
+            'name'     => 'string|required|max:99',
             'review'    => 'required|max:99',
             'img'=> 'image',
         );

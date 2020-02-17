@@ -32,20 +32,7 @@
                 <i class="fa fa-bar-chart-o"></i> تعديل بيانات الحساب</a>
         </li>
 
-        <li >
-            <a  href="#" @if($title == 'اضافه قسم' || $title == 'عرض الاقسام') class="active"  @endif >
-                <i class="fa fa-bar-chart-o"></i> <span>الاقسام</span>
-            </a>
-            <ul>
-                <li>
-                    <a  @if($title == 'اضافه قسم') class="active"  @endif href="{{url('admin/category/create')}}">اضافه قسم</a>
-                </li>
-                <li>
-                    <a @if($title == 'عرض الاقسام') class="active"  @endif  href="{{url('admin/category')}}">عرض الاقسام</a>
-                </li>
-
-            </ul>
-        </li>
+      
         <li >
             <a  href="#" @if($title == 'اضافه خدمه' || $title == 'عرض الخدمات') class="active"  @endif >
                 <i class="fa fa-bar-chart-o"></i> <span>الخدمات</span>
@@ -60,20 +47,7 @@
 
             </ul>
         </li>
-        <li >
-            <a  href="#"  @if($title == 'اضافه منتج' || $title == 'عرض المنتجات') class="active"  @endif >
-                <i class="fa fa-bar-chart-o"></i> <span>المنتجات</span>
-            </a>
-            <ul>
-                <li>
-                    <a  @if($title == 'اضافه منتج') class="active"  @endif href="{{url('admin/products/create')}}">اضافه منتج</a>
-                </li>
-                <li>
-                    <a @if($title == 'عرض المنتجات') class="active"  @endif  href="{{url('admin/products')}}">عرض المنتجات</a>
-                </li>
-
-            </ul>
-        </li>
+        
         <li >
             <a  href="#"  @if($title == 'اضافه عضو' || $title == 'عرض الاعضاء') class="active"  @endif >
                 <i class="fa fa-bar-chart-o"></i> <span>فريق العمل</span>
@@ -102,7 +76,34 @@
 
             </ul>
         </li>
+        <li >
+            <a  href="#" @if($title == 'اضافه قسم' || $title == 'عرض الاقسام') class="active"  @endif >
+                <i class="fa fa-bar-chart-o"></i> <span>التصنيف</span>
+            </a>
+            <ul>
+                <li>
+                    <a  @if($title == 'اضافه قسم') class="active"  @endif href="{{url('admin/category/create')}}">اضافه التصنيف</a>
+                </li>
+                <li>
+                    <a @if($title == 'عرض الاقسام') class="active"  @endif  href="{{url('admin/category')}}">عرض الأصناف</a>
+                </li>
 
+            </ul>
+        </li>
+        <li >
+            <a  href="#"  @if($title == 'اضافه منتج' || $title == 'عرض المنتجات') class="active"  @endif >
+                <i class="fa fa-bar-chart-o"></i> <span>المنتجات</span>
+            </a>
+            <ul>
+                <li>
+                    <a  @if($title == 'اضافه منتج') class="active"  @endif href="{{url('admin/products/create')}}">اضافه منتج</a>
+                </li>
+                <li>
+                    <a @if($title == 'عرض المنتجات') class="active"  @endif  href="{{url('admin/products')}}">عرض المنتجات</a>
+                </li>
+
+            </ul>
+        </li>
         <li >
             <a  href="{{url('admin/show_prices')}}">
                 <i class="fa fa-bar-chart-o"></i> <span>أسعار مواد بناء</span>

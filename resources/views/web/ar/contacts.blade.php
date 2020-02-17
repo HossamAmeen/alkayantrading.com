@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-sm-12">
                             <textarea rows="8" placeholder="اترك رسالتك" value="{{old('text')}}" class="form-control" id="form-msg" name="text" required></textarea>
-                            <input type="submit" name="ارسال" value="submit" id="submit" class="btn btn-default hvr-grow">
+                            <input type="submit" name="ارسال" value="إرسال" id="submit" class="btn btn-default hvr-grow">
                         </div>
                     </form>
                 </div>

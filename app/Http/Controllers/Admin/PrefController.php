@@ -96,14 +96,14 @@ class PrefController extends Controller
     {
 
        return array(
-        'arAddress'     => 'required|regex:/^[\pL\s\d\-]+$/u',
-        'enAddress'     => 'required|regex:/^[\pL\s\d\-]+$/u',
-        'enDescription' => 'required|regex:/^[\pL\s\d\-]+$/u',
-        'arDescription' => 'required|regex:/^[\pL\s\d\-]+$/u',
+        'arAddress'     => 'required|string',
+        'enAddress'     => 'required|string',
+        'enDescription' => 'required|string',
+        'arDescription' => 'required|string',
         'phone'         => 'required|numeric',
         'mainEmail'     => 'required|email',
-        'arMainAddress'   => 'required|regex:/^[\pL\s\d\-]+$/u',
-        'enMainAddress'   => 'required|regex:/^[\pL\s\d\-]+$/u'
+        'arMainAddress'   => 'required|string',
+        'enMainAddress'   => 'required|string'
        );
     }
     function messageValidation(){

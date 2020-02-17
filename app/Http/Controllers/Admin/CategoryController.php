@@ -82,15 +82,15 @@ class CategoryController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories,ar_title,NULL,id,deleted_at,NULL',
-        'en_title'     => 'required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:categories,en_title,NULL,id,deleted_at,NULL',
+        'ar_title'     => 'required|max:99|string|unique:categories,ar_title,NULL,id,deleted_at,NULL',
+        'en_title'     => 'required|max:99|string|unique:categories,en_title,NULL,id,deleted_at,NULL',
        );
     }
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:categories,ar_title,$id,id,deleted_at,NULL",
-            'en_title'    =>  "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:categories,en_title,$id,id,deleted_at,NULL",
+            'ar_title'     => "string|required|max:99|unique:categories,ar_title,$id,id,deleted_at,NULL",
+            'en_title'    =>  "string|required|max:99|unique:categories,en_title,$id,id,deleted_at,NULL",
 
 
         );

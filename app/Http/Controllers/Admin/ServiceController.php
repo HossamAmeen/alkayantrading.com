@@ -107,16 +107,16 @@ class ServiceController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'required|max:99|unique:services,ar_title,NULL,id,deleted_at,NULL|regex:/^[\pL\s\d\-]+$/u',
-        'en_title'    => 'required|max:99|unique:services,en_title,NULL,id,deleted_at,NULL|regex:/^[\pL\s\d\-]+$/u',
+        'ar_title'     => 'required|max:99|unique:services,ar_title,NULL,id,deleted_at,NULL|string',
+        'en_title'    => 'required|max:99|unique:services,en_title,NULL,id,deleted_at,NULL|string',
         'img'=> 'image',
        );
     }
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => "required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,ar_title,deleted_at,$id,id,deleted_at,NULL",
-            'en_title'    =>  "required|max:99|regex:/^[\pL\s\d\-]+$/u|unique:services,en_title,deleted_at,$id,id,deleted_at,NULL",
+            'ar_title'     => "required|max:99|string|unique:services,ar_title,deleted_at,$id,id,deleted_at,NULL",
+            'en_title'    =>  "required|max:99|string|unique:services,en_title,deleted_at,$id,id,deleted_at,NULL",
             'img'=> 'image',			
            );
     }

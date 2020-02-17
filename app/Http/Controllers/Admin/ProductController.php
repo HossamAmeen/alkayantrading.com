@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $data['categories'] = DB::table('categories')->where('deleted_at','=',null)->select('id','en_title')->get();
+        $data['categories'] = DB::table('categories')->where('deleted_at','=',null)->get();
         $data['title'] = 'اضافه منتج';
         return view('admin.control_panel.products.add_product',$data);
     }
@@ -90,18 +90,18 @@ class ProductController extends Controller
     function formValidation()
     {
        return array(
-        'ar_title'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99|unique:products,ar_title,NULL,id,deleted_at,NULL',
-        'en_title'    => 'regex:/^[\pL\s\-]+$/u||required|max:99|unique:products,en_title,NULL,id,deleted_at,NULL',
-        'company_name'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
+        'ar_title'     => 'required|max:99|unique:products,ar_title,NULL,id,deleted_at,NULL',
+        'en_title'    => 'required|max:99|unique:products,en_title,NULL,id,deleted_at,NULL',
+        'company_name'    => 'required|max:99',
        
        );
     }
     function EditformValidation($id)
     {
         return array(
-            'ar_title'     => "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,ar_title,$id,id,deleted_at,NULL",
-            'en_title'    =>  "regex:/^[\pL\s\d\-]+$/u|required|max:99|unique:products,en_title,$id,id,deleted_at,NULL",
-            'company_name'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
+            'ar_title'     => "string|required|max:99|unique:products,ar_title,$id,id,deleted_at,NULL",
+            'en_title'    =>  "string|required|max:99|unique:products,en_title,$id,id,deleted_at,NULL",
+            'company_name'    => 'required|max:99',
 			
            );
     }

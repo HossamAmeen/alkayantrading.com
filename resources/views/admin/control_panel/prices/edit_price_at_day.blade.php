@@ -94,7 +94,7 @@
                                     $c=1;
                                     ?>
                                 <input onchange=update() class="form-control" name="day" type="date" id="mDate"
-                        value="{{$day}}">
+                                    value="{{$day}}">
                                 {{-- @foreach ($categories as $category) --}}
                                 <table class="table">
                                     <thead>
@@ -110,27 +110,22 @@
                                     <tbody>
                                         {{-- <h3> {{$category->ar_title}} </h3> --}}
                                         <?php $i= 1;?>
-                                        {{-- @foreach ($category->products as $item) --}}
                                         @foreach ($products as $item)
                                         <tr>
                                             <td>{{$i++}}</td>
-                                            @if(isset($item->product))
-                                            <td>{{$item->product->ar_title}}</td>
-                                            @else
-                                            <td></td>
-                                            @endif
+                                        
+                                            <td>{{$item['product']}}</td>
+                                        
                                             {{-- <td>{{$item->price->price}}</td> --}}
                                             <td> <input class="form-control" name="price[]" type="number"
-                                                    @if(isset($item->price_today)))
-                                                    {{-- @if($item->price(-1) !== null) --}}
-                                                value = "{{$item->price_today}}"
+                                                    
+                                                {{-- @if($item->price(-1) !== null) --}}
+                                                value = "{{$item['price']}}"
+                                        
                                                 
-                                                @else
-                                                value = "1"
-                                                @endif
                                                 >
                                             </td>
-
+                                        
                                             {{-- <th> <input class="form-control" name="price[]" type="number" 
                                                             @if (isset($item->price))
                                                             
@@ -140,11 +135,9 @@
                                                             @endif
                                                             > </th> --}}
                                             <th hidden><input class="form-control" name="products[]"
-                                                    value="{{$item->product->id}}"> </th>
+                                                    value="{{$item['id']}}"> </th>
                                         </tr>
-  
                                         @endforeach
-                                       
                                         {{-- @endforeach --}}
                                         <?php $c++;?>
 

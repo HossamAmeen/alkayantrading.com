@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Auth;
-
+use Illuminate\Support\Arr;
 class PriceAtDayController extends Controller
 {
 
@@ -38,7 +38,7 @@ class PriceAtDayController extends Controller
         $products = $request->products ; 
         // return $products;
         for($i = 0 ; $i <count($products); $i++ ){
-            
+            // return $request->day ;
             if(isset($request->day))
             $myProduct = Price_at_day::where('product_id','=',$products[$i])
                                     ->where('day','=',$request->day)->first();
@@ -76,16 +76,40 @@ class PriceAtDayController extends Controller
     public function show_prices(Request $request)
     {
 
-        $categories = Category::all();
-        // return $request->date;
-        if(isset($request->date))
-        $products = Price_at_day::where('day', '=',$request->date  )->get();
-        else
-        $products = Price_at_day::where('day', '=', date('Y-m-d') )->get();
+        $productsArray = Product::get();   
+        
+        $products = array();
+        foreach($productsArray as $product)
+        {
+            // return $product->priceYesterDaye(2)->price_today;
+            $data['id'] = $product->id ;
+            $data['product'] = $product->ar_title ;
+            if(isset($request->date))
+            $price= Price_at_day::where('day', '=',$request->date  )
+                                  ->where('product_id' , $product->id)->first();
+            else
+            $price= Price_at_day::where('day', '=',date('Y-m-d')  )
+            ->where('product_id' , $product->id)->first();
+
+            
+            if(!isset($price))
+            {
+                // return "test";
+                $data['price'] = 1;
+            }
+            else
+            $data['price'] = $price->price_today ;
+           
+            // $data['product']['price'][] = $product->price->price_today ;
+
+            $products[] = $data;
+        }
+      
+        
         $day = $request->date ; //// to show in valueof button
     //   return $products;
         $title= 'عرض الاسعار';
-       return view('admin.control_panel.prices.edit_price_at_day' , compact('title','categories' , 'products' , 'day') );
+       return view('admin.control_panel.prices.edit_price_at_day' , compact('title','products','day') );
     }
     function formValidation()
     {

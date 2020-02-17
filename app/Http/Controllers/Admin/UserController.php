@@ -120,7 +120,7 @@ class UserController extends Controller
     function formValidation()
     {
        return array(
-        'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
+        'name'     => 'string|required|max:99',
         'email'    => 'required|max:99|email|unique:users,email,deleted_at',
         'password'              => 'required | confirmed ',
         'password_confirmation' => 'required ',
@@ -130,7 +130,7 @@ class UserController extends Controller
     function EditformValidation($id)
     {
         return array(
-            'name'     => 'regex:/^[\pL\s\d\-]+$/u|required|max:99',
+            'name'     => 'string|required|max:99',
 			'email'    => "required|max:99|email|unique:users,email,$id,id,deleted_at,NULL",
 			'password' => 'confirmed',
             'img'=> 'image',

@@ -160,7 +160,7 @@ class HomeController extends Controller
     {
 
         $title =  "شركة كيان - تواصل معانا";
-            Log::info('start sending message');
+            
         if ($request->isMethod('post')) {
             $rules = $this->contactFormValidation();
             $message = $this->contactMessageValidation();
@@ -300,11 +300,11 @@ class HomeController extends Controller
     {
 
         return array(
-            'name'     => 'required|regex:/^[\pL\s\d\-]+$/u||max:99',
-            'address'    => 'required|regex:/^[\pL\s\-]+$/u||max:99',
+            'name'     => 'required|string||max:99',
+            'address'    => 'required||max:99',
              'email' => 'required|email',
             'phone'         => 'required|numeric|min:1000000000',
-            'job'    => 'required|regex:/^[\pL\s\-]+$/u||max:99',
+            'job'    => 'required||max:99',
 
         );
     }
@@ -335,11 +335,11 @@ class HomeController extends Controller
 
 
         return array(
-            'name'     => 'regex:/^[\pL\s\d\-]+$/u||required|max:99',
+            'name'     => 'string||required|max:99',
 
             'email' => 'required|email',
             'phone'         => 'required|numeric|min:1000000000',
-            'text'    => 'regex:/^[\pL\s\-]+$/u||required|max:99',
+            'text'    => '|required|max:99',
 
         );
     }
