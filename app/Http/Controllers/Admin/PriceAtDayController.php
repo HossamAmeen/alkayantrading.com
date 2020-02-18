@@ -53,6 +53,7 @@ class PriceAtDayController extends Controller
                 $myProduct->price_today = $request->price[$i];
                 $myProduct->user_id = Auth::id();
                 $myProduct->save();
+                return "test update";
                 // echo "existing product";
             }else{
                 $newDay = new Price_at_day ();
@@ -60,9 +61,11 @@ class PriceAtDayController extends Controller
                 $newDay->price_today = $request->price[$i];
                 $newDay->price_yesterday = $request->price[$i];
                 $newDay->price_before_yesterday = $request->price[$i];
-                // $newDay->day_id = $myDay->id;
+                $newDay->day = date("Y-m-d");
                 $newDay->user_id = Auth::id();
                 $newDay->save();
+                // return $newDay;
+                // return "test new";
             }
 
         }
@@ -88,8 +91,11 @@ class PriceAtDayController extends Controller
             $price= Price_at_day::where('day', '=',$request->date  )
                                   ->where('product_id' , $product->id)->first();
             else
-            $price= Price_at_day::where('day', '=',date('Y-m-d')  )
-            ->where('product_id' , $product->id)->first();
+            {
+                $price= Price_at_day::where('day', '=',date('Y-m-d')  )
+                ->where('product_id' , $product->id)->first();
+            }
+          
 
             
             if(!isset($price))
