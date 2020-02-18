@@ -26,9 +26,14 @@ class Product extends Model
     {
         return $this->hasOne('App\Price_at_day');
     }
-    function priceYesterDaye($count)
+    function priceYesterDay()
     {
-        return $this->hasOne('App\Price_at_day')->where('day' , date("Y-m-d", strtotime($count." days")) );
+        return $this->hasOne('App\Price_at_day')->where('day' , date("Y-m-d", strtotime("-1 days")) );
+        // date('Y/m/d',strtotime("-1 days")))
+    }
+    function priceBeforeYesterDay()
+    {
+        return $this->hasOne('App\Price_at_day')->where('day' , date("Y-m-d", strtotime("-2 days")) );
         // date('Y/m/d',strtotime("-1 days")))
     }
 }

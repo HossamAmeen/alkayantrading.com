@@ -48,12 +48,18 @@
 									<td>{{$product->en_title}} </td>
 	
 									@if(isset($product->price) )
-									<td>{{$product->price->price_today}} </td>
-									<td>{{$product->price->price_yesterday}} </td>
-									<td>{{$product->price->price_before_yesterday}} </td>
+									<td>{{$product->price->price}} </td>
 									@else
 									<td></td>
+									@endif
+									@if(isset($product->priceYesterDay) )
+									<td>{{$product->priceYesterDay->price}} </td>
+									@else
 									<td></td>
+									@endif
+									@if(isset($product->priceBeforeYesterDay) )
+									<td>{{$product->priceBeforeYesterDay->price}} </td>
+									@else
 									<td></td>
 									@endif
 	

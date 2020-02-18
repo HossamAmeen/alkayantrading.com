@@ -94,7 +94,14 @@
                                     $c=1;
                                     ?>
                                 <input onchange=update() class="form-control" name="day" type="date" id="mDate"
-                                    value="{{$day}}">
+                                @if(session('day') != null)   
+                                value="{{session('day')}}"
+                                @elseif(isset($day))
+                                value = "{{$day}}"
+                                @else 
+                                value = "{{date('Y-m-d')}}" 
+                                @endif
+                                >
                                 {{-- @foreach ($categories as $category) --}}
                                 <table class="table">
                                     <thead>

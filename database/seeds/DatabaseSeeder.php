@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
        /* factory('App\Service',6)->create();*/
          $this->addCategory();
          $this->addProduct();
-         factory('App\Price_at_day',9)->create();
+         factory('App\Price_at_day',8)->create();
            
         // factory('App\Product',10)->create();       
     }

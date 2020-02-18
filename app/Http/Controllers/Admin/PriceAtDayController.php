@@ -40,33 +40,54 @@ class PriceAtDayController extends Controller
         for($i = 0 ; $i <count($products); $i++ ){
             // return $request->day ;
             if(isset($request->day))
-            $myProduct = Price_at_day::where('product_id','=',$products[$i])
-                                    ->where('day','=',$request->day)->first();
+            {
+                session( ['day' => $request->day] );
+                $myProduct = Price_at_day::where('product_id','=',$products[$i])
+                ->where('day','=',$request->day)->first();
+
+                if(!empty($myProduct)){
+                    $myProduct->price = $request->price[$i];
+                    $myProduct->user_id = Auth::id();
+                    $myProduct->save();
+                    // return "test update";
+                    // echo "existing product";
+                }else{
+                    $newDay = new Price_at_day ();
+                    $newDay->product_id = $products[$i];
+                    $newDay->price = $request->price[$i];
+                   $newDay->day = $request->day;
+                    $newDay->user_id = Auth::id();
+                    $newDay->save();
+                    // return $newDay;
+                    // return "test new";
+                }
+
+            }
+            
             else
             {
                 // return $products[$i];
                 $myProduct = Price_at_day::where('product_id','=',$products[$i])
                 ->where('day','=',date("Y-m-d"))->first();
+                if(!empty($myProduct)){
+                    $myProduct->price = $request->price[$i];
+                    $myProduct->user_id = Auth::id();
+                    $myProduct->save();
+                    // return "test update";
+                    // echo "existing product";
+                }else{
+                    $newDay = new Price_at_day ();
+                    $newDay->product_id = $products[$i];
+                    $newDay->price = $request->price[$i];
+                   $newDay->day = date("Y-m-d");
+                    $newDay->user_id = Auth::id();
+                    $newDay->save();
+                    // return $newDay;
+                    // return "test new";
+                }
             }
             
-            if(!empty($myProduct)){
-                $myProduct->price_today = $request->price[$i];
-                $myProduct->user_id = Auth::id();
-                $myProduct->save();
-                return "test update";
-                // echo "existing product";
-            }else{
-                $newDay = new Price_at_day ();
-                $newDay->product_id = $products[$i];
-                $newDay->price_today = $request->price[$i];
-                $newDay->price_yesterday = $request->price[$i];
-                $newDay->price_before_yesterday = $request->price[$i];
-                $newDay->day = date("Y-m-d");
-                $newDay->user_id = Auth::id();
-                $newDay->save();
-                // return $newDay;
-                // return "test new";
-            }
+           
 
         }
 
@@ -104,16 +125,18 @@ class PriceAtDayController extends Controller
                 $data['price'] = 1;
             }
             else
-            $data['price'] = $price->price_today ;
+            $data['price'] = $price->price ;
            
             // $data['product']['price'][] = $product->price->price_today ;
 
             $products[] = $data;
         }
-      
         
+        if(isset($request->date))
         $day = $request->date ; //// to show in valueof button
-    //   return $products;
+        else
+        $day = date('Y-m-d');
+        //   return $products;
         $title= 'عرض الاسعار';
        return view('admin.control_panel.prices.edit_price_at_day' , compact('title','products','day') );
     }
