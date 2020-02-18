@@ -35,7 +35,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<form action="{{url('ar/join_us')}}" method="post">
+						<form action="{{url('ar/join-us')}}" method="post">
 							{{csrf_field()}}
 							<div class="form-group">
 							    <label for="name">الاسم بالكامل:</label>
@@ -63,7 +63,7 @@
 							 </div>
 							
 							<div class="text-center button">
-								<button type="submit" class="btn btn-default hvr-grow">Submit</button>
+								<button type="submit" class="btn btn-default hvr-grow">إرسال</button>
 							</div>
 						</form>  
 					</div>

@@ -24,7 +24,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<form action="{{url('en/join_us')}}" method="POST">
+						<form action="{{url('en/join-us')}}" method="POST">
 							{{csrf_field()}}
 							@if ($errors->any())
 								<div class="alert alert-danger">

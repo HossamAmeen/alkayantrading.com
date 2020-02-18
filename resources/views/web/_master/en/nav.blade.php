@@ -49,7 +49,7 @@
                        @else
                        class="page-scroll"
                        @endif
-                       href="{{url('en/join_us')}}">JoinUs</a></li>
+                       href="{{url('en/join-us')}}">JoinUs</a></li>
 
                 <li><a @if($title == 'شركة كيان - تواصل معانا')
                        class="page-scroll active"

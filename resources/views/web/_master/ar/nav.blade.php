@@ -50,7 +50,7 @@
                        @else
                        class="page-scroll"
                        @endif
-                       href="{{url('ar/join_us')}}">انضم إلينا</a></li>
+                       href="{{url('ar/join-us')}}">انضم إلينا</a></li>
 
                 <li><a @if($title == 'شركة كيان - تواصل معانا')
                        class="page-scroll active"

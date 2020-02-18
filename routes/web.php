@@ -9,9 +9,9 @@ Route::prefix('ar')->group(function () {
     Route::get('/services', 'HomeController@ar_services');
     Route::get('/daily-prices/{id?}', 'HomeController@ar_daily_price');
     Route::get('/about', 'HomeController@ar_about');
-    Route::get('/join_us', 'HomeController@ar_join_us');
+    Route::get('/join-us', 'HomeController@ar_join_us');
     Route::get('/contact', 'HomeController@ar_contact');
-    Route::post('/join_us', 'HomeController@ar_join_us');
+    Route::post('/join-us', 'HomeController@ar_join_us');
     Route::post('/contact', 'HomeController@ar_contact');
 
 });
@@ -23,9 +23,9 @@ Route::prefix('en')->group(function () {
     Route::get('services', 'HomeController@en_services');
     Route::get('daily-prices/{id?}', 'HomeController@en_daily_price');
     Route::get('about', 'HomeController@en_about');
-    Route::get('join_us', 'HomeController@en_join_us');
+    Route::get('join-us', 'HomeController@en_join_us');
     Route::get('contact', 'HomeController@en_contact');
-    Route::post('join_us', 'HomeController@en_join_us');
+    Route::post('join-us', 'HomeController@en_join_us');
     Route::post('contact', 'HomeController@en_contact');
 });
 
