@@ -93,16 +93,8 @@
                                 <?php
                                     $c=1;
                                     ?>
-                                <input onchange=update() class="form-control" name="day" type="date" id="mDate"
-                                @if(session('day') != null)   
-                                value="{{session('day')}}"
-                                @elseif(isset($day))
-                                value = "{{$day}}"
-                                @else 
-                                value = "{{date('Y-m-d')}}" 
-                                @endif
-                                >
-                                {{-- @foreach ($categories as $category) --}}
+
+
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -110,53 +102,89 @@
                                             <th>#</th>
                                             <th>المنتج</th>
                                             <th>سعر اليوم</th>
-
+                                            <th>سعر أمس</th>
+                                            <th>سعر قبل أمس</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- <h3> {{$category->ar_title}} </h3> --}}
+
                                         <?php $i= 1;?>
                                         @foreach ($products as $item)
                                         <tr>
                                             <td>{{$i++}}</td>
-                                        
-                                            <td>{{$item['product']}}</td>
-                                        
-                                            {{-- <td>{{$item->price->price}}</td> --}}
-                                            <td> <input class="form-control" name="price[]" type="number"
-                                                    
-                                                {{-- @if($item->price(-1) !== null) --}}
-                                                value = "{{$item['price']}}"
-                                        
-                                                
-                                                >
-                                            </td>
-                                        
-                                            {{-- <th> <input class="form-control" name="price[]" type="number" 
-                                                            @if (isset($item->price))
-                                                            
-                                                               
-                                                            @else
-                                                            value = "1"
-                                                            @endif
-                                                            > </th> --}}
-                                            <th hidden><input class="form-control" name="products[]"
-                                                    value="{{$item['id']}}"> </th>
-                                        </tr>
-                                        @endforeach
-                                        {{-- @endforeach --}}
-                                        <?php $c++;?>
 
+                                            <td>{{$item->ar_title}}</td>
+                                            @if(isset($item->priceProduct))
+
+                                            <td> <input class="form-control" name="price[]" type="number"
+                                                    value="{{$item->priceProduct->price_today}}">
+                                            </td>
+                                            <td> <input class="form-control" name="price_yesterday[]" type="number"
+                                                    value="{{$item->priceProduct->price_yesterday}}">
+                                            </td>
+                                            <td> <input class="form-control" name="price_before_yesterday[]"
+                                                    type="number"
+                                                    value="{{$item->priceProduct->price_before_yesterday}}">
+                                            </td>
+                                            @else
+                                            <td> <input class="form-control" name="price[]" type="number" value="1">
+                                            </td>
+                                            <td> <input class="form-control" name="price_yesterday[]" type="number"
+                                                    value="1">
+                                            </td>
+                                            <td> <input class="form-control" name="price_before_yesterday[]"
+                                                    type="number" value="1">
+                                            </td>
+                                            @endif
+
+
+
+
+                                            <th hidden><input class="form-control" name="products[]"
+                                                    value="{{$item->id}}"> </th>
+                                        </tr>
+
+                                        @endforeach
+
+                                        <?php $c++;?>
+                                        <tr>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary col-md-6"
+                                                    formaction="{{url('admin/add_price/1')}}">حفظ اسعار
+                                                    اليوم</button>
+                                            </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary col-md-6"
+                                                    formaction="{{url('admin/add_price/2')}}">حفظ اسعار الأمس</button>
+                                                    <button type="submit" class="btn btn-info col-md-6"
+                                                    formaction="{{url('admin/copy-price/2')}}">نسخ الأسعار لأمس</button>
+                                            </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary col-md-6"
+                                                    formaction="{{url('admin/add_price/3')}}">حفظ اسعار قبل
+                                                    الأمس</button>
+                                                    <button type="submit" class="btn btn-info col-md-6"
+                                                    formaction="{{url('admin/copy-price/3')}}">نسخ الأسعار قبل لأمس</button>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
-                                {{-- @endforeach --}}
+
 
                                 <div class="form-group">
                                     <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary col-md-4">حفظ</button>
+
+
+
                                     </div>
                                 </div>
+
+
                             </form>
                         </div>
 

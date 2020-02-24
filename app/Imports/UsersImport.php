@@ -11,8 +11,7 @@ class UsersImport implements ToCollection
     {
 
         foreach ($rows as $row) {
-            $myProduct = Price_at_day::where('product_id', '=', $row[1])
-                ->where('day', '=', date("Y-m-d"))->first();
+            $myProduct = Price_at_day::where('product_id', '=', $row[1])->first();
 
             if (!empty($myProduct)) {
                 $myProduct->price_today = $row[6];

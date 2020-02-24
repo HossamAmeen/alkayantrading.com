@@ -68,8 +68,8 @@ Route::prefix('admin')->group(function () {
             Route::resource('priceAtDay'    , 'PriceAtDayController');
             Route::get('/copy_day'    , 'PriceAtDayController@copy_day');
             Route::get('/show_prices'    , 'PriceAtDayController@show_prices')->name('show_prices');
-            Route::post('/add_price'    , 'PriceAtDayController@add_price');
-
+            Route::post('/add_price/{day}'    , 'PriceAtDayController@add_price');
+            Route::post('/copy-price/{day}'    , 'PriceAtDayController@copyPrice');
         });
 
     });

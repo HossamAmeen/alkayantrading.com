@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
        /* factory('App\Service',6)->create();*/
          $this->addCategory();
          $this->addProduct();
-         factory('App\Price_at_day',8)->create();
+         factory('App\Price_at_day',4)->create();
            
         // factory('App\Product',10)->create();       
     }
@@ -67,27 +67,27 @@ class DatabaseSeeder extends Seeder
             'category_id' =>2
         ]);
 
-        App\Product::create([
-            'ar_title'=>'حديد الممتاز',
-            'en_title'=>'mmotaz hadeed',
-            'category_id' =>3
-        ]);
-        App\Product::create([
-            'ar_title'=>'حديد المصرين',
-            'en_title'=>'hadeed egyption',
-            'category_id' =>3
-        ]);
+        // App\Product::create([
+        //     'ar_title'=>'حديد الممتاز',
+        //     'en_title'=>'mmotaz hadeed',
+        //     'category_id' =>3
+        // ]);
+        // App\Product::create([
+        //     'ar_title'=>'حديد المصرين',
+        //     'en_title'=>'hadeed egyption',
+        //     'category_id' =>3
+        // ]);
 
-        App\Product::create([
-            'ar_title'=>'زلط الاسيوطي',
-            'en_title'=>'assuit zalad',
-            'category_id' =>4
-        ]);
-        App\Product::create([
-            'ar_title'=>'زلط المحلي',
-            'en_title'=>'local zald',
-            'category_id' =>4
-        ]);
+        // App\Product::create([
+        //     'ar_title'=>'زلط الاسيوطي',
+        //     'en_title'=>'assuit zalad',
+        //     'category_id' =>4
+        // ]);
+        // App\Product::create([
+        //     'ar_title'=>'زلط المحلي',
+        //     'en_title'=>'local zald',
+        //     'category_id' =>4
+        // ]);
         
     }
 }

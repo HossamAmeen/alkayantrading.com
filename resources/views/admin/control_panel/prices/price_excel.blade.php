@@ -29,8 +29,8 @@
                   {{$product->ar_title}}
                 </td>
                 <td>{{$product->en_title}}</td>
-                @if(isset($product->price))
-                <td>{{$product->price->price_today}}</td>
+                @if(isset($product->priceProduct))
+                <td>{{$product->priceProduct->price_today}}</td>
                 @endif
 
             </tr>
