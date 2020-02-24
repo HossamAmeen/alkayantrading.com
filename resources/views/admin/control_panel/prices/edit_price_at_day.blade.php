@@ -155,21 +155,24 @@
                                             </td>
                                             <td>
                                                 <button type="submit" class="btn btn-primary col-md-6"
-                                                    formaction="{{url('admin/add_price/1')}}">حفظ اسعار
-                                                    اليوم</button>
-                                            </td>
-                                            <td>
-                                                <button type="submit" class="btn btn-primary col-md-6"
-                                                    formaction="{{url('admin/add_price/2')}}">حفظ اسعار الأمس</button>
+                                                    formaction="{{url('admin/add_price/1')}}">حفظ 
+                                                    </button>
                                                     <button type="submit" class="btn btn-info col-md-6"
                                                     formaction="{{url('admin/copy-price/2')}}">نسخ الأسعار لأمس</button>
                                             </td>
                                             <td>
                                                 <button type="submit" class="btn btn-primary col-md-6"
-                                                    formaction="{{url('admin/add_price/3')}}">حفظ اسعار قبل
-                                                    الأمس</button>
+                                                    formaction="{{url('admin/add_price/2')}}">حفظ </button>
+                                               
+
                                                     <button type="submit" class="btn btn-info col-md-6"
-                                                    formaction="{{url('admin/copy-price/3')}}">نسخ الأسعار قبل لأمس</button>
+                                                    formaction="{{url('admin/copy-price/3')}}">نسخ الأسعار لأول  </button>
+                                            </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-primary col-md-6"
+                                                    formaction="{{url('admin/add_price/3')}}">حفظ 
+                                                    الأمس</button>
+                                                  
                                             </td>
                                         </tr>
                                     </tbody>
