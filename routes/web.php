@@ -85,10 +85,14 @@ Route::prefix('api')->group(function () {
 
        ////// english
         Route::get('en/services', 'MobileController@en_services');
+        Route::get('en/categories', 'MobileController@EnCategory');
+        Route::get('en/categories/{id}', 'MobileController@EnShowProducts');
         Route::get('en/daily_price/{id?}', 'MobileController@en_daily_price');
         Route::get('en/about', 'MobileController@en_about');
       ////// arabic
         Route::get('ar/services', 'MobileController@ar_services');
+        Route::get('ar/categories', 'MobileController@ArCategory');
+        Route::get('ar/categories/{id}', 'MobileController@ArShowProducts');
         Route::get('ar/daily_price/{id?}', 'MobileController@ar_daily_price');
         Route::get('ar/about', 'MobileController@ar_about');
         

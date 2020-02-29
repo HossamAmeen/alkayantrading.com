@@ -1,5 +1,5 @@
 
-<title>{{$title}}</title>
+
 <!--		meta tags-->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,14 @@
 <meta name="description" content="شركة كيان لتوريد جميع مواد البناء (حديد - اسمنت - الرمل - الزلط السن بجميع مقاساته) وادارة وتشغيل اساطيل النقل البرى بالاضافه الى تشغيل وادارة محطات الخرسانه الجاهزه " >
 <meta name=”keywords” content="مواد البناء, المقاولات, محطات الخرسانه الجاهزه, اساطيل النقل البرى , تشطيبات" />
 <meta name=”author” content="Zedy Digital Agency">
+
+
+@if(isset($pref->en_title))
+<title>{{$pref->en_title .'-' .$title}}</title>
+@else
+<title>{{$title}}</title>
+@endif
+
 <link rel="icon" href="{{URL::asset('resources/assets/site/images/icon.png')}}">
 
 

@@ -39,14 +39,14 @@ class HomeController extends Controller
 
         $data['services'] = Service::all();
         $data['reviews'] =  Review::all();
-        $data['title'] = "kayan trading company";
+        $data['title'] = "الرئيسية";
         return view('web.ar.index',$data);
     }
 
     public function ar_services()
     {
         $data['services'] = Service::all();
-        $data['title'] =  "شركة كيان - خدماتنا" ; 
+        $data['title'] =  "خدماتنا" ; 
         return view('web.ar.services',$data);
     }
     public function ar_daily_price($id = null)
@@ -69,14 +69,14 @@ class HomeController extends Controller
           
     //    }
     //    return $data; 
-        $title =  "شركة كيان - الاسعار اليوميه";
+        $title =  "أسعار السلع اليومية ";
       // return $data2;
         return view('web.ar.daily_price' ,compact('title','categories') );
        
     }
     public function ar_about()
     {
-        $title =  "شركة كيان -  من نحن";
+        $title =  "من نحن";
         $data['teams'] = Team::all();
         return view('web.ar.about' , $data)->with(compact('title') );
 
@@ -84,7 +84,7 @@ class HomeController extends Controller
     public function ar_join_us(Request $request)
     {
 
-        $title =  "شركة كيان -  انضم إلينا";
+        $title =  "انضم إلينا";
 
         if ($request->isMethod('post')) {
             $rules = $this->jobFormValidation();
@@ -117,7 +117,7 @@ class HomeController extends Controller
     public function ar_contact(Request $request)
     {
 
-        $title =  "شركة كيان - تواصل معانا";
+        $title =  "تواصل معانا";
             
         if ($request->isMethod('post')) {
             $rules = $this->contactFormValidation();
@@ -160,7 +160,7 @@ class HomeController extends Controller
 
         $data['services'] = Service::all();
         $data['reviews'] =  Review::all();
-        $data['title'] = "kayan trading company";
+        $data['title'] = "Home";
 
         
        // $pref = Pref::find(1);
@@ -171,7 +171,7 @@ class HomeController extends Controller
     {
        
         $data['services'] = Service::all();
-        $data['title'] =  "شركة كيان - خدماتنا" ; 
+        $data['title'] =  "services" ; 
         return view('web.en.services',$data);
     }
     public function en_daily_price($id = NULL)
@@ -180,7 +180,7 @@ class HomeController extends Controller
         
         $categories = Category::all();
         
-        $title =  "شركة كيان - الاسعار اليوميه";
+        $title =  "Daily Prices";
       // return $data2;
         return view('web.en.daily_price' , compact('title','categories') );
        
@@ -189,7 +189,7 @@ class HomeController extends Controller
     
     public function en_about()
     {
-        $title =  "شركة كيان -  من نحن";
+        $title =  "About Us";
         $data['teams'] = Team::all();
         return view('web.en.about' , $data)->with(compact('title') );
 
@@ -197,7 +197,7 @@ class HomeController extends Controller
     public function en_join_us(Request $request)
     {
 
-        $title =  "شركة كيان -  انضم إلينا";
+        $title =  "Join Us";
 
         if ($request->isMethod('post')) {
             $rules = $this->jobFormValidation();
@@ -230,7 +230,7 @@ class HomeController extends Controller
     public function en_contact(Request $request)
     {
 
-        $title =  "شركة كيان - تواصل معانا";
+        $title =  "Contact Us";
 
         if ($request->isMethod('post')) {
             $rules = $this->contactFormValidation();

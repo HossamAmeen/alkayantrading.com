@@ -52,18 +52,18 @@
 								<td>{{$product->company_name}} </td>
 								<td>{{$product->ar_title}} </td>
 
-								@if(isset($product->price) )
-								<td>{{$product->price->price}} </td>
+								@if(isset($product->priceProduct) )
+								<td>{{$product->priceProduct->price_today}} </td>
 								@else
 								<td></td>
 								@endif
-								@if(isset($product->priceYesterDay) )
-								<td>{{$product->priceYesterDay->price}} </td>
+								@if(isset($product->priceProduct) )
+								<td>{{$product->priceProduct->price_yesterday}} </td>
 								@else
 								<td></td>
 								@endif
-								@if(isset($product->priceBeforeYesterDay) )
-								<td>{{$product->priceBeforeYesterDay->price}} </td>
+								@if(isset($product->priceProduct) )
+								<td>{{$product->priceProduct->price_before_yesterday}} </td>
 								@else
 								<td></td>
 								@endif

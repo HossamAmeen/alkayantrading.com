@@ -35,6 +35,24 @@
                             @endif
 
                             <div class="form-group">
+                                <label class="col-lg-3 control-label">اسم الموقع بالعربيه</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" name="arAddress"
+                                        data-bv-message="The service is not valid"
+                                        data-bv-notempty-message="The service is required and cannot be empty"
+                                        value="{{ $ar_title}} " />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">اسم الموقع بالانجليزي</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" name="arAddress"
+                                        data-bv-message="The service is not valid"
+                                        data-bv-notempty-message="The service is required and cannot be empty"
+                                        value="{{ $en_title}} " />
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-lg-3 control-label">العنوان بالعربيه</label>
                                 <div class="col-lg-6">
                                     <input type="text" class="form-control" name="arAddress"
@@ -42,7 +60,7 @@
                                         data-bv-notempty-message="The service is required and cannot be empty"
                                         value="{{ $arAddress}} " />
                                 </div>
-                            </div>
+                            </div>  
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">العنوان بالانجليزي</label>
                                 <div class="col-lg-6">

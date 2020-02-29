@@ -16,6 +16,8 @@ class CreatePrefsTable extends Migration
         if(!Schema::hasTable('prefs')){
         Schema::create('prefs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('en_title')->default('alkayan');
+            $table->string('ar_title')->default('الكيان');
             $table->string('arAddress')->nullable();
             $table->string('enAddress')->nullable();
             $table->string('enDescription')->nullable();
