@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Category;
+use App\Product;
 use App\Http\Controllers\Controller;
 use App\Pref;
 use DB;
@@ -48,10 +49,11 @@ class MobileController extends Controller
         ->where('products.category_id', '=', $id)
         ->where('products.deleted_at', '=', null)
         ->get();
-
-    return json_encode($categories, JSON_UNESCAPED_UNICODE);
+        $data['rows'] = $product::where('category_id' , $id)->with('priceProduct')->get();
+    return json_encode($data, JSON_UNESCAPED_UNICODE);
 
     }
+
 
     public function ArShowProducts($id)
     {
@@ -59,8 +61,9 @@ class MobileController extends Controller
         ->where('products.category_id', '=', $id)
         ->where('products.deleted_at', '=', null)
         ->get();
-
-    return json_encode($categories, JSON_UNESCAPED_UNICODE);
+// return "test";
+        $data['products'] = Product::where('category_id' , $id)->with('priceProduct')->get();
+        return json_encode($data, JSON_UNESCAPED_UNICODE);
 
     }
 
