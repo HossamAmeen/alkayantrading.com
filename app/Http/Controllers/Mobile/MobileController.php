@@ -49,7 +49,7 @@ class MobileController extends Controller
         ->where('products.category_id', '=', $id)
         ->where('products.deleted_at', '=', null)
         ->get();
-        $data['rows'] = $product::where('category_id' , $id)->with('priceProduct')->get();
+        $data['rows'] = Product::where('category_id' , $id)->with('priceProduct')->get();
     return json_encode($data, JSON_UNESCAPED_UNICODE);
 
     }
