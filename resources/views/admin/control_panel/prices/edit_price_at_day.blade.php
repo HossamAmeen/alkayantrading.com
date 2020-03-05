@@ -158,7 +158,7 @@
                                                     formaction="{{url('admin/add_price/1')}}">حفظ 
                                                     </button>
                                                     <button type="submit" class="btn btn-info col-md-6"
-                                                    formaction="{{url('admin/copy-price/2')}}">نسخ الأسعار لأمس</button>
+                                                    formaction="{{url('admin/copy-price/2')}}">نسخ أسعار اليوم لأمس</button>
                                             </td>
                                             <td>
                                                 <button type="submit" class="btn btn-primary col-md-6"
@@ -166,12 +166,12 @@
                                                
 
                                                     <button type="submit" class="btn btn-info col-md-6"
-                                                    formaction="{{url('admin/copy-price/3')}}">نسخ الأسعار لأول  </button>
+                                                    formaction="{{url('admin/copy-price/3')}}">نسخ أسعار أمس لأول أمس</button>
                                             </td>
                                             <td>
                                                 <button type="submit" class="btn btn-primary col-md-6"
                                                     formaction="{{url('admin/add_price/3')}}">حفظ 
-                                                    الأمس</button>
+                                                    </button>
                                                   
                                             </td>
                                         </tr>
